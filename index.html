@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<title>Aletto CS Pulse Check · Fri 13 Nov 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0C0E;--p1:#121417;--p2:#1A1C20;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.14);--tx:#F7F8F8;--mu:#9095A0;--mu2:#62666F;--red:#FF4438;--grn:#3ECF6E;--yel:#F5B544;--gry:#6B7079}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--bg);color:var(--tx);font-family:Geist,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+body{overflow:hidden}
+.deck{height:100vh;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth}
+.slide{position:relative;height:100vh;min-height:620px;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:56px 64px 64px}
+.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 100% 0%,rgba(255,68,56,.07),transparent 60%);pointer-events:none}
+.in{position:relative;width:100%;max-width:1360px;height:100%;max-height:820px;display:flex;flex-direction:column}
+.mono,.num{font-family:"JetBrains Mono",ui-monospace,monospace;font-feature-settings:"tnum"}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 12px/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
+.eyebrow::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--red)}
+h1{font-weight:700;letter-spacing:-.035em;line-height:.95}
+h2{font-size:clamp(28px,3.1vw,44px);font-weight:650;letter-spacing:-.03em;line-height:1.05;margin:14px 0 6px}
+.sub{color:var(--mu);font-size:15px;line-height:1.5;max-width:900px}
+.body{flex:1;min-height:0;margin-top:26px;display:grid;gap:14px}
+.card{background:var(--p1);border:1px solid var(--line);border-radius:16px;padding:18px 20px;min-width:0}
+.card h3{font-size:17px;font-weight:600;letter-spacing:-.01em}
+.card .who{color:var(--mu);font-size:12.5px;margin-top:3px}
+.lbl{font:600 10.5px/1 "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mu2);margin:12px 0 5px}
+.card p,.card li{font-size:13.5px;line-height:1.48;color:#D5D7DB}
+.card ul{list-style:none}.card li{padding-left:14px;position:relative;margin:3px 0}.card li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--mu2)}
+.pill{display:inline-flex;align-items:center;gap:6px;font:600 10.5px/1 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;padding:5px 8px;border-radius:999px;border:1px solid var(--line2);color:var(--mu);white-space:nowrap}
+.pill i{width:7px;height:7px;border-radius:50%;display:inline-block}
+.r{color:var(--red)}.g{color:var(--grn)}.y{color:var(--yel)}
+.bg-r{background:var(--red)}.bg-g{background:var(--grn)}.bg-y{background:var(--yel)}.bg-x{background:var(--gry)}
+.edge-r{box-shadow:inset 3px 0 0 var(--red)}.edge-y{box-shadow:inset 3px 0 0 var(--yel)}.edge-g{box-shadow:inset 3px 0 0 var(--grn)}.edge-x{box-shadow:inset 3px 0 0 var(--gry)}
+.foot{position:absolute;left:0;right:150px;bottom:-34px;display:flex;justify-content:space-between;color:var(--mu2);font:500 11px/1 "JetBrains Mono",monospace;letter-spacing:.04em}
+.src{color:var(--mu2);font-size:11.5px;margin-top:10px;line-height:1.45}
+.ci{color:var(--tx);font-weight:600}
+.tag-ci{display:inline-block;font:600 10px/1 "JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--yel);border:1px solid rgba(245,181,68,.35);background:rgba(245,181,68,.07);padding:4px 7px;border-radius:6px}
+/* title */
+.title-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:48px;align-items:center;height:100%}
+.title-grid h1{font-size:clamp(64px,8.6vw,132px)}
+.title-grid h1 span{color:var(--red)}
+.meta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.three{display:grid;gap:12px}
+.three .card{display:flex;align-items:center;gap:22px;padding:22px 24px}
+.three .big{font:600 54px/1 "JetBrains Mono",monospace;letter-spacing:-.04em;min-width:96px}
+.three p{font-size:15px;color:var(--tx)}.three small{display:block;color:var(--mu);font-size:12.5px;margin-top:4px}
+/* kpi */
+.kpis{grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr}
+.kpi .v{font:600 46px/1 "JetBrains Mono",monospace;letter-spacing:-.04em;margin-top:14px}
+.kpi .v small{font-size:15px;color:var(--mu);letter-spacing:0;margin-left:6px}
+.kpi .d{color:var(--mu);font-size:13px;margin-top:10px;line-height:1.45}
+.stack{display:flex;height:10px;border-radius:99px;overflow:hidden;margin-top:16px;gap:3px}
+/* rows */
+.rows{display:flex;flex-direction:column;gap:10px}
+.row{display:grid;grid-template-columns:110px 120px 1fr 120px;gap:18px;align-items:center;background:var(--p1);border:1px solid var(--line);border-radius:14px;padding:16px 20px}
+.row .o{font-weight:600}.row .c{color:var(--mu);font-size:13px}.row .t{font-size:14px;line-height:1.45;color:#DADCE0}.row .w{text-align:right;font:600 13px/1.2 "JetBrains Mono",monospace;color:var(--red)}
+.calls{margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;border:1px dashed var(--line2);border-radius:14px;padding:14px 18px;color:var(--mu);font-size:13px}
+.calls b{color:var(--tx);font-weight:600}
+/* health board */
+.hb{grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr}
+.hb .card{padding:13px 14px;display:flex;flex-direction:column;gap:6px}
+.hb .nm{display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:14px;gap:6px}
+.hb .nm i{width:9px;height:9px;border-radius:50%;flex:none}
+.hb .own{color:var(--mu2);font-size:11px;font-family:"JetBrains Mono",monospace}
+.hb p{font-size:12.3px;line-height:1.4;color:#C9CBD0}
+/* divider */
+.div-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center;height:100%}
+.div-grid .huge{font:700 clamp(160px,20vw,300px)/.8 Geist;letter-spacing:-.06em;color:var(--red)}
+.stake{padding:26px 28px}.stake h3{font-size:22px;margin:10px 0 8px}
+.stake.hot{background:linear-gradient(135deg,rgba(255,68,56,.16),rgba(255,68,56,.04));border-color:rgba(255,68,56,.35)}
+/* detail columns */
+.cols3{grid-template-columns:repeat(3,1fr)}.cols5{grid-template-columns:repeat(5,1fr)}.cols3x2{grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr}
+.cols5 .card p,.cols5 .card li{font-size:12.6px}
+.cols3x2 .card p,.cols3x2 .card li{font-size:12.8px}
+.eof{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:12px;color:var(--mu)}
+.eof b{font-family:"JetBrains Mono",monospace;color:var(--tx);font-weight:600}
+/* hero */
+.hero-grid{grid-template-columns:1.25fr 1fr}
+table{width:100%;border-collapse:collapse}
+th{font:600 10.5px/1 "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--mu2);text-align:left;padding:10px 10px;border-bottom:1px solid var(--line2)}
+td{padding:13px 10px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top;line-height:1.4}
+td.n{font-family:"JetBrains Mono",monospace;white-space:nowrap}
+td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
+.stale{display:inline-block;font:600 9.5px/1 "JetBrains Mono",monospace;letter-spacing:.08em;color:var(--yel);border:1px solid rgba(245,181,68,.4);border-radius:5px;padding:3px 5px;margin-left:6px;vertical-align:middle}
+/* charts */
+.chart text{font-family:"JetBrains Mono",monospace;fill:var(--mu);font-size:11px}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--mu);margin-top:6px}.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+/* gaps */
+.gap-row{grid-template-columns:44px 1.1fr 1.4fr 150px}
+.gap-row .w{color:var(--tx)}
+/* next week */
+.nw{grid-template-columns:1fr 1.25fr}
+.day{display:grid;grid-template-columns:118px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
+.day:last-child{border-bottom:0}
+.day .dl{font:600 12px/1.35 "JetBrains Mono",monospace;color:var(--red)}
+.day .dl small{display:block;color:var(--mu2);font-weight:500;margin-top:3px}
+.day ul{list-style:none}.day li{font-size:13px;line-height:1.45;color:#D5D7DB;margin-bottom:3px}
+.tt td{padding:8.5px 8px;font-size:12.6px}.tt td.ow{font-weight:600;white-space:nowrap}.tt td.du{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--mu);white-space:nowrap}
+/* owners */
+.cols4{grid-template-columns:repeat(4,1fr)}
+.owner h3{display:flex;justify-content:space-between;align-items:baseline}
+.owner h3 .num{font-size:30px;color:var(--red)}
+.owner li{font-size:12.8px}
+/* close */
+.dec{grid-template-columns:repeat(2,1fr);grid-template-rows:1fr 1fr}
+.dec .card{padding:26px 28px;display:flex;flex-direction:column;justify-content:center}.dec .card h3{font-size:22px;letter-spacing:-.02em;margin:12px 0 10px;line-height:1.25}.dec .card p{font-size:15px;color:var(--mu)}
+.dec .k{font:700 13px/1 "JetBrains Mono",monospace;color:var(--red)}
+.esc{margin-top:14px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,rgba(255,68,56,.14),rgba(255,68,56,.02));border:1px solid rgba(255,68,56,.3);border-radius:14px;padding:16px 22px;font-size:15px}
+/* chrome */
+.hud{position:fixed;right:22px;bottom:18px;display:flex;align-items:center;gap:8px;z-index:9;font:600 12px/1 "JetBrains Mono",monospace;color:var(--mu)}
+.hud button{all:unset;cursor:pointer;width:30px;height:30px;border-radius:9px;border:1px solid var(--line2);display:grid;place-items:center;color:var(--tx);background:rgba(18,20,23,.8);backdrop-filter:blur(8px)}
+.hud button:hover{border-color:var(--red)}
+.hud .ctr{padding:0 8px;min-width:64px;text-align:center}
+.prog{position:fixed;left:0;top:0;height:2px;background:var(--red);z-index:9;transition:width .25s ease}
+.brand{position:fixed;left:24px;bottom:22px;z-index:9;font:700 13px/1 Geist;letter-spacing:-.01em;color:var(--tx)}
+.brand span{color:var(--red)}
+@media (max-width:1100px){body{overflow:auto}.deck{height:auto;overflow:visible;scroll-snap-type:none}.slide{height:auto;min-height:100vh}.in{max-height:none;height:auto}.hb{grid-template-columns:repeat(3,1fr)}.cols5,.cols4{grid-template-columns:repeat(2,1fr)}.cols3,.cols3x2,.kpis,.hero-grid,.nw,.title-grid,.div-grid,.dec{grid-template-columns:1fr;grid-template-rows:auto}.row,.gap-row{grid-template-columns:1fr}.row .w{text-align:left}.foot{position:static;margin-top:20px}}
+@media print{
+ @page{size:1600px 900px;margin:0}
+ body{overflow:visible}.deck{height:auto;overflow:visible}
+ .slide{height:900px;width:1600px;page-break-after:always;break-after:page;min-height:0}
+ .hud,.prog,.brand{display:none}
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+<div class="brand">aletto<span>.</span></div>
+<main class="deck" id="deck">
+
+<!-- 1 TITLE -->
+<section class="slide" id="s1"><div class="in">
+ <div class="title-grid">
+  <div>
+   <div class="eyebrow">CS Pulse Check · Memo from Jake</div>
+   <h1 style="margin-top:22px">CS Pulse<br><span>Check</span></h1>
+   <p class="sub" style="font-size:19px;margin-top:22px;color:#C9CBD0">Friday 13 November 2026 · for Shane, William, Yona and Rian</p>
+   <div class="meta-row"><span class="pill"><i class="bg-r"></i>Jake can't attend today</span><span class="pill">Run the meeting off this deck</span><span class="pill">All times Madrid (CET)</span></div>
+  </div>
+  <div class="three">
+   <div class="lbl" style="margin:0 0 2px">Today in three numbers</div>
+   <div class="card"><div class="big r">5</div><div><p>Items due today</p><small>Shane 3 · William 2, first deadline 15:00</small></div></div>
+   <div class="card"><div class="big">3</div><div><p>Client calls for Jake tonight</p><small>18:00 Heal · 18:30 Workzone · 19:30 VBO</small></div></div>
+   <div class="card"><div class="big y">1</div><div><p>Client inside its first 30 days</p><small>Workzone, off pace on leads. Rigol and Lockton start Nov 16</small></div></div>
+  </div>
+ </div>
+ <div class="foot"><span>Aletto · CS Pulse Check · Team version</span><span>01</span></div>
+</div></section>
+
+<!-- 2 AT A GLANCE -->
+<section class="slide" id="s2"><div class="in">
+ <div class="eyebrow">Today at a glance</div>
+ <h2>Where we stand this morning</h2>
+ <p class="sub">As of Fri 13 Nov, Madrid. Each tile names its window. Meta data stops Nov 3 (Windsor expired), so ad numbers are older than the status notes.</p>
+ <div class="body kpis">
+  <div class="card kpi"><div class="lbl" style="margin-top:0">Account health · 16 accounts</div>
+   <div class="v"><span class="r">5</span> <span class="mu2" style="color:var(--mu2)">/</span> <span class="y">10</span> <span style="color:var(--mu2)">/</span> <span class="g">1</span></div>
+   <div class="stack"><span class="bg-r" style="flex:5"></span><span class="bg-y" style="flex:10"></span><span class="bg-g" style="flex:1"></span></div>
+   <div class="d">Red · amber · green. CEO report score adjusted for this week's emails and calls. Pre-launch accounts not counted.</div></div>
+  <div class="card kpi"><div class="lbl" style="margin-top:0">Leads · MQL · booked</div>
+   <div class="v">62<small>leads</small> 50<small>MQL</small> 11<small>booked</small></div>
+   <div class="d">13 client funnels, Oct 21–27 dashboard pull <span class="stale">STALE</span> Last consistent snapshot. About $180 per lead, $224 per MQL.</div></div>
+  <div class="card kpi"><div class="lbl" style="margin-top:0">First-month hero metrics</div>
+   <div class="v">15<small>/ 50 leads</small></div>
+   <div class="d">Workzone, day 24 of 30, pacing to about 30. The only client in its first 30 days. Count as of Nov 4 <span class="stale">STALE</span></div></div>
+  <div class="card kpi"><div class="lbl" style="margin-top:0">CS responsiveness · last week</div>
+   <div class="v">0.23<small>business hrs median</small></div>
+   <div class="d">29 client emails, 1 red. Nov 12: no red flags, nothing unanswered.</div></div>
+  <div class="card kpi"><div class="lbl" style="margin-top:0">SLA-breached tickets</div>
+   <div class="v r">4<small>+ 20 old to clean up</small></div>
+   <div class="d">#39 Xplor · #40 Workzone · #42 VBO · #43 Heal. Old tickets #13–#38 need cleanup (Yona).</div></div>
+  <div class="card kpi"><div class="lbl" style="margin-top:0">End of flight inside 30 days</div>
+   <div class="v">3<small>accounts</small></div>
+   <div class="d">VBO Nov 30 · Evolve Nov 30 · Rigol Dec 15. DBSync is handled by Jake.</div></div>
+ </div>
+ <div class="foot"><span>Sources: CEO report (built Nov 12), CS escalations Nov 12, CS Rundown Nov 13, Notion CS Agent Run Nov 13</span><span>02</span></div>
+</div></section>
+
+<!-- 3 DUE TODAY -->
+<section class="slide" id="s3"><div class="in">
+ <div class="eyebrow">Due today · Madrid time</div>
+ <h2>Five things that must land today</h2>
+ <p class="sub">Sorted by deadline. Reply on the team thread the moment each one is done.</p>
+ <div class="body rows" style="display:flex">
+  <div class="row"><span class="o">William</span><span class="c">Imorgon</span><span class="t">Apply Andy's small edits to the "Andy's Letter" page (sent 03:19, he likes it) and confirm to him.</span><span class="w">Before 15:00</span></div>
+  <div class="row"><span class="o">Shane</span><span class="c">Rigol</span><span class="t">Recap to Mike.Wohlert@rigol.com, his written OK on AD20, AD14 and AD17, and chase his discovery questions. Last night's reminder went to his atlasnova.ai address. If the assessment form, AI report, landing page and workflow won't be live Monday, tell Mike and Jake with a new date.</span><span class="w">By 18:00</span></div>
+  <div class="row"><span class="o">William</span><span class="c">Workzone</span><span class="t">Send the qualifying-question change, and confirm in writing to Ash that the Instagram ad now goes to the booking page (3 days late).</span><span class="w">By 18:00</span></div>
+  <div class="row"><span class="o">Shane</span><span class="c">Workzone</span><span class="t">GHL says the A2P campaign verification failed last night. Fix it, book Ash's text-bot walkthrough, and tell Jake where it stands.</span><span class="w">Before 18:30</span></div>
+  <div class="row"><span class="o">Shane</span><span class="c">Xplor</span><span class="t">Answer Jon's Meta budget question in writing (he replied Nov 11, we said "on it"), with the new daily setting.</span><span class="w">Before 19:00</span></div>
+ </div>
+ <div class="calls"><span class="eyebrow" style="margin-right:6px">Jake's calls tonight</span><b>18:00</b> Tim Moran, Heal Clinical <span style="color:var(--mu2)">·</span> <b>18:30</b> Ash Didwania, Workzone <span style="color:var(--mu2)">·</span> <b>19:30</b> Mike MacPherson, VBO Tickets</div>
+ <div class="foot"><span>Sources: CS escalations Nov 12 (P24, P27, P29, P33, P34), CS Rundown Nov 13, Google Calendar</span><span>03</span></div>
+</div></section>
+
+<!-- 4 HEALTH BOARD -->
+<section class="slide" id="s4"><div class="in">
+ <div class="eyebrow">Portfolio health</div>
+ <h2>16 accounts: <span class="r">5 red</span> · <span class="y">10 amber</span> · <span class="g">1 green</span></h2>
+ <p class="sub">Green 70+, amber 45–69, red under 45 on the CEO report scale, adjusted for this week. Vega Claims, Tiger Capital and Hyphen are prospects, not clients, and aren't on the board.</p>
+ <div class="body hb">
+  <div class="card edge-r"><div class="nm">VBO Tickets<i class="bg-r"></i></div><div class="own">William</div><p>Mike has raised concerns about results. Jake is handling the commercial conversation, call 19:30.</p></div>
+  <div class="card edge-r"><div class="nm">Evolve<i class="bg-r"></i></div><div class="own">William · Shane</div><p>Ads paused at Dave's request until about Nov 18. No call since Oct 28.</p></div>
+  <div class="card edge-r"><div class="nm">Rigol<i class="bg-r"></i></div><div class="own">Shane · William</div><p>Not live since May kickoff. Ads approved Nov 12, go-live Mon Nov 16.</p></div>
+  <div class="card edge-r"><div class="nm">DBSync<i class="bg-r"></i></div><div class="own">Jake</div><p>Handled by Jake.</p></div>
+  <div class="card edge-r"><div class="nm">Clockspring<i class="bg-r"></i></div><div class="own">William</div><p>Quiet. MQLs down to 3 from 7–8. Funnel 2.0 yes/no from Adam still pending.</p></div>
+  <div class="card edge-y"><div class="nm">Xplor / FieldEdge<i class="bg-y"></i></div><div class="own">Shane · William</div><p>Meta live. Jon frustrated about the Meta budget level. No lead data anywhere.</p></div>
+  <div class="card edge-y"><div class="nm">Workzone<i class="bg-y"></i></div><div class="own">William · Shane</div><p>Cost per MQL under $70, first self-booked call today. Pacing ~30 of 50. A2P failed.</p></div>
+  <div class="card edge-y"><div class="nm">Heal Clinical<i class="bg-y"></i></div><div class="own">William · Shane</div><p>Tim is happy, wants help on 2 new projects. Old VSL link still 404s.</p></div>
+  <div class="card edge-y"><div class="nm">HRG<i class="bg-y"></i></div><div class="own">William</div><p>Funnel 2 record week, 11 leads / 8 qualified. Meta ads paused by an ad-account error, Scott silent.</p></div>
+  <div class="card edge-y"><div class="nm">FamCare<i class="bg-y"></i></div><div class="own">William · Shane</div><p>New page and 22 video ads live. George records next week. Volume still soft.</p></div>
+  <div class="card edge-y"><div class="nm">TrustStar<i class="bg-y"></i></div><div class="own">William · Shane</div><p>Admiral's Letter books well. Steve's login unconfirmed. Rob's asks routed to Jake/Yona.</p></div>
+  <div class="card edge-y"><div class="nm">Imorgon<i class="bg-y"></i></div><div class="own">William · Shane</div><p>Andy's Letter page ready. RSNA Chicago campaign from Nov 27.</p></div>
+  <div class="card edge-y"><div class="nm">Lockton<i class="bg-y"></i></div><div class="own">Yona · Rian · Shane</div><p>New client. Kickoff Mon Nov 16, 21:00. Lockton approves all copy.</p></div>
+  <div class="card edge-y"><div class="nm">Aviro360<i class="bg-y"></i></div><div class="own">William · Yona</div><p>Ads bring leads, Brian's team isn't calling them. Check-in Nov 25.</p></div>
+  <div class="card edge-y"><div class="nm">All Tips Matter<i class="bg-y"></i></div><div class="own">William</div><p>Funnel 2 live, volume thin. Kill sub-1% CTR ads.</p></div>
+  <div class="card edge-g"><div class="nm">Sandler<i class="bg-g"></i></div><div class="own">William · Shane</div><p>Leads up after the pivot. Enrichment missing the 5 new states.</p></div>
+  <div class="card edge-x" style="border-style:dashed"><div class="nm">Podiatry Care<i class="bg-x"></i></div><div class="own">Pre-launch · not counted</div><p>Commercial item, routed to Jake/Yona.</p></div>
+  <div class="card" style="background:transparent;border-style:dashed"><div class="nm" style="color:var(--mu)">Key</div><p><span class="r">●</span> Red under 45<br><span class="y">●</span> Amber 45–69<br><span class="g">●</span> Green 70+<br><span style="color:var(--gry)">●</span> Pre-launch</p></div>
+ </div>
+ <div class="foot"><span>Sources: CEO report Nov 12, CS escalations Nov 12, Fathom weeklies Nov 11–12</span><span>04</span></div>
+</div></section>
+
+<!-- 5 DIVIDER -->
+<section class="slide" id="s5"><div class="in">
+ <div class="div-grid">
+  <div><div class="eyebrow">Section · Red accounts</div><div class="huge" style="margin-top:20px">5</div><h2 style="font-size:44px">Red accounts</h2><p class="sub">VBO, Evolve, Rigol, Clockspring, and DBSync (handled by Jake).</p></div>
+  <div style="display:grid;gap:14px">
+   <div class="card stake hot"><span class="pill" style="border-color:rgba(255,68,56,.5);color:#ffb3ad">Biggest stake 1</span><h3>VBO: results concerns</h3><p style="font-size:15px">Mike has raised concerns about results. Jake is handling the commercial conversation on tonight's 19:30 call. Team: leave anything commercial with VBO to Jake. Have the qualified-call count ready for Jake.</p><p class="lbl" style="color:var(--red)">Next · William + Yona get Jake the qualified-call count before 19:30</p></div>
+   <div class="card stake"><span class="pill">Biggest stake 2</span><h3>Rigol: not live since May</h3><p style="font-size:15px">Kickoff May 22, launch call Sep 25, still not live. Mike approved the corrected ads Nov 12 and the Free Custom Assessment replaces the jitter worksheet. End of flight Dec 15.</p><p class="lbl" style="color:var(--red)">Next · live Mon Nov 16, or a new date to Mike and Jake by 18:00 today</p></div>
+  </div>
+ </div>
+ <div class="foot"><span>Sources: Fathom VBO Nov 11, Fathom Rigol Nov 12, Notion CS Agent Run Nov 13</span><span>05</span></div>
+</div></section>
+
+<!-- 6 RED DETAIL 1 -->
+<section class="slide" id="s6"><div class="in">
+ <div class="eyebrow">Red accounts · 1 of 2</div>
+ <h2>VBO, Evolve and Rigol: what it takes to hold them</h2>
+ <div class="body cols3">
+  <div class="card edge-r" style="display:flex;flex-direction:column"><h3>VBO Tickets</h3><div class="who">Mike MacPherson, Frank Sumner · owner William</div>
+   <div class="lbl">Status</div><p>Mike said on Nov 11 the campaign isn't delivering and that it's the results, not our service. Jake is handling the commercial conversation, 19:30 tonight.</p>
+   <div class="lbl">What the numbers say</div><ul><li>Hero window Aug 25–Sep 23: 28/50 leads, CPL $117, missed</li><li>Oct 21–27: 3 leads, 2 MQL, 1 booked <span class="stale">STALE</span></li><li>Meta reports 0 leads Nov 5–11</li></ul>
+   <div class="lbl">Next</div><ul><li>William: guest-experience page + creatives live, confirm the live daily budget (sources differ) · Tue Nov 17</li><li>Courtney (VBO) is calling the 3 museum leads who hit STOP</li></ul>
+   <div class="eof"><span>End of flight</span><b>Nov 30</b></div></div>
+  <div class="card edge-r" style="display:flex;flex-direction:column"><h3>Evolve Leadership</h3><div class="who">Dave Newell · owners William, Shane</div>
+   <div class="lbl">Status</div><p>Dave declined the Nov 4 weekly and asked for a 2-week pause, regroup about Nov 18. Paused the same day. No recording of the planned Nov 6 alignment.</p>
+   <div class="lbl">What the numbers say</div><ul><li>Hero 35/50, CPL $85, missed</li><li>Oct 21–27: 3 leads, 3 MQL, 1 booked <span class="stale">STALE</span></li><li>First deal closed from our leads (Oct 23)</li></ul>
+   <div class="lbl">Next</div><ul><li>Jake syncs with Dave Fri Nov 20 on restart criteria: creatives, what "working" means</li><li>Yona: fix the Nov 20 clash with this Pulse Check</li></ul>
+   <div class="eof"><span>End of flight</span><b>Nov 30</b></div></div>
+  <div class="card edge-r" style="display:flex;flex-direction:column"><h3>Rigol</h3><div class="who">Mike Wohlert · owner Shane, ads William</div>
+   <div class="lbl">Status</div><p>Not live since the May 22 kickoff. Nov 12: Mike approved AD20/AD14/AD17. Message pivots to "high value at a low cost". New Free Custom Assessment: a 4–6 question form plus a one-time AI email report.</p>
+   <div class="lbl">Overdue (Shane)</div><ul><li>Same-day recap + Mike's written OK, not sent</li><li>Reminder went to the atlasnova.ai address</li><li>Mike's discovery questions not in yet</li></ul>
+   <div class="lbl">Next</div><ul><li>Live Mon Nov 16, or new date to Mike + Jake by 18:00 today</li><li>William points ads and page at the assessment</li></ul>
+   <div class="eof"><span>End of flight</span><b>Dec 15</b></div></div>
+ </div>
+ <div class="foot"><span>Sources: Fathom 896184484 (VBO), CEO report Nov 12, Fathom 897602537 (Rigol), CS escalations</span><span>06</span></div>
+</div></section>
+
+<!-- 7 RED DETAIL 2 -->
+<section class="slide" id="s7"><div class="in">
+ <div class="eyebrow">Red accounts · 2 of 2</div>
+ <h2>DBSync, Clockspring, and one pre-launch account</h2>
+ <div class="body rows" style="display:flex">
+  <div class="row gap-row edge-r" style="grid-template-columns:200px 1fr 1fr 130px"><span class="o">DBSync</span><span class="t">Handled by Jake.</span><span class="c">No team action. Route anything from DBSync to Jake.</span><span class="w" style="color:var(--mu)">Jake</span></div>
+  <div class="row gap-row edge-r" style="grid-template-columns:200px 1fr 1fr 130px;align-items:start"><span class="o">Clockspring<br><span class="c" style="font-weight:400">Adam Goerdt, Chad Truhn · score 38</span></span><span class="t">Quiet disengagement. MQLs fell to 3 from 7–8. Funnel 2.0 proposal sent Nov 4, no yes/no yet. Oct 21–27: 2 leads, 2 MQL, 0 booked <span class="stale">STALE</span> Meta 0 leads Nov 5–11.</span><span class="t">Get Adam's yes or no on Funnel 2.0. Concentrate on ads above 1% CTR until it ships.</span><span class="w">William · Wed Nov 18</span></div>
+  <div class="row gap-row edge-x" style="grid-template-columns:200px 1fr 1fr 130px;border-style:dashed"><span class="o">Podiatry Care<br><span class="c" style="font-weight:400">Mike Abrams · pre-launch</span></span><span class="t"><span class="tag-ci">Commercial item, routed to Jake/Yona</span></span><span class="c">Not counted in health totals. No delivery work until Jake/Yona say so.</span><span class="w" style="color:var(--mu)">Jake / Yona</span></div>
+ </div>
+ <p class="src">Pre-launch accounts aren't scored. Sources: CEO report Nov 12, Notion CS Agent Run Nov 13.</p>
+ <div class="foot"><span>Aletto · CS Pulse Check</span><span>07</span></div>
+</div></section>
+
+<!-- 8 AMBER 1 -->
+<section class="slide" id="s8"><div class="in">
+ <div class="eyebrow">Amber accounts · 1 of 2</div>
+ <h2>Five amber accounts with momentum to protect</h2>
+ <div class="body cols5">
+  <div class="card edge-y"><h3>Xplor / FieldEdge</h3><div class="who">Jon Blissenbach · Shane, William</div><div class="lbl">Now</div><p>Meta live. Google audit: pause non-brand Google, keep brand, scale Meta. Jon wrote Nov 11 that the Meta budget is below what was agreed. Ticket #39 SLA-breached ~48h.</p><div class="lbl">Next</div><ul><li>Shane: written answer to Jon today</li><li>Shane: #39 Google cap with Dmytro, price book creative proof · Tue Nov 17</li><li>Yona: book the Retention Flight walkthrough</li></ul></div>
+  <div class="card edge-y"><h3>Workzone</h3><div class="who">Ash Didwania · William, Shane</div><div class="lbl">Now</div><p>20 new AD11-based creatives cut cost per MQL from ~$85 to under $70; one persona ad set hit $24 CPL. First self-booked call (Ben Theodore) today 19:00. A2P verification failed.</p><div class="lbl">Next</div><ul><li>Today: qualifying question, IG-ad confirmation, A2P</li><li>William: calendar on the VSL page + freebie / direct-to-VSL split · Tue Nov 17</li></ul></div>
+  <div class="card edge-y"><h3>Heal Clinical</h3><div class="who">Tim Moran · William, Shane</div><div class="lbl">Now</div><p>Tim is positive ("partners for life"). Nov 3: 5 leads, 5 MQL, 1 booked, CPL ~$130. healclinical.com/vsl-4263 still 404s (heal-clinical.com works). Unverified whether ads still point there.</p><div class="lbl">Next</div><ul><li>William: confirm no ad uses the dead URL · Mon Nov 16</li><li>Tim's 2 new projects: commercial item, routed to Jake/Yona</li></ul></div>
+  <div class="card edge-y"><h3>HRG</h3><div class="who">Scott Weidemeyer · William</div><div class="lbl">Now</div><p>Funnel 2 record week: 11 leads, 8 qualified (prior 7/7). Two deals moving. Meta ads paused by an ad-account error. Scott hasn't replied since Wed.</p><div class="lbl">Next</div><ul><li>William: chase Scott daily until ads run; split pipeline by funnel</li><li>Shane: date for the LinkedIn test talk</li><li>Next phase: commercial item, routed to Jake/Yona</li></ul></div>
+  <div class="card edge-y"><h3>FamCare</h3><div class="who">George Ritacco · William, Shane</div><div class="lbl">Now</div><p>Sentiment back to Neutral. New page + 22 AI-cut video ads live. Yona sent George the scripts Nov 12. Nov 5–11 GHL: 8 leads, 2 MQL, 2 booked. Median first call ~17h.</p><div class="lbl">Next</div><ul><li>Jake: 5 script answers · Sun Nov 15</li><li>William: "Funders" headline + retargeting with the 22 videos · Wed Nov 18</li><li>Yona: George's placeholders</li></ul></div>
+ </div>
+ <div class="foot"><span>Sources: cs-log Google Ads Audit Nov 11, Fathom 896184476 / 896184478 / 897427123, CEO report Nov 12</span><span>08</span></div>
+</div></section>
+
+<!-- 9 AMBER 2 + GREEN -->
+<section class="slide" id="s9"><div class="in">
+ <div class="eyebrow">Amber accounts · 2 of 2 · and our one green</div>
+ <h2>Five more amber, and Sandler in the green</h2>
+ <div class="body cols3x2">
+  <div class="card edge-y"><h3>TrustStar / BlueStar</h3><div class="who">Rob Wray, Steve Carey · William, Shane</div><p style="margin-top:8px">Admiral's Letter books well: ~16 booked from 12 leads recently, ~$244 per booked call. Oct 21–27: 11 leads, 8 MQL, 4 booked.</p><div class="lbl">Next</div><ul><li>William: confirm Steve's login · Wed Nov 18</li><li>Rob's spend and reseller asks: commercial item, routed to Jake/Yona</li></ul></div>
+  <div class="card edge-y"><h3>Imorgon Medical</h3><div class="who">Andy Milkowski · William, Shane</div><p style="margin-top:8px">"Andy's Letter" page live, replaces the VSL page. Week before Nov 11: 5 leads, 4 MQL, 1 booked. RSNA Chicago geo campaign Nov 27–Dec 3.</p><div class="lbl">Next</div><ul><li>William: Andy's edits before 15:00 today</li><li>William: RSNA geo campaign ready · Fri Nov 20</li><li>Jake: reviewed scripts + editing example · Sun</li></ul></div>
+  <div class="card edge-y"><h3>Lockton</h3><div class="who">Aaron Marsden, Spencer Scheitler · Yona, Rian</div><p style="margin-top:8px">New client, alignment held Nov 11. Lockton approves all ad copy. Kickoff Mon Nov 16 21:00, Shane runs it per Yona (Jake to confirm).</p><div class="lbl">Next</div><ul><li>Yona: surveys + Notion client row · Mon Nov 16</li><li>Rian: references in the kickoff brief</li><li>Jake: pre-kickoff pack · Sun</li></ul></div>
+  <div class="card edge-y"><h3>Aviro360</h3><div class="who">Brian Murphy · William, Yona</div><p style="margin-top:8px">Ads still bring MQLs, but 0 of 5 leads called Oct 29–Nov 4 and 1 call logged in 30 days. Nov 5–11: 2 leads, 1 MQL, 1 booked. No recording of the Nov 11 sync.</p><div class="lbl">Next</div><ul><li>Brian owns the 5-minute call; log every attempt in GHL</li><li>Yona: send the Nov 25 check-in invite</li></ul></div>
+  <div class="card edge-y"><h3>All Tips Matter</h3><div class="who">Brian Mas · William</div><p style="margin-top:8px">Funnel #2 launched Oct 30 and is a win, but volume is thin. Oct 21–27: 3 leads, 1 MQL, 2 booked <span class="stale">STALE</span></p><div class="lbl">Next</div><ul><li>Watch Funnel #2 for 7 days, kill sub-1% CTR ads</li><li>No dated next step in sources: William to set one</li></ul></div>
+  <div class="card edge-g"><h3>Sandler / Summit Vista <span class="pill" style="margin-left:6px;color:var(--grn);border-color:rgba(62,207,110,.4)">Green · 79</span></h3><div class="who">Michael Pape · William, Shane</div><p style="margin-top:8px">Nov 5 weekly: 6 leads, 6 MQL, 1 booked, but 4 of 6 no-fit because enrichment lacks the 5 new states. Hero window closed Nov 6: 7/50, missed.</p><div class="lbl">Next</div><ul><li>William: enrichment for the 5 states · Wed Nov 18</li><li>Nov 12 weekly skipped for the Sandler summit</li></ul></div>
+ </div>
+ <div class="foot"><span>Sources: CEO report Nov 12, Fathom Imorgon Nov 11, Fathom Lockton Nov 11, Notion CS Agent Run</span><span>09</span></div>
+</div></section>
+
+<!-- 10 HERO METRICS -->
+<section class="slide" id="s10"><div class="in">
+ <div class="eyebrow">New · First-month hero metrics</div>
+ <h2>Every client in its first 30 days, against the hero bar</h2>
+ <p class="sub">Hero bar: 50+ leads and cost per lead at the $40 target (never above the $55 ceiling) within 30 days of launch. Clients who hit it ascend 75% of the time vs 21%. As of Fri 13 Nov.</p>
+ <div class="body hero-grid">
+  <div class="card" style="padding:8px 14px;align-self:start">
+   <table>
+    <tr><th>Client</th><th>Window</th><th>Leads vs 50</th><th>CPL vs $40 / $55</th><th>Pace</th></tr>
+    <tr><td><b>Workzone</b><small>launched Oct 21</small></td><td class="n">Oct 21–Nov 19<small>day 24 of 30 · 6 left</small></td><td class="n">15 / 50<span class="stale">AS OF NOV 4</span><small>pacing to ~30</small></td><td class="n y">$47<small>above target, under ceiling</small></td><td><span class="pill" style="color:var(--red);border-color:rgba(255,68,56,.45)"><i class="bg-r"></i>Off pace</span></td></tr>
+    <tr><td><b>Rigol</b><small>pre-launch</small></td><td class="n">Not started<small>launches Mon Nov 16</small></td><td class="n" style="color:var(--mu)">0 / 50</td><td class="n" style="color:var(--mu)">n/a</td><td><span class="pill">Not started</span></td></tr>
+    <tr><td><b>Lockton</b><small>new client</small></td><td class="n">Not started<small>kickoff Mon Nov 16</small></td><td class="n" style="color:var(--mu)">0 / 50</td><td class="n" style="color:var(--mu)">n/a</td><td><span class="pill">Not started</span><small>launch after copy approval</small></td></tr>
+    <tr><td><b>Xplor</b><small>Meta live</small></td><td class="n" style="color:var(--yel)">Unknown<small>launch date not recorded</small></td><td class="n" style="color:var(--yel)">No data</td><td class="n" style="color:var(--yel)">No data</td><td><span class="pill" style="color:var(--yel);border-color:rgba(245,181,68,.45)"><i class="bg-y"></i>Data gap</span></td></tr>
+   </table>
+   <p class="src" style="padding:0 10px 6px">Recently closed windows: Sandler Oct 8–Nov 6, 7/50 at $194 CPL, missed. Aviro360 Sep 27–Oct 26, 18/50 at $181, missed. Onboarding, not launched: Dan Greenberg, Lyrion, Anchor Point.</p>
+  </div>
+  <div style="display:grid;grid-template-rows:auto auto 1fr;gap:12px">
+   <div class="card"><div class="lbl" style="margin-top:0">Workzone · leads vs 50</div>
+    <svg class="chart" viewBox="0 0 460 92" width="100%" role="img" aria-label="Workzone 15 of 50 leads, pacing to 30">
+     <rect x="0" y="26" width="460" height="22" rx="11" fill="#1E2024"/>
+     <rect x="0" y="26" width="276" height="22" rx="11" fill="rgba(255,68,56,.18)"/>
+     <rect x="0" y="26" width="138" height="22" rx="11" fill="#FF4438"/>
+     <line x1="276" y1="18" x2="276" y2="56" stroke="#F5B544" stroke-width="2" stroke-dasharray="3 3"/>
+     <line x1="459" y1="18" x2="459" y2="56" stroke="#3ECF6E" stroke-width="2"/>
+     <text x="0" y="14" style="fill:#F7F8F8;font-size:12px">15 counted (Nov 4)</text>
+     <text x="276" y="74" text-anchor="middle" style="fill:#F5B544">pace ~30</text>
+     <text x="458" y="74" text-anchor="end" style="fill:#3ECF6E">50 target</text>
+     <text x="0" y="74">0</text>
+    </svg></div>
+   <div class="card"><div class="lbl" style="margin-top:0">Workzone · cost per lead</div>
+    <svg class="chart" viewBox="0 0 460 92" width="100%" role="img" aria-label="CPL 47 versus 40 target and 55 ceiling">
+     <defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#3ECF6E"/><stop offset=".6" stop-color="#F5B544"/><stop offset="1" stop-color="#FF4438"/></linearGradient></defs>
+     <rect x="0" y="30" width="460" height="10" rx="5" fill="url(#cg)" opacity=".85"/>
+     <line x1="230" y1="20" x2="230" y2="50" stroke="#F7F8F8" stroke-width="1.5" stroke-dasharray="3 3"/>
+     <line x1="402" y1="20" x2="402" y2="50" stroke="#FF4438" stroke-width="1.5"/>
+     <circle cx="310" cy="35" r="9" fill="#0B0C0E" stroke="#F7F8F8" stroke-width="2.5"/>
+     <text x="310" y="14" text-anchor="middle" style="fill:#F7F8F8;font-size:13px;font-weight:600">$47</text>
+     <text x="230" y="70" text-anchor="middle">$40 target</text>
+     <text x="402" y="70" text-anchor="middle" style="fill:#FF4438">$55 ceiling</text>
+     <text x="0" y="70">$20</text>
+    </svg></div>
+   <div class="card" style="font-size:13px"><div class="lbl" style="margin-top:0">What it means this week</div><ul><li>Workzone can't reach 50 by Nov 19 at this pace. Newer signal: cost per MQL under $70 and a $24 CPL persona ad set (Nov 11 weekly).</li><li>Rigol and Lockton windows open on launch. Track daily from day 1.</li><li>Xplor: William to confirm the Meta launch date and pull leads and CPL.</li></ul></div>
+  </div>
+ </div>
+ <div class="foot"><span>Sources: CEO report Nov 12 hero tiles; Workzone count from Fathom Nov 4 weekly (its Meta isn't in Windsor). All Meta data stops Nov 3 (Windsor expired).</span><span>10</span></div>
+</div></section>
+
+<!-- 11 LEAD ENGINE -->
+<section class="slide" id="s11"><div class="in">
+ <div class="eyebrow">Lead engine</div>
+ <h2>Last clean read is Oct 21–27. Newer signals are mixed-window.</h2>
+ <div class="body" style="grid-template-columns:1.45fr 1fr">
+  <div class="card" style="display:flex;flex-direction:column">
+   <div style="display:flex;gap:30px;align-items:baseline"><div><span class="num" style="font-size:40px;font-weight:600">62</span> <span style="color:var(--mu)">leads</span></div><div><span class="num" style="font-size:40px;font-weight:600">50</span> <span style="color:var(--mu)">MQL</span></div><div><span class="num r" style="font-size:40px;font-weight:600">11</span> <span style="color:var(--mu)">booked</span></div><span class="stale" style="margin-left:auto">OCT 21–27 · STALE</span></div>
+   <p class="src" style="margin-top:4px">13 client funnels (excl. Heal and Rigol). Chart shows the 6 funnels with per-client lines in the dashboard pull (37 of 62 leads).</p>
+   <svg class="chart" viewBox="0 0 640 270" width="100%" style="flex:1;margin-top:8px" role="img" aria-label="Leads, MQL and booked by client, Oct 21 to 27">
+    <g stroke="rgba(255,255,255,.07)"><line x1="40" y1="20" x2="630" y2="20"/><line x1="40" y1="70" x2="630" y2="70"/><line x1="40" y1="120" x2="630" y2="120"/><line x1="40" y1="170" x2="630" y2="170"/><line x1="40" y1="220" x2="630" y2="220"/></g>
+    <g text-anchor="end"><text x="32" y="224">0</text><text x="32" y="174">4</text><text x="32" y="124">8</text><text x="32" y="74">12</text><text x="32" y="24">16</text></g>
+    <!-- scale 12.5px per unit; base 220; group width ~98 -->
+    <g id="bars"></g>
+    <g text-anchor="middle" id="xl"></g>
+   </svg>
+   <div class="legend"><span><i style="background:#3A3D44"></i>Leads</span><span><i style="background:#F7F8F8"></i>MQL</span><span><i style="background:#FF4438"></i>Booked</span></div>
+  </div>
+  <div style="display:grid;gap:10px;grid-auto-rows:1fr">
+   <div class="card edge-g"><div class="lbl" style="margin-top:0">HRG Funnel 2 · week to Nov 11</div><p><span class="num ci">11 leads, 8 qualified.</span> Record week, prior 7/7.</p></div>
+   <div class="card edge-g"><div class="lbl" style="margin-top:0">Workzone · Nov 11</div><p><span class="num ci">Cost per MQL under $70</span>, from ~$85. First self-booked call today.</p></div>
+   <div class="card edge-y"><div class="lbl" style="margin-top:0">FamCare · Aviro360 GHL · Nov 5–11</div><p><span class="num ci">8 / 2 / 2</span> and <span class="num ci">2 / 1 / 1</span> leads / MQL / booked.</p></div>
+   <div class="card edge-y"><div class="lbl" style="margin-top:0">Imorgon · Sandler</div><p><span class="num ci">5 / 4 / 1</span> week before Nov 11 · <span class="num ci">6 / 6 / 1</span> Nov 5, but 4 no-fit.</p></div>
+   <div class="card"><div class="lbl" style="margin-top:0">Aletto's own funnel · Oct 21–27</div><p><span class="num ci">293 leads, 101 MQL, 29 booked.</span> Meta permission error #200.</p></div>
+  </div>
+ </div>
+ <div class="foot"><span>Sources: CEO report dashboard lines (Oct 21–27), Fathom weeklies Nov 5–12, GHL Nov 5–11</span><span>11</span></div>
+</div></section>
+
+<!-- 12 DATA GAPS -->
+<section class="slide" id="s12"><div class="in">
+ <div class="eyebrow">Data gaps and fixes</div>
+ <h2>Six data gaps, and who closes each one</h2>
+ <div class="body rows" style="display:flex">
+  <div class="row gap-row"><span class="num r">01</span><span class="o">Meta data stops Nov 3</span><span class="t">Windsor license expired Nov 5 (6 sources vs 5 allowed), Ryze Meta revoked. No fresher spend or CPL for any client.</span><span class="w">Jake decides · Mon Nov 16</span></div>
+  <div class="row gap-row"><span class="num r">02</span><span class="o">Workzone not in Windsor</span><span class="t">Hero count relies on the Nov 4 weekly. Spend stale since Oct 27.</span><span class="w">William · weekly manual pull</span></div>
+  <div class="row gap-row"><span class="num r">03</span><span class="o">Xplor has no metrics</span><span class="t">No lead, CPL or spend numbers anywhere, and no client call recorded in Fathom. Launch date not recorded.</span><span class="w">William + Shane · Tue Nov 17</span></div>
+  <div class="row gap-row"><span class="num r">04</span><span class="o">Missing call recordings</span><span class="t">No Fathom for the Evolve Nov 6 alignment or the Aviro Nov 11 sync. Record every client call.</span><span class="w">Yona · ongoing</span></div>
+  <div class="row gap-row"><span class="num r">05</span><span class="o">VBO qualified-call count</span><span class="t">Nobody has tracked qualified calls for VBO. Jake needs the count tonight.</span><span class="w">William + Yona · before 19:30</span></div>
+  <div class="row gap-row"><span class="num r">06</span><span class="o">Bookings under-reported</span><span class="t">GHL misses HRG's HubSpot bookings. Heal's dead URL can't be checked without Meta access.</span><span class="w">William · Andrew emails each booking</span></div>
+ </div>
+ <div class="foot"><span>Sources: source pack gaps list Nov 13, Notion CS Agent Run, Ryze status check Nov 13</span><span>12</span></div>
+</div></section>
+
+<!-- 13 NEXT WEEK -->
+<section class="slide" id="s13"><div class="in">
+ <div class="eyebrow">Next week · Nov 16–22</div>
+ <h2>Only Jake can do, and what the team owns</h2>
+ <div class="body nw">
+  <div class="card"><div class="lbl" style="margin-top:0;color:var(--red)">Only Jake · on Jake's calendar</div>
+   <div class="day"><div class="dl">Sun Nov 15<small>09:30–11:00</small></div><ul><li>FamCare: answer George's 5 script questions</li><li>Imorgon: Andy's RSNA scripts + editing example, RSNA plan, who cuts clips</li><li>Lockton: case studies, references, access, LinkedIn steps</li></ul></div>
+   <div class="day"><div class="dl">Mon Nov 16<small>Yona check-in 13:45</small></div><ul><li>Shane's GHL agency access: yes/no</li><li>Data access: Windsor, Meta in Ryze, ads_read</li><li>Lockton kickoff: confirm Shane runs it</li></ul></div>
+   <div class="day"><div class="dl">Tue Nov 17<small>10:00–12:00</small></div><ul><li>VBO: written plan to Mike after tonight's call</li><li>Xplor: back Shane with Jon, lock the walkthrough</li><li>Heal, HRG, TrustStar, Podiatry Care: commercial items, Jake/Yona</li></ul></div>
+   <div class="day"><div class="dl">Fri Nov 20<small>time pending</small></div><ul><li>Evolve: restart criteria with Dave</li><li>DBSync: handled by Jake</li></ul></div>
+  </div>
+  <div class="card" style="padding:12px 16px"><div class="lbl" style="margin:4px 0 6px">Team</div>
+   <table class="tt">
+    <tr><td class="ow">Shane</td><td>Rigol live, or new date to Mike and Jake</td><td class="du">Mon 16</td></tr>
+    <tr><td class="ow">Shane</td><td>Workzone A2P fixed + Ash's walkthrough</td><td class="du">Mon 16</td></tr>
+    <tr><td class="ow">Shane</td><td>Run the Lockton kickoff, 21:00</td><td class="du">Mon 16</td></tr>
+    <tr><td class="ow">Shane</td><td>Xplor #39 Google cap with Dmytro + price book proof</td><td class="du">Tue 17</td></tr>
+    <tr><td class="ow">Shane</td><td>Dates for Dan's lead magnet + logo, HRG LinkedIn test, Anchor Point next step</td><td class="du">Tue 17</td></tr>
+    <tr><td class="ow">William</td><td>Heal: no ad on healclinical.com/vsl-4263</td><td class="du">Mon 16</td></tr>
+    <tr><td class="ow">William</td><td>Workzone: calendar on VSL page + budget split</td><td class="du">Tue 17</td></tr>
+    <tr><td class="ow">William</td><td>VBO: guest-experience page + creatives live</td><td class="du">Tue 17</td></tr>
+    <tr><td class="ow">William</td><td>HRG: Meta ad-account error fixed with Scott, pipeline by funnel</td><td class="du">Daily</td></tr>
+    <tr><td class="ow">William</td><td>FamCare headline + retargeting, Steve's login, Sandler enrichment, Adam's Funnel 2.0 answer</td><td class="du">Wed 18</td></tr>
+    <tr><td class="ow">William</td><td>Imorgon RSNA geo campaign ready</td><td class="du">Fri 20</td></tr>
+    <tr><td class="ow">Yona</td><td>Lockton surveys + Notion client row</td><td class="du">Mon 16</td></tr>
+    <tr><td class="ow">Yona</td><td>Fix Fri 20 clash, book Xplor walkthrough, Aviro Nov 25 invite</td><td class="du">Tue 17</td></tr>
+    <tr><td class="ow">Yona</td><td>George's placeholders, ticket cleanup #13–#38, Zapier reconnect</td><td class="du">Fri 20</td></tr>
+    <tr><td class="ow">Rian</td><td>Lockton references in the kickoff brief</td><td class="du">Mon 16</td></tr>
+   </table>
+  </div>
+ </div>
+ <div class="foot"><span>Source: team memo "Next week (Nov 16–22)", calendar plan Nov 13</span><span>13</span></div>
+</div></section>
+
+<!-- 14 OWNERS -->
+<section class="slide" id="s14"><div class="in">
+ <div class="eyebrow">Owners board</div>
+ <h2>Who owns what, from today to Fri Nov 20</h2>
+ <div class="body cols4">
+  <div class="card owner"><h3>Shane <span class="num">8</span></h3><div class="who">CS lead · Rigol, Xplor, Workzone texting</div><ul style="margin-top:12px"><li><b>Today</b> Rigol recap + OK, or new date by 18:00</li><li><b>Today</b> Workzone A2P status before 18:30</li><li><b>Today</b> Xplor written answer to Jon</li><li>Rigol live Mon Nov 16</li><li>Lockton kickoff Mon 21:00</li><li>Xplor #39 + price book proof · Tue</li><li>Dan's lead magnet + logo (10 days late)</li><li>HRG LinkedIn test, Anchor Point: set dates</li></ul></div>
+  <div class="card owner"><h3>William <span class="num">9</span></h3><div class="who">Media · ads and pages</div><ul style="margin-top:12px"><li><b>Today</b> Imorgon edits before 15:00</li><li><b>Today</b> Workzone question + IG-ad confirmation by 18:00</li><li><b>Today</b> VBO qualified-call count for Jake</li><li>Heal dead-URL check · Mon</li><li>Workzone VSL calendar · Tue</li><li>VBO new page + creatives · Tue</li><li>HRG ad-account error · daily</li><li>FamCare, TrustStar, Sandler, Clockspring · Wed</li><li>Imorgon RSNA campaign · Fri</li></ul></div>
+  <div class="card owner"><h3>Yona <span class="num">7</span></h3><div class="who">Ops · calendar, clients, tickets</div><ul style="margin-top:12px"><li><b>Today</b> VBO qualified-call count with William</li><li><b>Today</b> George's script placeholders</li><li>Lockton surveys + Notion row · Mon</li><li>Fix Fri Nov 20 Pulse Check clash</li><li>Book Xplor Retention walkthrough</li><li>Aviro Nov 25 invite</li><li>Ticket cleanup #13–#38, Zapier by Nov 15</li></ul></div>
+  <div class="card owner"><h3>Rian <span class="num">1</span></h3><div class="who">Sales · Lockton handoff</div><ul style="margin-top:12px"><li>Lockton references in the kickoff brief · Mon Nov 16</li></ul><div class="lbl" style="margin-top:18px">Heads-up</div><p>Rian declined the Lockton kickoff (out of office). Rian organizes Manuel's scope call Wed Nov 18 16:00, which clashes with Sales Spotlight (decision C).</p></div>
+ </div>
+ <div class="foot"><span>Source: team memo, CS escalations Nov 12, calendar plan Nov 13</span><span>14</span></div>
+</div></section>
+
+<!-- 15 CLOSE -->
+<section class="slide" id="s15"><div class="in">
+ <div class="eyebrow">Close</div>
+ <h2>Four decisions waiting on Jake</h2>
+ <p class="sub">Jake can't attend today. Don't act on these until he answers; Yona relays.</p>
+ <div class="body dec">
+  <div class="card"><span class="k">A · Fri Nov 20</span><h3>Evolve sync with Dave (15:30) overlaps this Pulse Check (15:00–16:00)</h3><p>Proposal: move Dave to 17:00–17:30. Yona organizes the invite and Dave must accept.</p></div>
+  <div class="card"><span class="k">B · Mon Nov 16, 21:00</span><h3>Lockton kickoff on a meeting-free Monday while Jake travels</h3><p>Yona says Shane runs it. Jake confirms whether he comes off the invite.</p></div>
+  <div class="card"><span class="k">C · Wed Nov 18, 16:00</span><h3>Sales Spotlight overlaps Manuel's scope call</h3><p>One of them has to go. Rian organizes the scope call.</p></div>
+  <div class="card"><span class="k">D · Wed Nov 18, 17:00–18:00</span><h3>HRG and Xplor calls need a US-friendly time</h3><p>Madrid mornings are 03:30–07:00 ET. Jake decides whether to use Wed afternoon.</p></div>
+ </div>
+ <div class="esc"><span><b>Blocked on anything?</b> Tell Jake today, not next Friday.</span><span class="mono" style="color:var(--mu);font-size:12px">Reply on the team thread</span></div>
+ <div class="foot"><span>Source: calendar plan conflicts A–D, Nov 13</span><span>15</span></div>
+</div></section>
+
+</main>
+<div class="hud"><button id="prev" aria-label="Previous slide">&#8593;</button><span class="ctr" id="ctr">1 / 15</span><button id="next" aria-label="Next slide">&#8595;</button></div>
+<script>
+// lead chart
+(function(){
+ const d=[["VBO",3,2,1],["Workzone",15,15,0],["TrustStar",11,8,4],["Clockspring",2,2,0],["Evolve",3,3,1],["All Tips",3,1,2]];
+ const B=document.getElementById('bars'),X=document.getElementById('xl'),s=12.5,base=220,gw=98,x0=52,bw=22,ns='http://www.w3.org/2000/svg';
+ const col=['#3A3D44','#F7F8F8','#FF4438'];
+ d.forEach((r,i)=>{const gx=x0+i*gw;[r[1],r[2],r[3]].forEach((v,j)=>{const h=v*s,rc=document.createElementNS(ns,'rect');rc.setAttribute('x',gx+j*(bw+3));rc.setAttribute('y',base-h);rc.setAttribute('width',bw);rc.setAttribute('height',Math.max(h,1.5));rc.setAttribute('rx',4);rc.setAttribute('fill',col[j]);B.appendChild(rc);
+  const t=document.createElementNS(ns,'text');t.setAttribute('x',gx+j*(bw+3)+bw/2);t.setAttribute('y',base-h-6);t.setAttribute('text-anchor','middle');t.textContent=v;t.style.fill=j==2?'#FF4438':'#C9CBD0';B.appendChild(t);});
+  const l=document.createElementNS(ns,'text');l.setAttribute('x',gx+(3*bw+6)/2);l.setAttribute('y',242);l.textContent=r[0];l.style.fill='#F7F8F8';X.appendChild(l);});
+})();
+// nav
+const deck=document.getElementById('deck'),S=[...document.querySelectorAll('.slide')],N=S.length,ctr=document.getElementById('ctr'),prog=document.getElementById('prog');
+let cur=0;
+function go(i,smooth=true){cur=Math.max(0,Math.min(N-1,i));S[cur].scrollIntoView({behavior:smooth?'smooth':'instant'});upd();history.replaceState(null,'','#'+(cur+1));}
+function upd(){ctr.textContent=(cur+1)+' / '+N;prog.style.width=((cur+1)/N*100)+'%';}
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>.6){cur=S.indexOf(e.target);upd();history.replaceState(null,'','#'+(cur+1));}})},{root:deck,threshold:[.6]});
+S.forEach(s=>io.observe(s));
+document.addEventListener('keydown',e=>{if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1)}else if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1)}else if(e.key==='Home'){go(0)}else if(e.key==='End'){go(N-1)}});
+document.getElementById('next').onclick=()=>go(cur+1);document.getElementById('prev').onclick=()=>go(cur-1);
+const h=parseInt(location.hash.slice(1));if(h>=1&&h<=N){cur=h-1;requestAnimationFrame(()=>go(h-1,false));}upd();
+</script>
+</body>
+</html>
