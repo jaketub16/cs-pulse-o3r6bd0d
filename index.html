@@ -173,6 +173,7 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
 .atd-obs h3{font-size:15px;margin-bottom:8px;letter-spacing:-.01em}
 .atd-obs p{font-size:13.5px;line-height:1.5;color:#D5D7DB}
 .atd-obs .card.fill{border-color:rgba(245,181,68,.35);box-shadow:inset 3px 0 0 var(--yel)}
+.atd-obs .card:last-child{grid-column:1/-1}
 
 /* tablet: stack some grids, keep type close to desktop */
 @media (max-width:1100px){
@@ -574,7 +575,7 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
   <div class="card atd-card">
    <table id="atd-table"></table>
   </div>
-  <p class="fn">Leads marked <span class="flag-raw">raw</span> are unfiltered GHL contact counts; a full staff/test review is still open. Leads marked net have staff and test contacts removed. Answered figures marked * are approximate (inferred from GHL chart percentages, not a separate status count). Call and appointment totals may include staff or test activity. VBO month-by-month leads, Rigol call and appointment reports, and remaining exclusions are still being filled in.</p>
+  <p class="fn">Lead counts are net of staff and test contacts, except Rigol's remaining phone-only record, which is unverified. Answered figures marked * are approximate (inferred from GHL chart percentages, not a separate status count). Call and appointment totals may include staff or test activity.</p>
  </div>
  <div class="foot"><span>Source: each client's GHL sub-account, all-time through 13 Nov 2026. Read Fri 13 Nov 2026. Heal, Evolve and TrustStar not tracked in GHL. Lockton has no sub-account yet.</span><span>06</span></div>
 </div></section>
@@ -585,12 +586,11 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
  <h2>What history tells us</h2>
  <p class="sub">Plain readings of the all-time GHL counts on the previous slide. No figures here that are not in that table. As of Fri 13 Nov 2026.</p>
  <div class="body atd-obs">
-  <div class="card"><h3>History starts well before 21 Oct</h3><p>All Tips Matter has contacts since 28 Jul 2025 (470 raw). Clockspring since 27 Oct 2025 (301 raw). HRG since 5 Mar 2026 (285 raw). FamCare since 2 Apr 2026 (350 raw). Imorgon since 25 May 2026 (97 raw). The 21 Oct–12 Nov window is only a slice for these accounts.</p></div>
-  <div class="card"><h3>Show rates, all-time</h3><p>HRG has the highest show rate in this set: 16 showed of 44 booked (36.4%). Sandler is 1 of 3. Clockspring is 7 of 35. Imorgon is 2 of 24. All Tips Matter is 6 of 94. FamCare is 2 of 59. VBO is 0 of 8. Aviro360 is 0 of 2. DBSync is 0 of 8. Workzone is 0 of 1. Xplor has no bookings. Rigol's appointment report is still pending.</p></div>
+  <div class="card"><h3>History starts well before 21 Oct</h3><p>All Tips Matter has contacts since 28 Jul 2025 (467 net). Clockspring since 10 Nov 2025 (294 net). HRG since 10 Mar 2026 (279 net). FamCare since 2 Apr 2026 (345 net). Imorgon since 25 May 2026 (96 net). The 21 Oct–12 Nov window is only a slice for these accounts.</p></div>
+  <div class="card"><h3>Show rates, all-time</h3><p>HRG has the highest show rate in this set: 16 showed of 44 booked (36.4%). Sandler is 1 of 3. Clockspring is 7 of 35. Imorgon is 2 of 24. All Tips Matter is 6 of 94. FamCare is 2 of 59. VBO is 0 of 8. Aviro360 is 0 of 2. DBSync is 0 of 8. Workzone is 0 of 1. Xplor and Rigol have no bookings. Rigol is not launched yet (go-live 16 Nov).</p></div>
   <div class="card"><h3>No-shows</h3><p>All Tips Matter has 41 no-shows of 94 booked. FamCare has 32 of 59. HRG has 15 of 44, and also the most shows (16). Clockspring has 9 of 35. Imorgon has 1 of 24. The other accounts with bookings have 0 no-shows in GHL.</p></div>
-  <div class="card"><h3>Calling vs leads</h3><p>FamCare has 3,403 calls on 350 raw contacts. All Tips Matter has 453 calls on 470 raw. HRG has 709 on 285 raw. Sandler has 30 calls on 14 net leads. Workzone, Xplor and DBSync have 0 calls in GHL. Aviro360 has 1 call on 30 net leads. Clockspring has 8 calls on 301 raw contacts. Imorgon has 9 calls on 97 raw contacts.</p></div>
-  <div class="card"><h3>Recent months</h3><p>DBSync has 0 new contacts from 1–13 Nov, after 18 in Aug, 28 in Sep and 22 in Oct. FamCare's highest raw month is May (74); 1–13 Nov is 12. HRG's highest raw month is Oct (56); 1–13 Nov is already 28.</p></div>
-  <div class="card fill"><h3>Still being filled in</h3><p>VBO month-by-month leads are not in yet. Rigol call and appointment reports are pending. A full staff/test review is still open for VBO, FamCare, HRG, Clockspring, DBSync, Imorgon and All Tips Matter, so those lead totals stay marked raw. Rigol's remaining contact is unverified. Heal, Evolve and TrustStar are not tracked in GHL. Lockton has no sub-account yet.</p></div>
+  <div class="card"><h3>Calling vs leads</h3><p>FamCare has 3,403 calls on 345 net leads. All Tips Matter has 453 calls on 467 net. HRG has 709 on 279 net. Sandler has 30 calls on 14 net leads. Workzone, Xplor, DBSync and Rigol have 0 calls in GHL. Aviro360 has 1 call on 30 net leads. Clockspring has 8 calls on 294 net leads. Imorgon has 9 calls on 96 net leads. Rigol is not launched yet (go-live 16 Nov).</p></div>
+  <div class="card"><h3>Recent months</h3><p>DBSync has 0 new contacts from 1–13 Nov, after 14 in Aug, 28 in Sep and 22 in Oct. FamCare's highest month is May (73 net); 1–13 Nov is 12. HRG's highest month is Oct (55 net); 1–13 Nov is already 27. VBO's highest month is Sep (45 net).</p></div>
  </div>
  <div class="foot"><span>Source: the all-time GHL counts on the previous slide, through 13 Nov 2026. Read Fri 13 Nov 2026.</span><span>07</span></div>
 </div></section>
@@ -820,26 +820,41 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
 <script>
 
 // ACCOUNTS TO DATE
-// Update window.ATD when the second GHL pass fills VBO months,
-// Rigol call/appointment reports, and staff/test exclusions.
+// window.ATD is the source of truth for slides 6–7.
 // leadsKind: "net" | "raw" | "unverified"
-// calls/answered/booked/showed/noshow: null => Pending
 // answeredApprox: true adds an asterisk (chart-percentage inference)
 // months: null => "Months pending"; monthsProvisional: true labels the bars
 window.ATD = {
   "asOf": "Fri 13 Nov 2026",
-  "note": "All-time GHL through 13 Nov 2026, not the 21 Oct\u201312 Nov window. November counts end 13 Nov. Calls and appointments are full-history report totals and may include staff or test activity.",
+  "note": "All-time GHL through 13 Nov 2026, not the 21 Oct\u201312 Nov window. November counts end 13 Nov. Lead counts are net of staff and test contacts. Calls and appointments are full-history report totals and may include staff or test activity.",
   "clients": [
     {
       "name": "VBO Tickets",
-      "first": "17 Aug 2026",
-      "firstKind": "earliest contact",
-      "leads": 87,
-      "leadsKind": "raw",
-      "leadsNote": "staff/test review still open",
-      "months": null,
+      "first": "27 Aug 2026",
+      "firstKind": "first lead",
+      "leads": 77,
+      "leadsKind": "net",
+      "leadsNote": "10 staff/test excluded",
+      "months": [
+        {
+          "label": "Aug 26",
+          "n": 5
+        },
+        {
+          "label": "Sep 26",
+          "n": 45
+        },
+        {
+          "label": "Oct 26",
+          "n": 18
+        },
+        {
+          "label": "Nov 1\u201313",
+          "n": 9
+        }
+      ],
       "monthsProvisional": false,
-      "monthsKind": null,
+      "monthsKind": "net",
       "calls": 54,
       "answered": 37,
       "answeredApprox": false,
@@ -851,10 +866,9 @@ window.ATD = {
       "name": "Workzone",
       "first": "21 Oct 2026",
       "firstKind": "first lead",
-      "firstNote": "earliest raw contact 15 Oct",
       "leads": 43,
       "leadsKind": "net",
-      "leadsNote": "47 raw, 4 staff excluded",
+      "leadsNote": "4 staff excluded",
       "months": [
         {
           "label": "Oct 26",
@@ -900,10 +914,9 @@ window.ATD = {
       "name": "Aviro360",
       "first": "29 Sep 2026",
       "firstKind": "first lead",
-      "firstNote": "earliest raw contact 17 Sep",
       "leads": 30,
       "leadsKind": "net",
-      "leadsNote": "31 raw, 1 staff excluded",
+      "leadsNote": "1 staff excluded",
       "months": [
         {
           "label": "Sep 26",
@@ -930,22 +943,22 @@ window.ATD = {
     {
       "name": "FamCare",
       "first": "2 Apr 2026",
-      "firstKind": "earliest contact",
-      "leads": 350,
-      "leadsKind": "raw",
-      "leadsNote": "staff/test review still open",
+      "firstKind": "first lead",
+      "leads": 345,
+      "leadsKind": "net",
+      "leadsNote": "5 staff excluded",
       "months": [
         {
           "label": "Apr 26",
-          "n": 41
+          "n": 38
         },
         {
           "label": "May 26",
-          "n": 74
+          "n": 73
         },
         {
           "label": "Jun 26",
-          "n": 50
+          "n": 49
         },
         {
           "label": "Jul 26",
@@ -969,7 +982,7 @@ window.ATD = {
         }
       ],
       "monthsProvisional": false,
-      "monthsKind": "raw",
+      "monthsKind": "net",
       "calls": 3403,
       "answered": 2704,
       "answeredApprox": true,
@@ -979,15 +992,16 @@ window.ATD = {
     },
     {
       "name": "HRG",
-      "first": "5 Mar 2026",
-      "firstKind": "earliest contact",
-      "leads": 285,
-      "leadsKind": "raw",
-      "leadsNote": "staff/test review still open",
+      "first": "10 Mar 2026",
+      "firstKind": "earliest remaining",
+      "firstNote": "phone-only; identity not independently verified",
+      "leads": 279,
+      "leadsKind": "net",
+      "leadsNote": "6 staff/test excluded",
       "months": [
         {
           "label": "Mar 26",
-          "n": 18
+          "n": 16
         },
         {
           "label": "Apr 26",
@@ -995,7 +1009,7 @@ window.ATD = {
         },
         {
           "label": "May 26",
-          "n": 38
+          "n": 37
         },
         {
           "label": "Jun 26",
@@ -1003,7 +1017,7 @@ window.ATD = {
         },
         {
           "label": "Jul 26",
-          "n": 34
+          "n": 33
         },
         {
           "label": "Aug 26",
@@ -1015,15 +1029,15 @@ window.ATD = {
         },
         {
           "label": "Oct 26",
-          "n": 56
+          "n": 55
         },
         {
           "label": "Nov 1\u201313",
-          "n": 28
+          "n": 27
         }
       ],
       "monthsProvisional": false,
-      "monthsKind": "raw",
+      "monthsKind": "net",
       "calls": 709,
       "answered": 590,
       "answeredApprox": true,
@@ -1033,23 +1047,23 @@ window.ATD = {
     },
     {
       "name": "Clockspring",
-      "first": "27 Oct 2025",
-      "firstKind": "earliest contact",
-      "leads": 301,
-      "leadsKind": "raw",
-      "leadsNote": "1 test contact seen; review still open",
+      "first": "10 Nov 2025",
+      "firstKind": "first lead",
+      "leads": 294,
+      "leadsKind": "net",
+      "leadsNote": "7 staff/test excluded",
       "months": [
         {
           "label": "Oct 25",
-          "n": 2
+          "n": 0
         },
         {
           "label": "Nov 25",
-          "n": 5
+          "n": 2
         },
         {
           "label": "Dec 25",
-          "n": 61
+          "n": 59
         },
         {
           "label": "Jan 26",
@@ -1097,7 +1111,7 @@ window.ATD = {
         }
       ],
       "monthsProvisional": false,
-      "monthsKind": "raw",
+      "monthsKind": "net",
       "calls": 8,
       "answered": 1,
       "answeredApprox": false,
@@ -1108,14 +1122,14 @@ window.ATD = {
     {
       "name": "DBSync",
       "first": "15 Aug 2026",
-      "firstKind": "earliest contact",
-      "leads": 68,
-      "leadsKind": "raw",
-      "leadsNote": "staff/test review still open \u00b7 handled by Jake",
+      "firstKind": "first lead",
+      "leads": 64,
+      "leadsKind": "net",
+      "leadsNote": "4 staff excluded \u00b7 handled by Jake",
       "months": [
         {
           "label": "Aug 26",
-          "n": 18
+          "n": 14
         },
         {
           "label": "Sep 26",
@@ -1131,7 +1145,7 @@ window.ATD = {
         }
       ],
       "monthsProvisional": false,
-      "monthsKind": "raw",
+      "monthsKind": "net",
       "calls": 0,
       "answered": 0,
       "answeredApprox": false,
@@ -1142,10 +1156,10 @@ window.ATD = {
     {
       "name": "Imorgon",
       "first": "25 May 2026",
-      "firstKind": "earliest contact",
-      "leads": 97,
-      "leadsKind": "raw",
-      "leadsNote": "staff/test review still open",
+      "firstKind": "first lead",
+      "leads": 96,
+      "leadsKind": "net",
+      "leadsNote": "1 staff excluded",
       "months": [
         {
           "label": "May 26",
@@ -1161,7 +1175,7 @@ window.ATD = {
         },
         {
           "label": "Aug 26",
-          "n": 17
+          "n": 16
         },
         {
           "label": "Sep 26",
@@ -1177,7 +1191,7 @@ window.ATD = {
         }
       ],
       "monthsProvisional": false,
-      "monthsKind": "raw",
+      "monthsKind": "net",
       "calls": 9,
       "answered": 3,
       "answeredApprox": false,
@@ -1188,10 +1202,10 @@ window.ATD = {
     {
       "name": "All Tips Matter",
       "first": "28 Jul 2025",
-      "firstKind": "earliest contact",
-      "leads": 470,
-      "leadsKind": "raw",
-      "leadsNote": "staff/test review still open",
+      "firstKind": "first lead",
+      "leads": 467,
+      "leadsKind": "net",
+      "leadsNote": "3 staff excluded",
       "months": [
         {
           "label": "Jul 25",
@@ -1199,15 +1213,15 @@ window.ATD = {
         },
         {
           "label": "Aug 25",
-          "n": 25
+          "n": 24
         },
         {
           "label": "Sep 25",
-          "n": 61
+          "n": 60
         },
         {
           "label": "Oct 25",
-          "n": 63
+          "n": 62
         },
         {
           "label": "Nov 25",
@@ -1263,7 +1277,7 @@ window.ATD = {
         }
       ],
       "monthsProvisional": false,
-      "monthsKind": "raw",
+      "monthsKind": "net",
       "calls": 453,
       "answered": 356,
       "answeredApprox": true,
@@ -1277,7 +1291,7 @@ window.ATD = {
       "firstKind": "first lead",
       "leads": 14,
       "leadsKind": "net",
-      "leadsNote": "15 raw, 1 staff excluded",
+      "leadsNote": "1 staff excluded",
       "months": [
         {
           "label": "Oct 26",
@@ -1299,12 +1313,12 @@ window.ATD = {
     },
     {
       "name": "Rigol",
-      "first": "25 Sep 2026",
-      "firstKind": "earliest contact",
-      "firstNote": "1 remaining contact on 6 Oct, not verified as a lead",
+      "first": "6 Oct 2026",
+      "firstKind": "earliest remaining",
+      "firstNote": "unverified phone-only record \u00b7 go-live 16 Nov",
       "leads": 1,
       "leadsKind": "unverified",
-      "leadsNote": "7 raw, 6 staff/test excluded; remaining contact unverified",
+      "leadsNote": "6 staff/test excluded; remaining contact unverified. Not launched; go-live 16 Nov",
       "months": [
         {
           "label": "Sep 26",
@@ -1319,15 +1333,15 @@ window.ATD = {
           "n": 0
         }
       ],
-      "monthsProvisional": true,
-      "monthsKind": "unverified",
-      "calls": null,
-      "answered": null,
+      "monthsProvisional": false,
+      "monthsKind": "net",
+      "calls": 0,
+      "answered": 0,
       "answeredApprox": false,
-      "booked": null,
-      "showed": null,
-      "noshow": null,
-      "reportsPending": true
+      "booked": 0,
+      "showed": 0,
+      "noshow": 0,
+      "reportsPending": false
     }
   ],
   "notInGhl": [
