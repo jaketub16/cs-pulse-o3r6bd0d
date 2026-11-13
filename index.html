@@ -140,12 +140,47 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
 .gaps p{font-size:12px;line-height:1.4;color:#D5D7DB}
 .fn{color:var(--mu2);font-size:10.8px;line-height:1.4}
 .slide-comp .foot{bottom:-26px}
+
+/* accounts to date — update window.ATD in the page script when the second GHL pass lands */
+.slide-atd{padding:28px 48px 80px;height:auto;min-height:100vh;overflow:visible;align-items:flex-start}
+.slide-atd .in{max-height:none;height:auto}
+.slide-atd h2{margin:8px 0 4px;font-size:clamp(24px,2.6vw,36px)}
+.slide-atd .sub{font-size:13.5px}
+.slide-atd .body{margin-top:10px}
+.slide-atd .foot{position:static;margin-top:14px;right:auto}
+.atd{min-height:0;display:flex;flex-direction:column;gap:10px}
+.atd-card{padding:2px 6px}
+.atd table{width:100%}
+.atd th{padding:6px 7px;font-size:9.5px;letter-spacing:.08em;white-space:nowrap}
+.atd td{padding:5px 7px;border-bottom:1px solid var(--line);font-size:12px;line-height:1.35;vertical-align:middle}
+.atd td.n{font-family:"JetBrains Mono",ui-monospace,monospace;white-space:nowrap;font-size:12px}
+.atd td small{display:block;color:var(--mu);font-size:10.5px;margin-top:2px;white-space:normal}
+.atd tr.dim td{color:var(--mu)}
+.flag-raw,.flag-unv,.flag-pend{display:inline-block;font:600 9px/1 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;border-radius:5px;padding:3px 5px;margin-left:5px;vertical-align:middle}
+.flag-raw{color:var(--yel);border:1px solid rgba(245,181,68,.4)}
+.flag-unv{color:var(--yel);border:1px solid rgba(245,181,68,.4)}
+.flag-pend{color:var(--mu);border:1px solid var(--line2)}
+.pending{color:var(--mu);font-size:12px}
+.approx{color:var(--mu2)}
+.spark-wrap{min-width:120px;max-width:220px}
+.spark{display:flex;align-items:flex-end;gap:2px;height:22px}
+.spark i{flex:1;min-width:3px;background:var(--red);border-radius:2px 2px 0 0;opacity:.9;display:block}
+.spark-axis{display:flex;justify-content:space-between;color:var(--mu2);font:500 9px/1 "JetBrains Mono",monospace;margin-top:3px}
+.spark-nums{display:none}
+.spark-flag{font:600 9px/1 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--yel);margin-bottom:3px}
+.atd-obs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.atd-obs .card{padding:16px 18px}
+.atd-obs h3{font-size:15px;margin-bottom:8px;letter-spacing:-.01em}
+.atd-obs p{font-size:13.5px;line-height:1.5;color:#D5D7DB}
+.atd-obs .card.fill{border-color:rgba(245,181,68,.35);box-shadow:inset 3px 0 0 var(--yel)}
+
 /* tablet: stack some grids, keep type close to desktop */
 @media (max-width:1100px){
   body{overflow:auto;overflow-x:hidden}
   .deck{height:auto;overflow:visible;scroll-snap-type:none}
   .slide{height:auto;min-height:auto;overflow:visible;align-items:flex-start;padding:36px 32px 88px}
   .slide-comp{padding:28px 28px 88px}
+  .slide-atd{padding:28px 28px 88px}
   .in{max-height:none;height:auto;width:100%;max-width:100%}
   .title-grid,.div-grid{height:auto;gap:28px}
   .hb{grid-template-columns:repeat(3,1fr)}
@@ -162,7 +197,7 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
   html,body{-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden}
   body{overflow:auto}
   .deck{height:auto;overflow:visible;scroll-snap-type:none}
-  .slide,.slide-comp{
+  .slide,.slide-comp,.slide-atd{
     height:auto !important;
     min-height:100svh;
     overflow:visible;
@@ -204,10 +239,10 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
     grid-template-rows:none !important;
     gap:12px;
   }
-  #s8 .card[style*="grid-template-columns"]{grid-template-columns:1fr !important;padding:16px !important;gap:14px !important}
-  #s8 .card[style*="grid-template-columns"] > div[style*="grid-template-columns"]{grid-template-columns:1fr 1fr !important}
-  #s8 .kpi{padding:12px}
-  #s8 .kpi .v,#s8 .kpi .v[style]{font-size:22px !important;margin-top:8px;white-space:nowrap}
+  #s10 .card[style*="grid-template-columns"]{grid-template-columns:1fr !important;padding:16px !important;gap:14px !important}
+  #s10 .card[style*="grid-template-columns"] > div[style*="grid-template-columns"]{grid-template-columns:1fr 1fr !important}
+  #s10 .kpi{padding:12px}
+  #s10 .kpi .v,#s10 .kpi .v[style]{font-size:22px !important;margin-top:8px;white-space:nowrap}
   .row{padding:14px 16px;gap:6px}
   .row .w{text-align:left;margin-top:4px}
   .gap-row .w{color:var(--tx)}
@@ -285,7 +320,7 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
   td small{display:block;font-size:13px !important;margin-top:3px}
 
   /* spend table: stacked cards so amounts stay on screen */
-  #s12 .card:has(table.sp){
+  #s14 .card:has(table.sp){
     overflow:visible;
     padding:0 !important;
     background:transparent;
@@ -335,10 +370,60 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
   table.sp td.sb::before{flex:0 0 100%;margin-bottom:2px}
   table.sp td.sb .bar{flex:1;min-width:80px}
   table.sp td.sb b{width:auto;min-width:88px;text-align:right;font-size:15px;flex:none}
+
+  .slide-atd{padding:18px 14px 100px;padding-left:max(14px, env(safe-area-inset-left));padding-right:max(14px, env(safe-area-inset-right));padding-bottom:max(100px, calc(80px + env(safe-area-inset-bottom)))}
+  .atd-obs{grid-template-columns:1fr !important}
+  .atd-obs h3{font-size:17px}
+  .atd-obs p{font-size:15px !important;line-height:1.5}
+  .atd .card{padding:0 !important;background:transparent;border:0}
+  .atd table{width:100%}
+  .atd tr:first-child{display:none}
+  .atd tr{
+    display:block;
+    background:var(--p1);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:14px 16px;
+    margin:0 0 10px;
+  }
+  .atd td{
+    display:block;
+    width:100%;
+    padding:8px 0;
+    border-bottom:1px solid var(--line);
+    white-space:normal !important;
+    font-size:15px !important;
+  }
+  .atd td.n{font-size:15px !important;white-space:normal !important}
+  .atd td:last-child{border-bottom:0;padding-bottom:0}
+  .atd td:first-child{padding-top:0;border-bottom:0;padding-bottom:4px;font-size:17px !important;font-weight:600}
+  .atd td::before{
+    display:block;
+    font:600 11px/1 "JetBrains Mono",monospace;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--mu2);
+    margin:0 0 4px;
+  }
+  .atd td:first-child::before{content:none}
+  .atd td:nth-child(2)::before{content:"First lead"}
+  .atd td:nth-child(3)::before{content:"All-time leads"}
+  .atd td:nth-child(4)::before{content:"Leads per month"}
+  .atd td:nth-child(5)::before{content:"All-time calls"}
+  .atd td:nth-child(6)::before{content:"Answered"}
+  .atd td:nth-child(7)::before{content:"Booked"}
+  .atd td:nth-child(8)::before{content:"Showed"}
+  .atd td:nth-child(9)::before{content:"No-shows"}
+  .atd td:nth-child(10)::before{content:"Show rate"}
+  .atd tr.dim td:nth-child(2)::before{content:"Status"}
+  .atd tr.dim td:nth-child(n+3)::before{content:none}
+  .atd tr.dim td:nth-child(n+3){display:none}
+  .spark-wrap{min-width:0;max-width:none}
+  .spark{height:36px;gap:3px}
+  .spark-nums{display:block;color:var(--mu);font-size:13px !important;line-height:1.45;margin-top:6px;white-space:normal}
+  .spark-axis{font-size:11px}
+  .flag-raw,.flag-unv,.flag-pend{margin-left:0;margin-top:4px}
 }
-
-
-
 
 @media print{
  @page{size:1600px 900px;margin:0}
@@ -479,8 +564,39 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
  <div class="foot"><span>Source: each client's GHL sub-account, Oct 21–Nov 12, 2026. Read Fri 13 Nov, 13:10 Madrid (CET)</span><span>05</span></div>
 </div></section>
 
-<!-- 6 DIVIDER -->
-<section class="slide" id="s6"><div class="in">
+
+<!-- 6 ACCOUNTS TO DATE -->
+<section class="slide slide-atd" id="s6"><div class="in">
+ <div class="eyebrow">Accounts to date · all-time GHL</div>
+ <h2>Every client's GHL history, not just since 21 Oct</h2>
+ <p class="sub">All-time contacts, calls and bookings from each client's own GHL sub-account, through 13 Nov 2026. This is separate from the 21 Oct–12 Nov window on the other slides. November counts end 13 Nov. As of Fri 13 Nov 2026.</p>
+ <div class="body atd">
+  <div class="card atd-card">
+   <table id="atd-table"></table>
+  </div>
+  <p class="fn">Leads marked <span class="flag-raw">raw</span> are unfiltered GHL contact counts; a full staff/test review is still open. Leads marked net have staff and test contacts removed. Answered figures marked * are approximate (inferred from GHL chart percentages, not a separate status count). Call and appointment totals may include staff or test activity. VBO month-by-month leads, Rigol call and appointment reports, and remaining exclusions are still being filled in.</p>
+ </div>
+ <div class="foot"><span>Source: each client's GHL sub-account, all-time through 13 Nov 2026. Read Fri 13 Nov 2026. Heal, Evolve and TrustStar not tracked in GHL. Lockton has no sub-account yet.</span><span>06</span></div>
+</div></section>
+
+<!-- 7 WHAT HISTORY TELLS US -->
+<section class="slide slide-atd" id="s7"><div class="in">
+ <div class="eyebrow">Accounts to date · what the numbers say</div>
+ <h2>What history tells us</h2>
+ <p class="sub">Plain readings of the all-time GHL counts on the previous slide. No figures here that are not in that table. As of Fri 13 Nov 2026.</p>
+ <div class="body atd-obs">
+  <div class="card"><h3>History starts well before 21 Oct</h3><p>All Tips Matter has contacts since 28 Jul 2025 (470 raw). Clockspring since 27 Oct 2025 (301 raw). HRG since 5 Mar 2026 (285 raw). FamCare since 2 Apr 2026 (350 raw). Imorgon since 25 May 2026 (97 raw). The 21 Oct–12 Nov window is only a slice for these accounts.</p></div>
+  <div class="card"><h3>Show rates, all-time</h3><p>HRG has the highest show rate in this set: 16 showed of 44 booked (36.4%). Sandler is 1 of 3. Clockspring is 7 of 35. Imorgon is 2 of 24. All Tips Matter is 6 of 94. FamCare is 2 of 59. VBO is 0 of 8. Aviro360 is 0 of 2. DBSync is 0 of 8. Workzone is 0 of 1. Xplor has no bookings. Rigol's appointment report is still pending.</p></div>
+  <div class="card"><h3>No-shows</h3><p>All Tips Matter has 41 no-shows of 94 booked. FamCare has 32 of 59. HRG has 15 of 44, and also the most shows (16). Clockspring has 9 of 35. Imorgon has 1 of 24. The other accounts with bookings have 0 no-shows in GHL.</p></div>
+  <div class="card"><h3>Calling vs leads</h3><p>FamCare has 3,403 calls on 350 raw contacts. All Tips Matter has 453 calls on 470 raw. HRG has 709 on 285 raw. Sandler has 30 calls on 14 net leads. Workzone, Xplor and DBSync have 0 calls in GHL. Aviro360 has 1 call on 30 net leads. Clockspring has 8 calls on 301 raw contacts. Imorgon has 9 calls on 97 raw contacts.</p></div>
+  <div class="card"><h3>Recent months</h3><p>DBSync has 0 new contacts from 1–13 Nov, after 18 in Aug, 28 in Sep and 22 in Oct. FamCare's highest raw month is May (74); 1–13 Nov is 12. HRG's highest raw month is Oct (56); 1–13 Nov is already 28.</p></div>
+  <div class="card fill"><h3>Still being filled in</h3><p>VBO month-by-month leads are not in yet. Rigol call and appointment reports are pending. A full staff/test review is still open for VBO, FamCare, HRG, Clockspring, DBSync, Imorgon and All Tips Matter, so those lead totals stay marked raw. Rigol's remaining contact is unverified. Heal, Evolve and TrustStar are not tracked in GHL. Lockton has no sub-account yet.</p></div>
+ </div>
+ <div class="foot"><span>Source: the all-time GHL counts on the previous slide, through 13 Nov 2026. Read Fri 13 Nov 2026.</span><span>07</span></div>
+</div></section>
+
+<!-- 8 DIVIDER -->
+<section class="slide" id="s8"><div class="in">
  <div class="div-grid">
   <div><div class="eyebrow">Section · Red accounts</div><div class="huge" style="margin-top:20px">5</div><h2 style="font-size:44px">Red accounts</h2><p class="sub">VBO, Evolve, Rigol, Clockspring, and DBSync (handled by Jake).</p></div>
   <div style="display:grid;gap:14px">
@@ -488,11 +604,11 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
    <div class="card stake"><span class="pill">Biggest stake 2</span><h3>Rigol: not live since May</h3><p style="font-size:15px">Kickoff May 22, launch call Sep 25, still not live. Mike approved the corrected ads Nov 12 and the Free Custom Assessment replaces the jitter worksheet. End of flight Dec 15.</p><p class="lbl" style="color:var(--red)">Next · live Mon Nov 16, or a new date to Mike and Jake by 18:00 today</p></div>
   </div>
  </div>
- <div class="foot"><span>Sources: Fathom VBO Nov 11, Fathom Rigol Nov 12, Notion CS Agent Run Nov 13</span><span>06</span></div>
+ <div class="foot"><span>Sources: Fathom VBO Nov 11, Fathom Rigol Nov 12, Notion CS Agent Run Nov 13</span><span>08</span></div>
 </div></section>
 
-<!-- 7 RED DETAIL 1 -->
-<section class="slide" id="s7"><div class="in">
+<!-- 9 RED DETAIL 1 -->
+<section class="slide" id="s9"><div class="in">
  <div class="eyebrow">Red accounts · 1 of 2</div>
  <h2>VBO, Evolve and Rigol: what it takes to hold them</h2>
  <div class="body cols3">
@@ -512,11 +628,11 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
    <div class="lbl">Next</div><ul><li>Live Mon Nov 16, or new date to Mike + Jake by 18:00 today</li><li>William points ads and page at the assessment</li></ul>
    <div class="eof"><span>End of flight</span><b>Dec 15</b></div></div>
  </div>
- <div class="foot"><span>Sources: Fathom 896184484 (VBO), CEO report Nov 12, Fathom 897602537 (Rigol), CS escalations</span><span>07</span></div>
+ <div class="foot"><span>Sources: Fathom 896184484 (VBO), CEO report Nov 12, Fathom 897602537 (Rigol), CS escalations</span><span>09</span></div>
 </div></section>
 
-<!-- 8 RED DETAIL 2 -->
-<section class="slide" id="s8"><div class="in">
+<!-- 10 RED DETAIL 2 -->
+<section class="slide" id="s10"><div class="in">
  <div class="eyebrow">Red accounts · 2 of 2</div>
  <h2>DBSync and Clockspring</h2>
  <div class="body" style="grid-template-rows:auto 1fr">
@@ -535,11 +651,11 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
   </div>
  </div>
  <p class="src">Sources: CEO report Nov 12, Notion CS Agent Run Nov 13.</p>
- <div class="foot"><span>Aletto · CS Pulse Check</span><span>08</span></div>
+ <div class="foot"><span>Aletto · CS Pulse Check</span><span>10</span></div>
 </div></section>
 
-<!-- 9 AMBER 1 -->
-<section class="slide" id="s9"><div class="in">
+<!-- 11 AMBER 1 -->
+<section class="slide" id="s11"><div class="in">
  <div class="eyebrow">Amber accounts · 1 of 2</div>
  <h2>Five amber accounts with momentum to protect</h2>
  <div class="body cols5">
@@ -549,11 +665,11 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
   <div class="card edge-y"><h3>HRG</h3><div class="who">Scott Weidemeyer · William</div><div class="lbl">Now</div><p>GHL Oct 21–Nov 12: 49 leads, 80 outbound calls (Andrew Garcia 75, Mellissa Harmon 5), 5 booked, 4 confirmed, 1 showed. Two deals moving. Meta ads paused by an ad-account error. Scott hasn't replied since Wed.</p><div class="lbl">Next</div><ul><li>William: chase Scott daily until ads run; split pipeline by funnel</li><li>Shane: date for the LinkedIn test talk</li></ul></div>
   <div class="card edge-y"><h3>FamCare</h3><div class="who">George Ritacco · William, Shane</div><div class="lbl">Now</div><p>Sentiment back to Neutral. New page + 22 AI-cut video ads live. Yona sent George the scripts Nov 12. GHL Oct 21–Nov 12: 20 leads, 945 outbound calls by Mark Sharp, 7 booked, 0 showed, 6 no-shows. Nov 5–11 GHL: 8 leads, 2 MQL, 2 booked.</p><div class="lbl">Next</div><ul><li>Jake: 5 script answers · Sun Nov 15</li><li>William: "Funders" headline + retargeting with the 22 videos · Wed Nov 18</li><li>Yona: George's placeholders</li></ul></div>
  </div>
- <div class="foot"><span>Sources: cs-log Google Ads Audit Nov 11, Fathom 896184476 / 896184478 / 897427123, CEO report Nov 12</span><span>09</span></div>
+ <div class="foot"><span>Sources: cs-log Google Ads Audit Nov 11, Fathom 896184476 / 896184478 / 897427123, CEO report Nov 12</span><span>11</span></div>
 </div></section>
 
-<!-- 10 AMBER 2 + GREEN -->
-<section class="slide" id="s10"><div class="in">
+<!-- 12 AMBER 2 + GREEN -->
+<section class="slide" id="s12"><div class="in">
  <div class="eyebrow">Amber accounts · 2 of 2 · and our one green</div>
  <h2>Five more amber, and Sandler in the green</h2>
  <div class="body cols3x2">
@@ -564,11 +680,11 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
   <div class="card edge-y"><h3>All Tips Matter</h3><div class="who">Brian Mas · William</div><p style="margin-top:8px">Funnel #2 launched Oct 30 and is a win, but volume is thin. GHL Oct 21–Nov 12: 11 leads, 10 outbound calls by Brian Mas to 5 unique leads, avg 1m 31s, 7 booked, 4 no-shows, 0 showed.</p><div class="lbl">Next</div><ul><li>Watch Funnel #2 for 7 days, kill sub-1% CTR ads</li><li>No dated next step in sources: William to set one</li></ul></div>
   <div class="card edge-g"><h3>Sandler / Summit Vista <span class="pill" style="margin-left:6px;color:var(--grn);border-color:rgba(62,207,110,.4)">Green · 79</span></h3><div class="who">Michael Pape · William, Shane</div><p style="margin-top:8px">GHL Oct 21–Nov 12: 13 leads (1 staff), 26 outbound calls by Michael Pape to 12 unique leads, 22 answered, avg 2m 43s, 3 booked, 1 showed. Enrichment still lacks the 5 new states. Earlier first-month result (window closed Nov 6) was reported as missed; that older window was not fully re-checked in GHL this time.</p><div class="lbl">Next</div><ul><li>William: enrichment for the 5 states · Wed Nov 18</li><li>Nov 12 weekly skipped for the Sandler summit</li></ul></div>
  </div>
- <div class="foot"><span>Sources: CEO report Nov 12, Fathom Imorgon Nov 11, Fathom Lockton Nov 11, Notion CS Agent Run</span><span>10</span></div>
+ <div class="foot"><span>Sources: CEO report Nov 12, Fathom Imorgon Nov 11, Fathom Lockton Nov 11, Notion CS Agent Run</span><span>12</span></div>
 </div></section>
 
-<!-- 11 HERO METRICS -->
-<section class="slide" id="s11"><div class="in">
+<!-- 13 HERO METRICS -->
+<section class="slide" id="s13"><div class="in">
  <div class="eyebrow">First-month hero metrics · leads from GHL, spend from Windsor</div>
  <h2>Every client in its first 30 days, against the hero bar</h2>
  <p class="sub">Hero bar: 50+ leads and cost per lead at the $40 target (never above the $55 ceiling) within 30 days of launch. Leads count only from each client's GHL sub-account; ad spend only from Windsor. As of Fri 13 Nov, 13:10 Madrid (CET).</p>
@@ -597,11 +713,11 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
    <div class="card" style="font-size:13px"><div class="lbl" style="margin-top:0">What it means this week</div><ul><li>Workzone is on pace: 42 of 50, about 1.75 leads a day, lands around 52 by Nov 19.</li><li>Xplor is behind pace: 14 of 50 through day 11, about 1.3 a day projects about 38. Needs about 1.9 a day from here.</li><li>CPL is pending Windsor for both. Workzone spend is only Oct 21–Nov 3 ($1,402.97); Xplor is not in Windsor.</li><li>Rigol has 0 real leads (one internal test contact). Launch due Mon Nov 16. Lockton window opens at launch.</li></ul></div>
   </div>
  </div>
- <div class="foot"><span>Sources: leads = GHL sub-account, Oct 21–Nov 12, live Fri 13 Nov, 13:10 Madrid (CET), staff and test contacts excluded. Spend = Windsor (Meta), last read Nov 3.</span><span>11</span></div>
+ <div class="foot"><span>Sources: leads = GHL sub-account, Oct 21–Nov 12, live Fri 13 Nov, 13:10 Madrid (CET), staff and test contacts excluded. Spend = Windsor (Meta), last read Nov 3.</span><span>13</span></div>
 </div></section>
 
-<!-- 12 LEAD ENGINE -->
-<section class="slide" id="s12"><div class="in">
+<!-- 14 LEAD ENGINE -->
+<section class="slide" id="s14"><div class="in">
  <div class="eyebrow">Ad spend and lead engine</div>
  <h2>Ad spend by client, against leads, MQLs and bookings</h2>
  <p class="sub">Ad spend from Windsor (Meta), Oct 21–27, last read Nov 3 <span class="stale">WINDSOR PAUSED</span> Leads and booked from each client's GHL sub-account, Oct 21–Nov 12, read Fri 13 Nov, 13:10 Madrid (CET). MQL is not shown in GHL for this pull, so no same-window CPL is shown. Heal, Evolve and TrustStar are not tracked in GHL.</p>
@@ -618,11 +734,11 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
    <div class="card edge-r"><div class="lbl" style="margin-top:0">Why counts changed</div><p>Call-based lead counts have been replaced with each client's GHL sub-account, Oct 21–Nov 12. Heal, Evolve and TrustStar are not tracked in GHL.</p></div>
   </div>
  </div>
- <div class="foot"><span>Sources: Windsor Meta daily (through Nov 3); GHL sub-accounts, Oct 21–Nov 12, live Fri 13 Nov, 13:10 Madrid (CET). Heal, Evolve and TrustStar not tracked in GHL.</span><span>12</span></div>
+ <div class="foot"><span>Sources: Windsor Meta daily (through Nov 3); GHL sub-accounts, Oct 21–Nov 12, live Fri 13 Nov, 13:10 Madrid (CET). Heal, Evolve and TrustStar not tracked in GHL.</span><span>14</span></div>
 </div></section>
 
-<!-- 13 DATA GAPS -->
-<section class="slide" id="s13"><div class="in">
+<!-- 15 DATA GAPS -->
+<section class="slide" id="s15"><div class="in">
  <div class="eyebrow">Data gaps and fixes</div>
  <h2>GHL is fully read. Here is what is still missing</h2>
  <p class="sub">GHL has now been fully read for every active client with a sub-account. Still missing: Windsor (paused), staff login dates, and Heal, Evolve and TrustStar, which are not tracked in GHL. As of Fri 13 Nov, 13:10 Madrid (CET).</p>
@@ -634,11 +750,11 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
   <div class="row gap-row"><span class="num r">05</span><span class="o">Three accounts not in GHL</span><span class="t">Heal's sub-account has 0 contacts. Both Evolve sub-accounts are empty. No TrustStar sub-account was found. Their leads are not tracked in GHL.</span><span class="w">William · find a GHL home</span></div>
   <div class="row gap-row"><span class="num r">06</span><span class="o">Missing call recordings</span><span class="t">No Fathom for the Evolve Nov 6 alignment or the Aviro Nov 11 sync. Record every client call.</span><span class="w">Yona · ongoing</span></div>
  </div>
- <div class="foot"><span>Sources: source pack gaps list Nov 13, Notion CS Agent Run, Ryze status check Nov 13</span><span>13</span></div>
+ <div class="foot"><span>Sources: source pack gaps list Nov 13, Notion CS Agent Run, Ryze status check Nov 13</span><span>15</span></div>
 </div></section>
 
-<!-- 14 NEXT WEEK -->
-<section class="slide" id="s14"><div class="in">
+<!-- 16 NEXT WEEK -->
+<section class="slide" id="s16"><div class="in">
  <div class="eyebrow">Next week · Nov 16–22</div>
  <h2>Only Jake can do, and what the team owns</h2>
  <div class="body nw">
@@ -668,11 +784,11 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
    </table>
   </div>
  </div>
- <div class="foot"><span>Source: team memo "Next week (Nov 16–22)", calendar plan Nov 13</span><span>14</span></div>
+ <div class="foot"><span>Source: team memo "Next week (Nov 16–22)", calendar plan Nov 13</span><span>16</span></div>
 </div></section>
 
-<!-- 15 OWNERS -->
-<section class="slide" id="s15"><div class="in">
+<!-- 17 OWNERS -->
+<section class="slide" id="s17"><div class="in">
  <div class="eyebrow">Owners board</div>
  <h2>Who owns what, from today to Fri Nov 20</h2>
  <div class="body cols4">
@@ -681,11 +797,11 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
   <div class="card owner"><h3>Yona <span class="num">7</span></h3><div class="who">Ops · calendar, clients, tickets</div><ul style="margin-top:12px"><li><b>Today</b> VBO qualified-call count with William</li><li><b>Today</b> George's script placeholders</li><li>Lockton surveys + Notion row · Mon</li><li>Fix Fri Nov 20 Pulse Check clash</li><li>Book Xplor Retention walkthrough</li><li>Aviro Nov 25 invite</li><li>Ticket cleanup #13–#38, Zapier by Nov 15</li></ul></div>
   <div class="card owner"><h3>Rian <span class="num">1</span></h3><div class="who">Sales · Lockton handoff</div><ul style="margin-top:12px"><li>Lockton references in the kickoff brief · Mon Nov 16</li></ul><div class="lbl" style="margin-top:18px">Heads-up</div><p>Rian declined the Lockton kickoff (out of office). Rian organizes Manuel's scope call Wed Nov 18 16:00, which clashes with Sales Spotlight (decision C).</p></div>
  </div>
- <div class="foot"><span>Source: team memo, CS escalations Nov 12, calendar plan Nov 13</span><span>15</span></div>
+ <div class="foot"><span>Source: team memo, CS escalations Nov 12, calendar plan Nov 13</span><span>17</span></div>
 </div></section>
 
-<!-- 16 CLOSE -->
-<section class="slide" id="s16"><div class="in">
+<!-- 18 CLOSE -->
+<section class="slide" id="s18"><div class="in">
  <div class="eyebrow">Close</div>
  <h2>Four decisions waiting on Jake</h2>
  <p class="sub">Jake can't attend today. Don't act on these until he answers; Yona relays.</p>
@@ -696,12 +812,594 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
   <div class="card"><span class="k">D · Wed Nov 18, 17:00–18:00</span><h3>HRG and Xplor calls need a US-friendly time</h3><p>Madrid mornings are 03:30–07:00 ET. Jake decides whether to use Wed afternoon.</p></div>
  </div>
  <div class="esc"><span><b>Blocked on anything?</b> Tell Jake today, not next Friday.</span><span class="mono" style="color:var(--mu);font-size:12px">Reply on the team thread</span></div>
- <div class="foot"><span>Source: calendar plan conflicts A–D, Nov 13</span><span>16</span></div>
+ <div class="foot"><span>Source: calendar plan conflicts A–D, Nov 13</span><span>18</span></div>
 </div></section>
 
 </main>
-<div class="hud"><button id="prev" aria-label="Previous slide">&#8593;</button><span class="ctr" id="ctr">1 / 16</span><button id="next" aria-label="Next slide">&#8595;</button></div>
+<div class="hud"><button id="prev" aria-label="Previous slide">&#8593;</button><span class="ctr" id="ctr">1 / 18</span><button id="next" aria-label="Next slide">&#8595;</button></div>
 <script>
+
+// ACCOUNTS TO DATE
+// Update window.ATD when the second GHL pass fills VBO months,
+// Rigol call/appointment reports, and staff/test exclusions.
+// leadsKind: "net" | "raw" | "unverified"
+// calls/answered/booked/showed/noshow: null => Pending
+// answeredApprox: true adds an asterisk (chart-percentage inference)
+// months: null => "Months pending"; monthsProvisional: true labels the bars
+window.ATD = {
+  "asOf": "Fri 13 Nov 2026",
+  "note": "All-time GHL through 13 Nov 2026, not the 21 Oct\u201312 Nov window. November counts end 13 Nov. Calls and appointments are full-history report totals and may include staff or test activity.",
+  "clients": [
+    {
+      "name": "VBO Tickets",
+      "first": "17 Aug 2026",
+      "firstKind": "earliest contact",
+      "leads": 87,
+      "leadsKind": "raw",
+      "leadsNote": "staff/test review still open",
+      "months": null,
+      "monthsProvisional": false,
+      "monthsKind": null,
+      "calls": 54,
+      "answered": 37,
+      "answeredApprox": false,
+      "booked": 8,
+      "showed": 0,
+      "noshow": 0
+    },
+    {
+      "name": "Workzone",
+      "first": "21 Oct 2026",
+      "firstKind": "first lead",
+      "firstNote": "earliest raw contact 15 Oct",
+      "leads": 43,
+      "leadsKind": "net",
+      "leadsNote": "47 raw, 4 staff excluded",
+      "months": [
+        {
+          "label": "Oct 26",
+          "n": 18
+        },
+        {
+          "label": "Nov 1\u201313",
+          "n": 25
+        }
+      ],
+      "monthsProvisional": false,
+      "monthsKind": "net",
+      "calls": 0,
+      "answered": 0,
+      "answeredApprox": false,
+      "booked": 1,
+      "showed": 0,
+      "noshow": 0
+    },
+    {
+      "name": "Xplor / FieldEdge",
+      "first": "3 Nov 2026",
+      "firstKind": "first lead",
+      "leads": 18,
+      "leadsKind": "net",
+      "leadsNote": "no staff or test contacts found",
+      "months": [
+        {
+          "label": "Nov 1\u201313",
+          "n": 18
+        }
+      ],
+      "monthsProvisional": false,
+      "monthsKind": "net",
+      "calls": 0,
+      "answered": 0,
+      "answeredApprox": false,
+      "booked": 0,
+      "showed": 0,
+      "noshow": 0
+    },
+    {
+      "name": "Aviro360",
+      "first": "29 Sep 2026",
+      "firstKind": "first lead",
+      "firstNote": "earliest raw contact 17 Sep",
+      "leads": 30,
+      "leadsKind": "net",
+      "leadsNote": "31 raw, 1 staff excluded",
+      "months": [
+        {
+          "label": "Sep 26",
+          "n": 3
+        },
+        {
+          "label": "Oct 26",
+          "n": 21
+        },
+        {
+          "label": "Nov 1\u201313",
+          "n": 6
+        }
+      ],
+      "monthsProvisional": false,
+      "monthsKind": "net",
+      "calls": 1,
+      "answered": 1,
+      "answeredApprox": false,
+      "booked": 2,
+      "showed": 0,
+      "noshow": 0
+    },
+    {
+      "name": "FamCare",
+      "first": "2 Apr 2026",
+      "firstKind": "earliest contact",
+      "leads": 350,
+      "leadsKind": "raw",
+      "leadsNote": "staff/test review still open",
+      "months": [
+        {
+          "label": "Apr 26",
+          "n": 41
+        },
+        {
+          "label": "May 26",
+          "n": 74
+        },
+        {
+          "label": "Jun 26",
+          "n": 50
+        },
+        {
+          "label": "Jul 26",
+          "n": 54
+        },
+        {
+          "label": "Aug 26",
+          "n": 47
+        },
+        {
+          "label": "Sep 26",
+          "n": 41
+        },
+        {
+          "label": "Oct 26",
+          "n": 31
+        },
+        {
+          "label": "Nov 1\u201313",
+          "n": 12
+        }
+      ],
+      "monthsProvisional": false,
+      "monthsKind": "raw",
+      "calls": 3403,
+      "answered": 2704,
+      "answeredApprox": true,
+      "booked": 59,
+      "showed": 2,
+      "noshow": 32
+    },
+    {
+      "name": "HRG",
+      "first": "5 Mar 2026",
+      "firstKind": "earliest contact",
+      "leads": 285,
+      "leadsKind": "raw",
+      "leadsNote": "staff/test review still open",
+      "months": [
+        {
+          "label": "Mar 26",
+          "n": 18
+        },
+        {
+          "label": "Apr 26",
+          "n": 18
+        },
+        {
+          "label": "May 26",
+          "n": 38
+        },
+        {
+          "label": "Jun 26",
+          "n": 21
+        },
+        {
+          "label": "Jul 26",
+          "n": 34
+        },
+        {
+          "label": "Aug 26",
+          "n": 23
+        },
+        {
+          "label": "Sep 26",
+          "n": 49
+        },
+        {
+          "label": "Oct 26",
+          "n": 56
+        },
+        {
+          "label": "Nov 1\u201313",
+          "n": 28
+        }
+      ],
+      "monthsProvisional": false,
+      "monthsKind": "raw",
+      "calls": 709,
+      "answered": 590,
+      "answeredApprox": true,
+      "booked": 44,
+      "showed": 16,
+      "noshow": 15
+    },
+    {
+      "name": "Clockspring",
+      "first": "27 Oct 2025",
+      "firstKind": "earliest contact",
+      "leads": 301,
+      "leadsKind": "raw",
+      "leadsNote": "1 test contact seen; review still open",
+      "months": [
+        {
+          "label": "Oct 25",
+          "n": 2
+        },
+        {
+          "label": "Nov 25",
+          "n": 5
+        },
+        {
+          "label": "Dec 25",
+          "n": 61
+        },
+        {
+          "label": "Jan 26",
+          "n": 47
+        },
+        {
+          "label": "Feb 26",
+          "n": 18
+        },
+        {
+          "label": "Mar 26",
+          "n": 20
+        },
+        {
+          "label": "Apr 26",
+          "n": 15
+        },
+        {
+          "label": "May 26",
+          "n": 10
+        },
+        {
+          "label": "Jun 26",
+          "n": 14
+        },
+        {
+          "label": "Jul 26",
+          "n": 13
+        },
+        {
+          "label": "Aug 26",
+          "n": 33
+        },
+        {
+          "label": "Sep 26",
+          "n": 29
+        },
+        {
+          "label": "Oct 26",
+          "n": 23
+        },
+        {
+          "label": "Nov 1\u201313",
+          "n": 11
+        }
+      ],
+      "monthsProvisional": false,
+      "monthsKind": "raw",
+      "calls": 8,
+      "answered": 1,
+      "answeredApprox": false,
+      "booked": 35,
+      "showed": 7,
+      "noshow": 9
+    },
+    {
+      "name": "DBSync",
+      "first": "15 Aug 2026",
+      "firstKind": "earliest contact",
+      "leads": 68,
+      "leadsKind": "raw",
+      "leadsNote": "staff/test review still open \u00b7 handled by Jake",
+      "months": [
+        {
+          "label": "Aug 26",
+          "n": 18
+        },
+        {
+          "label": "Sep 26",
+          "n": 28
+        },
+        {
+          "label": "Oct 26",
+          "n": 22
+        },
+        {
+          "label": "Nov 1\u201313",
+          "n": 0
+        }
+      ],
+      "monthsProvisional": false,
+      "monthsKind": "raw",
+      "calls": 0,
+      "answered": 0,
+      "answeredApprox": false,
+      "booked": 8,
+      "showed": 0,
+      "noshow": 0
+    },
+    {
+      "name": "Imorgon",
+      "first": "25 May 2026",
+      "firstKind": "earliest contact",
+      "leads": 97,
+      "leadsKind": "raw",
+      "leadsNote": "staff/test review still open",
+      "months": [
+        {
+          "label": "May 26",
+          "n": 5
+        },
+        {
+          "label": "Jun 26",
+          "n": 13
+        },
+        {
+          "label": "Jul 26",
+          "n": 29
+        },
+        {
+          "label": "Aug 26",
+          "n": 17
+        },
+        {
+          "label": "Sep 26",
+          "n": 11
+        },
+        {
+          "label": "Oct 26",
+          "n": 14
+        },
+        {
+          "label": "Nov 1\u201313",
+          "n": 8
+        }
+      ],
+      "monthsProvisional": false,
+      "monthsKind": "raw",
+      "calls": 9,
+      "answered": 3,
+      "answeredApprox": false,
+      "booked": 24,
+      "showed": 2,
+      "noshow": 1
+    },
+    {
+      "name": "All Tips Matter",
+      "first": "28 Jul 2025",
+      "firstKind": "earliest contact",
+      "leads": 470,
+      "leadsKind": "raw",
+      "leadsNote": "staff/test review still open",
+      "months": [
+        {
+          "label": "Jul 25",
+          "n": 2
+        },
+        {
+          "label": "Aug 25",
+          "n": 25
+        },
+        {
+          "label": "Sep 25",
+          "n": 61
+        },
+        {
+          "label": "Oct 25",
+          "n": 63
+        },
+        {
+          "label": "Nov 25",
+          "n": 52
+        },
+        {
+          "label": "Dec 25",
+          "n": 22
+        },
+        {
+          "label": "Jan 26",
+          "n": 6
+        },
+        {
+          "label": "Feb 26",
+          "n": 14
+        },
+        {
+          "label": "Mar 26",
+          "n": 20
+        },
+        {
+          "label": "Apr 26",
+          "n": 16
+        },
+        {
+          "label": "May 26",
+          "n": 34
+        },
+        {
+          "label": "Jun 26",
+          "n": 21
+        },
+        {
+          "label": "Jul 26",
+          "n": 38
+        },
+        {
+          "label": "Aug 26",
+          "n": 47
+        },
+        {
+          "label": "Sep 26",
+          "n": 26
+        },
+        {
+          "label": "Oct 26",
+          "n": 18
+        },
+        {
+          "label": "Nov 1\u201313",
+          "n": 5
+        }
+      ],
+      "monthsProvisional": false,
+      "monthsKind": "raw",
+      "calls": 453,
+      "answered": 356,
+      "answeredApprox": true,
+      "booked": 94,
+      "showed": 6,
+      "noshow": 41
+    },
+    {
+      "name": "Sandler",
+      "first": "8 Oct 2026",
+      "firstKind": "first lead",
+      "leads": 14,
+      "leadsKind": "net",
+      "leadsNote": "15 raw, 1 staff excluded",
+      "months": [
+        {
+          "label": "Oct 26",
+          "n": 8
+        },
+        {
+          "label": "Nov 1\u201313",
+          "n": 6
+        }
+      ],
+      "monthsProvisional": false,
+      "monthsKind": "net",
+      "calls": 30,
+      "answered": 23,
+      "answeredApprox": false,
+      "booked": 3,
+      "showed": 1,
+      "noshow": 0
+    },
+    {
+      "name": "Rigol",
+      "first": "25 Sep 2026",
+      "firstKind": "earliest contact",
+      "firstNote": "1 remaining contact on 6 Oct, not verified as a lead",
+      "leads": 1,
+      "leadsKind": "unverified",
+      "leadsNote": "7 raw, 6 staff/test excluded; remaining contact unverified",
+      "months": [
+        {
+          "label": "Sep 26",
+          "n": 0
+        },
+        {
+          "label": "Oct 26",
+          "n": 1
+        },
+        {
+          "label": "Nov 1\u201313",
+          "n": 0
+        }
+      ],
+      "monthsProvisional": true,
+      "monthsKind": "unverified",
+      "calls": null,
+      "answered": null,
+      "answeredApprox": false,
+      "booked": null,
+      "showed": null,
+      "noshow": null,
+      "reportsPending": true
+    }
+  ],
+  "notInGhl": [
+    {
+      "name": "Heal Clinical",
+      "status": "Not tracked in GHL"
+    },
+    {
+      "name": "Evolve",
+      "status": "Not tracked in GHL"
+    },
+    {
+      "name": "TrustStar",
+      "status": "Not tracked in GHL"
+    },
+    {
+      "name": "Lockton",
+      "status": "No sub-account yet"
+    }
+  ]
+};
+(function(){
+  const D = window.ATD;
+  const tbl = document.getElementById('atd-table');
+  if (!tbl || !D) return;
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const fmt = n => n == null ? null : Number(n).toLocaleString('en-US');
+  function rate(c){
+    if (c.reportsPending || c.booked == null) return '<span class="pending">Pending</span>';
+    if (c.booked === 0) return '—';
+    const pct = (c.showed / c.booked) * 100;
+    const s = Number.isInteger(pct) ? String(pct) : pct.toFixed(1);
+    return s + '% <small>' + c.showed + ' / ' + c.booked + '</small>';
+  }
+  function spark(c){
+    if (!c.months) return '<span class="pending">Months pending</span>';
+    const max = Math.max(...c.months.map(m => m.n), 1);
+    const bars = c.months.map(m => {
+      const h = m.n === 0 ? 2 : Math.max(4, Math.round(m.n / max * 100));
+      return '<i style="height:' + h + '%" title="' + esc(m.label) + ': ' + m.n + (c.monthsKind ? ' (' + c.monthsKind + ')' : '') + '"></i>';
+    }).join('');
+    const first = esc(c.months[0].label), last = esc(c.months[c.months.length-1].label);
+    const flag = c.monthsProvisional ? '<div class="spark-flag">Provisional</div>' : '';
+    const kind = c.monthsKind ? ' · ' + c.monthsKind : '';
+    const nums = c.months.map(m => esc(m.label) + ': ' + m.n).join(' · ') + esc(kind);
+    return '<div class="spark-wrap">' + flag + '<div class="spark" aria-hidden="true">' + bars + '</div><div class="spark-axis"><span>' + first + '</span><span>' + last + '</span></div><div class="spark-nums">' + nums + '</div></div>';
+  }
+  function leads(c){
+    if (c.leadsKind === 'unverified') {
+      return fmt(c.leads) + ' <span class="flag-unv">unverified</span>' + (c.leadsNote ? '<small>' + esc(c.leadsNote) + '</small>' : '');
+    }
+    if (c.leadsKind === 'raw') {
+      return fmt(c.leads) + ' <span class="flag-raw">raw</span>' + (c.leadsNote ? '<small>' + esc(c.leadsNote) + '</small>' : '');
+    }
+    return fmt(c.leads) + ' <small>net' + (c.leadsNote ? ' · ' + esc(c.leadsNote) : '') + '</small>';
+  }
+  function first(c){
+    const k = c.firstKind === 'first lead' ? '' : '<small>' + esc(c.firstKind) + '</small>';
+    const n = c.firstNote ? '<small>' + esc(c.firstNote) + '</small>' : '';
+    return esc(c.first) + k + n;
+  }
+  function num(v, approx){
+    if (v == null) return '<span class="pending">Pending</span>';
+    return fmt(v) + (approx ? ' <span class="approx">*</span>' : '');
+  }
+  let html = '<tr><th>Client</th><th>First lead</th><th>Leads</th><th>Leads per month</th><th>Calls</th><th>Answered</th><th>Booked</th><th>Showed</th><th>No-show</th><th>Show rate</th></tr>';
+  for (const c of D.clients) {
+    html += '<tr><td><b>' + esc(c.name) + '</b></td><td>' + first(c) + '</td><td class="n">' + leads(c) + '</td><td>' + spark(c) + '</td><td class="n">' + num(c.calls) + '</td><td class="n">' + num(c.answered, c.answeredApprox) + '</td><td class="n">' + num(c.booked) + '</td><td class="n">' + num(c.showed) + '</td><td class="n">' + num(c.noshow) + '</td><td class="n">' + rate(c) + '</td></tr>';
+  }
+  tbl.innerHTML = html;
+})();
+
 // nav
 const deck=document.getElementById('deck'),S=[...document.querySelectorAll('.slide')],N=S.length,ctr=document.getElementById('ctr'),prog=document.getElementById('prog');
 let cur=0;
