@@ -122,7 +122,25 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
 .prog{position:fixed;left:0;top:0;height:2px;background:var(--red);z-index:9;transition:width .25s ease}
 .brand{position:fixed;left:24px;bottom:22px;z-index:9;font:700 13px/1 Geist;letter-spacing:-.01em;color:var(--tx)}
 .brand span{color:var(--red)}
-@media (max-width:1100px){body{overflow:auto}.deck{height:auto;overflow:visible;scroll-snap-type:none}.slide{height:auto;min-height:100vh}.in{max-height:none;height:auto}.hb{grid-template-columns:repeat(3,1fr)}.cols5,.cols4{grid-template-columns:repeat(2,1fr)}.cols3,.cols3x2,.kpis,.hero-grid,.nw,.title-grid,.div-grid,.dec{grid-template-columns:1fr;grid-template-rows:auto}.row,.gap-row{grid-template-columns:1fr}.row .w{text-align:left}.foot{position:static;margin-top:20px}}
+
+/* compliance */
+.slide-comp{padding:32px 48px 44px}
+.slide-comp h2{margin:8px 0 4px;font-size:clamp(24px,2.6vw,36px)}
+.slide-comp .sub{font-size:13.5px}
+.slide-comp .body{margin-top:10px}
+.comp{min-height:0;display:flex;flex-direction:column;gap:8px}
+.comp table{width:100%}
+.comp th{padding:3px 6px;font-size:9px;letter-spacing:.08em}
+.comp td{padding:3px 6px;border-bottom:1px solid var(--line);font-size:11px;line-height:1.28;vertical-align:top}
+.comp td.n{font-size:11px;white-space:normal}
+.comp td small{display:block;color:var(--mu);font-size:10px;margin-top:0}
+.comp .ver{color:#C9CBD0;font-size:11px}
+.gaps{background:var(--p1);border:1px solid rgba(255,68,56,.3);border-radius:12px;padding:8px 14px;box-shadow:inset 3px 0 0 var(--red)}
+.gaps h3{font-size:13px;letter-spacing:-.01em;margin:0 0 2px}
+.gaps p{font-size:12px;line-height:1.4;color:#D5D7DB}
+.fn{color:var(--mu2);font-size:10.8px;line-height:1.4}
+.slide-comp .foot{bottom:-26px}
+@media (max-width:1100px){body{overflow:auto}.deck{height:auto;overflow:visible;scroll-snap-type:none}.slide{height:auto;min-height:100vh}.in{max-height:none;height:auto}.hb{grid-template-columns:repeat(3,1fr)}.cols5,.cols4{grid-template-columns:repeat(2,1fr)}.cols3,.cols3x2,.kpis,.hero-grid,.nw,.title-grid,.div-grid,.dec,.comp{grid-template-columns:1fr;grid-template-rows:auto}.row,.gap-row{grid-template-columns:1fr}.row .w{text-align:left}.foot{position:static;margin-top:20px}}
 @media print{
  @page{size:1600px 900px;margin:0}
  body{overflow:visible}.deck{height:auto;overflow:visible}
@@ -150,7 +168,7 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
    <div class="lbl" style="margin:0 0 2px">Today in three numbers</div>
    <div class="card"><div class="big r">5</div><div><p>Items due today</p><small>Shane 3 · William 2, first deadline 15:00</small></div></div>
    <div class="card"><div class="big">3</div><div><p>Client calls for Jake tonight</p><small>18:00 Heal · 18:30 Workzone · 19:30 VBO</small></div></div>
-   <div class="card"><div class="big y">2</div><div><p>Clients inside their first 30 days</p><small>Workzone 42/50, day 24, on pace. Xplor 16/50, day 11, slightly behind. Rigol and Lockton start Nov 16</small></div></div>
+   <div class="card"><div class="big y">2</div><div><p>Clients inside their first 30 days</p><small>Workzone 42/50, day 24, on pace. Xplor 14/50, day 11, behind pace. Rigol and Lockton start Nov 16</small></div></div>
   </div>
  </div>
  <div class="foot"><span>Aletto · CS Pulse Check · Team version</span><span>01</span></div>
@@ -160,7 +178,7 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
 <section class="slide" id="s2"><div class="in">
  <div class="eyebrow">Today at a glance</div>
  <h2>Where we stand this morning</h2>
- <p class="sub">As of Fri 13 Nov, 12:10 Madrid (CET). Each tile names its window. Meta data stops Nov 3 (Windsor expired), so ad numbers are older than the status notes.</p>
+ <p class="sub">As of Fri 13 Nov, 13:10 Madrid (CET). Each tile names its window. Meta data stops Nov 3 (Windsor expired), so ad numbers are older than the status notes.</p>
  <div class="body kpis">
   <div class="card kpi"><div class="lbl" style="margin-top:0">Account health · 16 accounts</div>
    <div class="v"><span class="r">5</span> <span class="mu2" style="color:var(--mu2)">/</span> <span class="y">10</span> <span style="color:var(--mu2)">/</span> <span class="g">1</span></div>
@@ -168,10 +186,10 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
    <div class="d">Red · amber · green. CEO report score adjusted for this week's emails and calls. Pre-launch accounts not counted.</div></div>
   <div class="card kpi"><div class="lbl" style="margin-top:0">Ad spend · Oct 21–27 · Windsor</div>
    <div class="v">$12,209<small>13 funnels</small></div>
-   <div class="d">Meta via Windsor, last read Nov 3 <span class="stale">WINDSOR PAUSED</span> Leads now come only from GHL sub-accounts: live for Workzone, Xplor, Rigol, Aviro360 and FamCare; other accounts pending a GHL check.</div></div>
+   <div class="d">Meta via Windsor, last read Nov 3 <span class="stale">WINDSOR PAUSED</span> Leads now come only from GHL sub-accounts. GHL has been read for every active client with a sub-account. Heal, Evolve and TrustStar are not tracked in GHL.</div></div>
   <div class="card kpi"><div class="lbl" style="margin-top:0">First-month hero metrics</div>
    <div class="v">42<small>/ 50 · Workzone · on pace</small></div>
-   <div class="d">Day 24 of 30, 6 days left. At about 1.75 leads a day it lands around 52. Xplor is also in its first 30 days: 16 of 50, day 11, slightly behind pace. CPL pending Windsor.</div></div>
+   <div class="d">Day 24 of 30, 6 days left. At about 1.75 leads a day it lands around 52. Xplor is also in its first 30 days: 14 of 50, day 11, behind pace. CPL pending Windsor.</div></div>
   <div class="card kpi"><div class="lbl" style="margin-top:0">CS responsiveness · last week</div>
    <div class="v">0.23<small>business hrs median</small></div>
    <div class="d">29 client emails, 1 red. Nov 12: no red flags, nothing unanswered.</div></div>
@@ -182,7 +200,7 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
    <div class="v">3<small>accounts</small></div>
    <div class="d">VBO Nov 30 · Evolve Nov 30 · Rigol Dec 15. DBSync is handled by Jake.</div></div>
  </div>
- <div class="foot"><span>Sources: CEO report (built Nov 12), CS escalations Nov 12, CS Rundown Nov 13, Notion CS Agent Run Nov 13</span><span>02</span></div>
+ <div class="foot"><span>Sources: CEO report (built Nov 12), GHL sub-accounts Oct 21–Nov 12 (read Fri 13 Nov, 13:10 Madrid), CS escalations Nov 12, CS Rundown Nov 13</span><span>02</span></div>
 </div></section>
 
 <!-- 3 DUE TODAY -->
@@ -208,16 +226,16 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
  <p class="sub">Green 70+, amber 45–69, red under 45 on the CEO report scale, adjusted for this week. Vega Claims, Tiger Capital and Hyphen are prospects, not clients, and aren't on the board.</p>
  <div class="body hb">
   <div class="card edge-r"><div class="nm">VBO Tickets<i class="bg-r"></i></div><div class="own">William</div><p>Mike has raised concerns about results. Jake talks to him tonight at 19:30.</p></div>
-  <div class="card edge-r"><div class="nm">Evolve<i class="bg-r"></i></div><div class="own">William · Shane</div><p>Ads paused at Dave's request until about Nov 18. No call since Oct 28.</p></div>
+  <div class="card edge-r"><div class="nm">Evolve<i class="bg-r"></i></div><div class="own">William · Shane</div><p>Ads paused at Dave's request until about Nov 18. Leads not tracked in GHL. No call since Oct 28.</p></div>
   <div class="card edge-r"><div class="nm">Rigol<i class="bg-r"></i></div><div class="own">Shane · William</div><p>Not live since May kickoff. Ads approved Nov 12, go-live Mon Nov 16.</p></div>
   <div class="card edge-r"><div class="nm">DBSync<i class="bg-r"></i></div><div class="own">Jake</div><p>Handled by Jake.</p></div>
-  <div class="card edge-r"><div class="nm">Clockspring<i class="bg-r"></i></div><div class="own">William</div><p>Quiet. MQLs down to 3 from 7–8 <span class="stale">FROM CALL, GHL CHECK PENDING</span> Funnel 2.0 yes/no from Adam still pending.</p></div>
-  <div class="card edge-y"><div class="nm">Xplor / FieldEdge<i class="bg-y"></i></div><div class="own">Shane · William</div><p>Meta live. Jon frustrated about the Meta budget level. GHL: 16 leads since Nov 3, day 11 of 30, slightly behind pace for 50.</p></div>
+  <div class="card edge-r"><div class="nm">Clockspring<i class="bg-r"></i></div><div class="own">William</div><p>GHL Oct 21–Nov 12: 16 leads, 0 calls logged, 3 booked, 0 showed, 1 no-show. Funnel 2.0 yes/no from Adam still pending.</p></div>
+  <div class="card edge-y"><div class="nm">Xplor / FieldEdge<i class="bg-y"></i></div><div class="own">Shane · William</div><p>Meta live. Jon frustrated about the Meta budget level. GHL Oct 21–Nov 12: 14 leads (1 staff excluded), day 11 of 30, behind pace for 50.</p></div>
   <div class="card edge-y"><div class="nm">Workzone<i class="bg-y"></i></div><div class="own">William · Shane</div><p>First self-booked call today. GHL: 42 of 50 leads, day 24 of 30, on pace. A2P failed.</p></div>
-  <div class="card edge-y"><div class="nm">Heal Clinical<i class="bg-y"></i></div><div class="own">William · Shane</div><p>Tim is happy, wants help on 2 new projects. Old VSL link still 404s.</p></div>
-  <div class="card edge-y"><div class="nm">HRG<i class="bg-y"></i></div><div class="own">William</div><p>Funnel 2 record week, 11 leads / 8 qualified <span class="stale">FROM CALL, GHL CHECK PENDING</span> Meta ads paused by an ad-account error, Scott silent.</p></div>
+  <div class="card edge-y"><div class="nm">Heal Clinical<i class="bg-y"></i></div><div class="own">William · Shane</div><p>Tim is happy, wants help on 2 new projects. Leads not tracked in GHL. Old VSL link still 404s.</p></div>
+  <div class="card edge-y"><div class="nm">HRG<i class="bg-y"></i></div><div class="own">William</div><p>GHL Oct 21–Nov 12: 49 leads, 80 outbound calls, 5 booked, 1 showed. Meta ads paused by an ad-account error, Scott silent.</p></div>
   <div class="card edge-y"><div class="nm">FamCare<i class="bg-y"></i></div><div class="own">William · Shane</div><p>New page and 22 video ads live. George records next week. Volume still soft.</p></div>
-  <div class="card edge-y"><div class="nm">TrustStar<i class="bg-y"></i></div><div class="own">William · Shane</div><p>Admiral's Letter books well. Rob wants lower weekly ad spend. Steve's login unconfirmed.</p></div>
+  <div class="card edge-y"><div class="nm">TrustStar<i class="bg-y"></i></div><div class="own">William · Shane</div><p>Admiral's Letter is the live page. Not tracked in GHL. Rob wants lower weekly ad spend. Steve's login unconfirmed.</p></div>
   <div class="card edge-y"><div class="nm">Imorgon<i class="bg-y"></i></div><div class="own">William · Shane</div><p>Andy's Letter page ready. RSNA Chicago campaign from Nov 27.</p></div>
   <div class="card edge-y"><div class="nm">Lockton<i class="bg-y"></i></div><div class="own">Yona · Rian · Shane</div><p>New client. Kickoff Mon Nov 16, 21:00. Lockton approves all copy.</p></div>
   <div class="card edge-y"><div class="nm">Aviro360<i class="bg-y"></i></div><div class="own">William · Yona</div><p>Ads bring leads, Brian's team isn't calling them. Check-in Nov 25.</p></div>
@@ -225,11 +243,45 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
   <div class="card edge-g"><div class="nm">Sandler<i class="bg-g"></i></div><div class="own">William · Shane</div><p>Leads up after the pivot. Enrichment missing the 5 new states.</p></div>
   <div class="card" style="background:transparent;border-style:dashed"><div class="nm" style="color:var(--mu)">Key</div><p><span class="r">●</span> Red under 45<br><span class="y">●</span> Amber 45–69<br><span class="g">●</span> Green 70+</p></div>
  </div>
- <div class="foot"><span>Sources: CEO report Nov 12, CS escalations Nov 12, Fathom weeklies Nov 11–12</span><span>04</span></div>
+ <div class="foot"><span>Sources: CEO report Nov 12, GHL sub-accounts Oct 21–Nov 12, CS escalations Nov 12, Fathom weeklies Nov 11–12</span><span>04</span></div>
 </div></section>
 
-<!-- 5 DIVIDER -->
-<section class="slide" id="s5"><div class="in">
+
+<!-- 5 COMPLIANCE -->
+<section class="slide slide-comp" id="s5"><div class="in">
+ <div class="eyebrow">Client compliance · GHL Oct 21–Nov 12</div>
+ <h2>Client compliance: are clients working their leads?</h2>
+ <p class="sub">Calls, bookings and shows from each client's own GHL sub-account, Oct 21 to Nov 12, 2026. As of Fri 13 Nov, 13:10 Madrid (CET).</p>
+ <div class="body comp">
+  <div class="card" style="padding:2px 6px">
+   <table>
+    <tr><th>Client</th><th>GHL leads</th><th>Calls logged in GHL</th><th>Booked / showed / no-show</th><th>Verdict</th></tr>
+    <tr><td><b>VBO Tickets</b></td><td class="n">12<small>1 staff/test</small></td><td>10 outbound, 8 unique leads, 6 answered, avg 36s<small>All by Courtney Files</small></td><td class="n">1 / 0 / 0<small>The booking was then cancelled</small></td><td class="ver">Courtney is calling, but calls are short and the one booking was cancelled.</td></tr>
+    <tr><td><b>Workzone</b></td><td class="n">42<small>44 contacts, 2 staff</small></td><td>0 calls in GHL<small>Automated email reached 19 of 20 newest sampled leads</small></td><td class="n">1 / 0 / 0<small>1 confirmed, none showed yet</small></td><td class="ver">No calls logged in GHL. Outreach is email only. One booking confirmed, none showed yet.</td></tr>
+    <tr><td><b>Xplor / FieldEdge</b></td><td class="n">14<small>15 contacts, 1 staff</small></td><td>0 calls in GHL<small>All 14 prospects got automated email, no SMS</small></td><td class="n">0 / 0 / 0</td><td class="ver">No calls logged in GHL. Email only, and none booked.</td></tr>
+    <tr><td><b>Aviro360</b></td><td class="n">16</td><td>1 outbound, 1 unique lead, 1 answered, avg 31s<small>Brian Murphy</small></td><td class="n">1 / 0 / 0</td><td class="ver">16 leads and only 1 call. Leads are not being worked.</td></tr>
+    <tr><td><b>FamCare</b></td><td class="n">20</td><td>945 outbound, 793 answered, avg 12s<small>Mark Sharp · dialer pattern. 153 unique contacts, includes older leads</small></td><td class="n">7 / 0 / 6</td><td class="ver">Heavy dialing and 7 bookings, but 6 no-shows and nobody showed.</td></tr>
+    <tr><td><b>HRG</b></td><td class="n">49</td><td>80 outbound, 71 answered, avg 35s<small>Andrew Garcia 75 (38 unique), Mellissa Harmon 5 (5 unique)</small></td><td class="n">5 / 1 / 0<small>4 confirmed</small></td><td class="ver">Strongest follow-up in the group. 5 booked, 1 showed so far.</td></tr>
+    <tr><td><b>Clockspring</b></td><td class="n">16</td><td>0 calls in GHL</td><td class="n">3 / 0 / 1<small>2 confirmed</small></td><td class="ver">No calls logged in GHL. 3 booked, none showed, 1 no-show.</td></tr>
+    <tr><td><b>Imorgon</b></td><td class="n">11</td><td>0 calls in GHL</td><td class="n">5 / 0 / 0<small>5 confirmed, none showed yet</small></td><td class="ver">No calls logged in GHL. 5 booked and confirmed, none showed yet.</td></tr>
+    <tr><td><b>All Tips Matter</b></td><td class="n">11</td><td>10 outbound to 5 unique leads, avg 1m 31s<small>Brian Mas</small></td><td class="n">7 / 0 / 4</td><td class="ver">Calling is happening, but 4 of 7 bookings were no-shows and nobody showed.</td></tr>
+    <tr><td><b>Sandler</b></td><td class="n">13<small>1 staff</small></td><td>26 outbound to 12 unique leads, 22 answered, avg 2m 43s<small>Michael Pape</small></td><td class="n">3 / 1 / 0</td><td class="ver">Solid calling. 3 booked, 1 showed.</td></tr>
+    <tr><td><b>Rigol</b></td><td class="n">0 real leads<small>1 test contact</small></td><td>0 calls in GHL</td><td class="n">0 / 0 / 0</td><td class="ver">Not launched. Go-live Mon Nov 16.</td></tr>
+    <tr><td><b>Heal Clinical</b></td><td class="n">Not tracked in GHL<small>Sub-account has 0 contacts</small></td><td>not shown in GHL</td><td class="n">not shown in GHL</td><td class="ver">Leads not tracked in GHL.</td></tr>
+    <tr><td><b>Evolve</b></td><td class="n">Not tracked in GHL<small>Both sub-accounts empty</small></td><td>not shown in GHL</td><td class="n">not shown in GHL</td><td class="ver">Leads not tracked in GHL. Ads paused at Dave's request.</td></tr>
+    <tr><td><b>TrustStar</b></td><td class="n">Not tracked in GHL<small>No sub-account found</small></td><td>not shown in GHL</td><td class="n">not shown in GHL</td><td class="ver">Not tracked in GHL.</td></tr>
+    <tr><td><b>Lockton</b></td><td class="n">No sub-account yet</td><td>not shown in GHL</td><td class="n">not shown in GHL</td><td class="ver">New. Kickoff Mon Nov 16.</td></tr>
+    <tr><td><b>DBSync</b></td><td colspan="3">Handled by Jake</td><td class="ver">Handled by Jake.</td></tr>
+   </table>
+  </div>
+  <div class="gaps"><h3>Biggest gaps</h3><p>Aviro360 (16 leads, 1 call). Workzone and Xplor (no calls logged, email only). Clockspring and Imorgon (no calls logged). FamCare and All Tips Matter (bookings not showing up). Heal, Evolve and TrustStar not tracked in GHL.</p></div>
+  <p class="fn">Answered means the call connected, not that a conversation happened. GHL doesn't show staff login dates, so daily CRM logins can't be checked. Calls made outside GHL won't show here.</p>
+ </div>
+ <div class="foot"><span>Source: each client's GHL sub-account, Oct 21–Nov 12, 2026. Read Fri 13 Nov, 13:10 Madrid (CET)</span><span>05</span></div>
+</div></section>
+
+<!-- 6 DIVIDER -->
+<section class="slide" id="s6"><div class="in">
  <div class="div-grid">
   <div><div class="eyebrow">Section · Red accounts</div><div class="huge" style="margin-top:20px">5</div><h2 style="font-size:44px">Red accounts</h2><p class="sub">VBO, Evolve, Rigol, Clockspring, and DBSync (handled by Jake).</p></div>
   <div style="display:grid;gap:14px">
@@ -237,22 +289,22 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
    <div class="card stake"><span class="pill">Biggest stake 2</span><h3>Rigol: not live since May</h3><p style="font-size:15px">Kickoff May 22, launch call Sep 25, still not live. Mike approved the corrected ads Nov 12 and the Free Custom Assessment replaces the jitter worksheet. End of flight Dec 15.</p><p class="lbl" style="color:var(--red)">Next · live Mon Nov 16, or a new date to Mike and Jake by 18:00 today</p></div>
   </div>
  </div>
- <div class="foot"><span>Sources: Fathom VBO Nov 11, Fathom Rigol Nov 12, Notion CS Agent Run Nov 13</span><span>05</span></div>
+ <div class="foot"><span>Sources: Fathom VBO Nov 11, Fathom Rigol Nov 12, Notion CS Agent Run Nov 13</span><span>06</span></div>
 </div></section>
 
-<!-- 6 RED DETAIL 1 -->
-<section class="slide" id="s6"><div class="in">
+<!-- 7 RED DETAIL 1 -->
+<section class="slide" id="s7"><div class="in">
  <div class="eyebrow">Red accounts · 1 of 2</div>
  <h2>VBO, Evolve and Rigol: what it takes to hold them</h2>
  <div class="body cols3">
   <div class="card edge-r" style="display:flex;flex-direction:column"><h3>VBO Tickets</h3><div class="who">Mike MacPherson, Frank Sumner · owner William</div>
    <div class="lbl">Status</div><p>Mike said on Nov 11 the campaign isn't delivering and that it's the results, not our service. Jake talks to him tonight at 19:30.</p>
-   <div class="lbl">What the numbers say</div><ul><li>Hero window Aug 25–Sep 23: 28/50 leads, CPL $117, missed <span class="stale">FROM CALL, GHL CHECK PENDING</span></li><li>Oct 21–27: 3 leads, 2 MQL, 1 booked <span class="stale">FROM CALL, GHL CHECK PENDING</span></li><li>Meta reports 0 leads Nov 5–11</li></ul>
+   <div class="lbl">What the numbers say</div><ul><li>GHL Oct 21–Nov 12: 12 leads (1 staff/test), 10 outbound calls by Courtney Files (8 unique leads), 6 answered, avg 36s</li><li>1 booked, then cancelled, 0 showed</li><li>Meta reports 0 leads Nov 5–11</li></ul>
    <div class="lbl">Next</div><ul><li>William: guest-experience page + creatives live, confirm the live daily budget (sources differ) · Tue Nov 17</li><li>Courtney (VBO) is calling the 3 museum leads who hit STOP</li></ul>
    <div class="eof"><span>End of flight</span><b>Nov 30</b></div></div>
   <div class="card edge-r" style="display:flex;flex-direction:column"><h3>Evolve Leadership</h3><div class="who">Dave Newell · owners William, Shane</div>
    <div class="lbl">Status</div><p>Dave declined the Nov 4 weekly and asked for a 2-week pause, regroup about Nov 18. Paused the same day. No recording of the planned Nov 6 alignment.</p>
-   <div class="lbl">What the numbers say</div><ul><li>Hero 35/50, CPL $85, missed <span class="stale">FROM CALL, GHL CHECK PENDING</span></li><li>Oct 21–27: 3 leads, 3 MQL, 1 booked <span class="stale">FROM CALL, GHL CHECK PENDING</span></li><li>First deal closed from our leads (Oct 23)</li></ul>
+   <div class="lbl">What the numbers say</div><ul><li>Leads not tracked in GHL. Both GHL sub-accounts have no contacts and no pipeline.</li><li>Ads paused at Dave's request.</li><li>First deal closed from our leads (Oct 23)</li></ul>
    <div class="lbl">Next</div><ul><li>Jake syncs with Dave Fri Nov 20 on restart criteria: creatives, what "working" means</li><li>Yona: fix the Nov 20 clash with this Pulse Check</li></ul>
    <div class="eof"><span>End of flight</span><b>Nov 30</b></div></div>
   <div class="card edge-r" style="display:flex;flex-direction:column"><h3>Rigol</h3><div class="who">Mike Wohlert · owner Shane, ads William</div>
@@ -261,66 +313,66 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
    <div class="lbl">Next</div><ul><li>Live Mon Nov 16, or new date to Mike + Jake by 18:00 today</li><li>William points ads and page at the assessment</li></ul>
    <div class="eof"><span>End of flight</span><b>Dec 15</b></div></div>
  </div>
- <div class="foot"><span>Sources: Fathom 896184484 (VBO), CEO report Nov 12, Fathom 897602537 (Rigol), CS escalations</span><span>06</span></div>
+ <div class="foot"><span>Sources: Fathom 896184484 (VBO), CEO report Nov 12, Fathom 897602537 (Rigol), CS escalations</span><span>07</span></div>
 </div></section>
 
-<!-- 7 RED DETAIL 2 -->
-<section class="slide" id="s7"><div class="in">
+<!-- 8 RED DETAIL 2 -->
+<section class="slide" id="s8"><div class="in">
  <div class="eyebrow">Red accounts · 2 of 2</div>
  <h2>DBSync and Clockspring</h2>
  <div class="body" style="grid-template-rows:auto 1fr">
   <div class="row edge-r" style="grid-template-columns:200px 1fr 130px"><span class="o">DBSync</span><span class="t">Handled by Jake. No team action; route anything from DBSync to Jake.</span><span class="w" style="color:var(--mu)">Jake</span></div>
   <div class="card edge-r" style="display:grid;grid-template-columns:1.1fr 1fr;gap:28px;padding:28px 32px;align-self:start">
    <div><h3 style="font-size:22px">Clockspring</h3><div class="who">Adam Goerdt, Chad Truhn · owner William · score 38</div>
-    <div class="lbl">Status</div><p>Quiet disengagement. MQLs fell to 3 from 7–8 <span class="stale">FROM CALL, GHL CHECK PENDING</span> Weekly ad spend cut from $1,400 to $700. Funnel 2.0 proposal sent Nov 4, no yes/no yet. Structural CTR problem remains.</p>
+    <div class="lbl">Status</div><p>Quiet disengagement. GHL Oct 21–Nov 12: 16 leads, 0 calls logged, 3 booked (2 confirmed), 0 showed, 1 no-show. Weekly ad spend cut from $1,400 to $700. Funnel 2.0 proposal sent Nov 4, no yes/no yet. Structural CTR problem remains.</p>
     <div class="lbl">Next</div><ul><li>William: get Adam's yes or no on Funnel 2.0 · Wed Nov 18</li><li>Concentrate the $700/wk on ads above 1% CTR until Funnel 2.0 ships</li></ul></div>
    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start">
     <div class="card kpi" style="background:var(--p2)"><div class="lbl" style="margin-top:0">Ad spend · Oct 21–27</div><div class="v" style="font-size:32px">$1,454.92</div></div>
-    <div class="card kpi" style="background:var(--p2)"><div class="lbl" style="margin-top:0">CPL · Oct 21–27</div><div class="v r" style="font-size:32px">$727</div></div>
-    <div class="card kpi" style="background:var(--p2)"><div class="lbl" style="margin-top:0">Leads · MQL · booked</div><div class="v" style="font-size:32px">2 · 2 · 0</div></div>
-    <div class="card kpi" style="background:var(--p2)"><div class="lbl" style="margin-top:0">Meta leads · Nov 5–11</div><div class="v" style="font-size:32px">0</div></div>
-    <p class="src" style="grid-column:1/-1">Oct 21–27 dashboard pull <span class="stale">FROM CALL, GHL CHECK PENDING</span> Hero window (from Dec 2, 2025) was a hit.</p>
+    <div class="card kpi" style="background:var(--p2)"><div class="lbl" style="margin-top:0">CPL</div><div class="v" style="font-size:28px;color:var(--yel)">Pending</div></div>
+    <div class="card kpi" style="background:var(--p2)"><div class="lbl" style="margin-top:0">Leads · booked · showed</div><div class="v" style="font-size:32px">16 · 3 · 0</div></div>
+    <div class="card kpi" style="background:var(--p2)"><div class="lbl" style="margin-top:0">Calls logged in GHL</div><div class="v" style="font-size:32px">0</div></div>
+    <p class="src" style="grid-column:1/-1">Leads, bookings and calls: GHL Oct 21–Nov 12. Ad spend: Windsor Oct 21–27. Earlier first-month result was reported as a hit; that older window was not re-checked in GHL this time.</p>
    </div>
   </div>
  </div>
  <p class="src">Sources: CEO report Nov 12, Notion CS Agent Run Nov 13.</p>
- <div class="foot"><span>Aletto · CS Pulse Check</span><span>07</span></div>
+ <div class="foot"><span>Aletto · CS Pulse Check</span><span>08</span></div>
 </div></section>
 
-<!-- 8 AMBER 1 -->
-<section class="slide" id="s8"><div class="in">
+<!-- 9 AMBER 1 -->
+<section class="slide" id="s9"><div class="in">
  <div class="eyebrow">Amber accounts · 1 of 2</div>
  <h2>Five amber accounts with momentum to protect</h2>
  <div class="body cols5">
-  <div class="card edge-y"><h3>Xplor / FieldEdge</h3><div class="who">Jon Blissenbach · Shane, William</div><div class="lbl">Now</div><p>Meta live. GHL: 16 leads since Nov 3 (day 11 of 30), slightly behind pace for 50. CPL pending Windsor. Google audit: pause non-brand Google, keep brand, scale Meta. Jon wrote Nov 11 that the Meta budget is below what was agreed. Ticket #39 SLA-breached ~48h.</p><div class="lbl">Next</div><ul><li>Shane: written answer to Jon today</li><li>Shane: #39 Google cap with Dmytro, P20 creative proof · Tue Nov 17</li><li>Yona: book the Retention Flight walkthrough</li></ul></div>
-  <div class="card edge-y"><h3>Workzone</h3><div class="who">Ash Didwania · William, Shane</div><div class="lbl">Now</div><p>20 new AD11-based creatives live. Windsor ad spend Oct 21–Nov 3: $1,402.97. GHL: 42 leads Oct 21–Nov 12 (2 staff excluded), 42 of 50, on pace. CPL pending Windsor. First self-booked call (Ben Theodore) today 19:00. A2P verification failed.</p><div class="lbl">Next</div><ul><li>Today: qualifying question, IG-ad confirmation, A2P</li><li>William: calendar on the VSL page + freebie / direct-to-VSL split · Tue Nov 17</li></ul></div>
-  <div class="card edge-y"><h3>Heal Clinical</h3><div class="who">Tim Moran · William, Shane</div><div class="lbl">Now</div><p>Tim is positive ("partners for life"). Nov 3: 5 leads, 5 MQL, 1 booked, CPL ~$130 <span class="stale">FROM CALL, GHL CHECK PENDING</span> healclinical.com/vsl-4263 still 404s (heal-clinical.com works). Unverified whether ads still point there.</p><div class="lbl">Next</div><ul><li>William: confirm no ad uses the dead URL · Mon Nov 16</li><li>Jake covers Tim's 2 new projects on tonight's 18:00 call</li></ul></div>
-  <div class="card edge-y"><h3>HRG</h3><div class="who">Scott Weidemeyer · William</div><div class="lbl">Now</div><p>Funnel 2 record week: 11 leads, 8 qualified (prior 7/7) <span class="stale">FROM CALL, GHL CHECK PENDING</span> Two deals moving. Meta ads paused by an ad-account error. Scott hasn't replied since Wed.</p><div class="lbl">Next</div><ul><li>William: chase Scott daily until ads run; split pipeline by funnel</li><li>Shane: date for the LinkedIn test talk</li></ul></div>
-  <div class="card edge-y"><h3>FamCare</h3><div class="who">George Ritacco · William, Shane</div><div class="lbl">Now</div><p>Sentiment back to Neutral. New page + 22 AI-cut video ads live. Yona sent George the scripts Nov 12. Nov 5–11 GHL: 8 leads, 2 MQL, 2 booked. Median first call ~17h.</p><div class="lbl">Next</div><ul><li>Jake: 5 script answers · Sun Nov 15</li><li>William: "Funders" headline + retargeting with the 22 videos · Wed Nov 18</li><li>Yona: George's placeholders</li></ul></div>
+  <div class="card edge-y"><h3>Xplor / FieldEdge</h3><div class="who">Jon Blissenbach · Shane, William</div><div class="lbl">Now</div><p>Meta live. GHL Oct 21–Nov 12: 14 leads (1 staff excluded), day 11 of 30, behind pace for 50. CPL pending Windsor. Google audit: pause non-brand Google, keep brand, scale Meta. Jon wrote Nov 11 that the Meta budget is below what was agreed. Ticket #39 SLA-breached ~48h.</p><div class="lbl">Next</div><ul><li>Shane: written answer to Jon today</li><li>Shane: #39 Google cap with Dmytro, P20 creative proof · Tue Nov 17</li><li>Yona: book the Retention Flight walkthrough</li></ul></div>
+  <div class="card edge-y"><h3>Workzone</h3><div class="who">Ash Didwania · William, Shane</div><div class="lbl">Now</div><p>20 new AD11-based creatives live. Windsor ad spend Oct 21–Nov 3: $1,402.97. GHL: 42 leads Oct 21–Nov 12 (2 staff excluded), 42 of 50, on pace. CPL pending Windsor. First self-booked call today 19:00. A2P verification failed.</p><div class="lbl">Next</div><ul><li>Today: qualifying question, IG-ad confirmation, A2P</li><li>William: calendar on the VSL page + freebie / direct-to-VSL split · Tue Nov 17</li></ul></div>
+  <div class="card edge-y"><h3>Heal Clinical</h3><div class="who">Tim Moran · William, Shane</div><div class="lbl">Now</div><p>Tim is positive ("partners for life"). Leads not tracked in GHL: the Heal Clinical sub-account has 0 contacts. healclinical.com/vsl-4263 still 404s (heal-clinical.com works). Unverified whether ads still point there.</p><div class="lbl">Next</div><ul><li>William: confirm no ad uses the dead URL · Mon Nov 16</li><li>Jake covers Tim's 2 new projects on tonight's 18:00 call</li></ul></div>
+  <div class="card edge-y"><h3>HRG</h3><div class="who">Scott Weidemeyer · William</div><div class="lbl">Now</div><p>GHL Oct 21–Nov 12: 49 leads, 80 outbound calls (Andrew Garcia 75, Mellissa Harmon 5), 5 booked, 4 confirmed, 1 showed. Two deals moving. Meta ads paused by an ad-account error. Scott hasn't replied since Wed.</p><div class="lbl">Next</div><ul><li>William: chase Scott daily until ads run; split pipeline by funnel</li><li>Shane: date for the LinkedIn test talk</li></ul></div>
+  <div class="card edge-y"><h3>FamCare</h3><div class="who">George Ritacco · William, Shane</div><div class="lbl">Now</div><p>Sentiment back to Neutral. New page + 22 AI-cut video ads live. Yona sent George the scripts Nov 12. GHL Oct 21–Nov 12: 20 leads, 945 outbound calls by Mark Sharp, 7 booked, 0 showed, 6 no-shows. Nov 5–11 GHL: 8 leads, 2 MQL, 2 booked.</p><div class="lbl">Next</div><ul><li>Jake: 5 script answers · Sun Nov 15</li><li>William: "Funders" headline + retargeting with the 22 videos · Wed Nov 18</li><li>Yona: George's placeholders</li></ul></div>
  </div>
- <div class="foot"><span>Sources: cs-log Google Ads Audit Nov 11, Fathom 896184476 / 896184478 / 897427123, CEO report Nov 12</span><span>08</span></div>
+ <div class="foot"><span>Sources: cs-log Google Ads Audit Nov 11, Fathom 896184476 / 896184478 / 897427123, CEO report Nov 12</span><span>09</span></div>
 </div></section>
 
-<!-- 9 AMBER 2 + GREEN -->
-<section class="slide" id="s9"><div class="in">
+<!-- 10 AMBER 2 + GREEN -->
+<section class="slide" id="s10"><div class="in">
  <div class="eyebrow">Amber accounts · 2 of 2 · and our one green</div>
  <h2>Five more amber, and Sandler in the green</h2>
  <div class="body cols3x2">
-  <div class="card edge-y"><h3>TrustStar / BlueStar</h3><div class="who">Rob Wray, Steve Carey · William, Shane</div><p style="margin-top:8px">Admiral's Letter books well: ~16 booked from 12 leads recently, ~$244 per booked call. Oct 21–27: 11 leads, 8 MQL, 4 booked. <span class="stale">FROM CALL, GHL CHECK PENDING</span></p><div class="lbl">Next</div><ul><li>William: confirm Steve's login · Wed Nov 18</li><li>Rob asked to cut weekly ad spend; William defends Admiral's Letter, Jake decides</li></ul></div>
-  <div class="card edge-y"><h3>Imorgon Medical</h3><div class="who">Andy Milkowski · William, Shane</div><p style="margin-top:8px">"Andy's Letter" page live, replaces the VSL page. Week before Nov 11: 5 leads, 4 MQL, 1 booked <span class="stale">FROM CALL, GHL CHECK PENDING</span> RSNA Chicago geo campaign Nov 27–Dec 3.</p><div class="lbl">Next</div><ul><li>William: Andy's edits before 15:00 today</li><li>William: RSNA geo campaign ready · Fri Nov 20</li><li>Jake: reviewed scripts + editing example · Sun</li></ul></div>
+  <div class="card edge-y"><h3>TrustStar / BlueStar</h3><div class="who">Rob Wray, Steve Carey · William, Shane</div><p style="margin-top:8px">Admiral's Letter is the live page. Leads not tracked in GHL: no sub-account was found.</p><div class="lbl">Next</div><ul><li>William: confirm Steve's login · Wed Nov 18</li><li>Rob asked to cut weekly ad spend; William defends Admiral's Letter, Jake decides</li></ul></div>
+  <div class="card edge-y"><h3>Imorgon Medical</h3><div class="who">Andy Milkowski · William, Shane</div><p style="margin-top:8px">"Andy's Letter" page live, replaces the VSL page. GHL Oct 21–Nov 12: 11 leads, 0 calls logged, 5 booked, 5 confirmed, 0 showed yet. RSNA Chicago geo campaign Nov 27–Dec 3.</p><div class="lbl">Next</div><ul><li>William: Andy's edits before 15:00 today</li><li>William: RSNA geo campaign ready · Fri Nov 20</li><li>Jake: reviewed scripts + editing example · Sun</li></ul></div>
   <div class="card edge-y"><h3>Lockton</h3><div class="who">Aaron Marsden, Spencer Scheitler · Yona, Rian</div><p style="margin-top:8px">New client, alignment held Nov 11. Lockton approves all ad copy. Kickoff Mon Nov 16 21:00, Shane runs it per Yona (Jake to confirm).</p><div class="lbl">Next</div><ul><li>Yona: surveys + Notion client row · Mon Nov 16</li><li>Rian: references in the kickoff brief</li><li>Jake: pre-kickoff pack · Sun</li></ul></div>
-  <div class="card edge-y"><h3>Aviro360</h3><div class="who">Brian Murphy · William, Yona</div><p style="margin-top:8px">Ads still bring MQLs, but 0 of 5 leads called Oct 29–Nov 4 and 1 call logged in 30 days. Nov 5–11: 2 leads, 1 MQL, 1 booked. No recording of the Nov 11 sync.</p><div class="lbl">Next</div><ul><li>Brian owns the 5-minute call; log every attempt in GHL</li><li>Yona: send the Nov 25 check-in invite</li></ul></div>
-  <div class="card edge-y"><h3>All Tips Matter</h3><div class="who">Brian Mas · William</div><p style="margin-top:8px">Funnel #2 launched Oct 30 and is a win, but volume is thin. Oct 21–27: 3 leads, 1 MQL, 2 booked <span class="stale">FROM CALL, GHL CHECK PENDING</span></p><div class="lbl">Next</div><ul><li>Watch Funnel #2 for 7 days, kill sub-1% CTR ads</li><li>No dated next step in sources: William to set one</li></ul></div>
-  <div class="card edge-g"><h3>Sandler / Summit Vista <span class="pill" style="margin-left:6px;color:var(--grn);border-color:rgba(62,207,110,.4)">Green · 79</span></h3><div class="who">Michael Pape · William, Shane</div><p style="margin-top:8px">Nov 5 weekly: 6 leads, 6 MQL, 1 booked, but 4 of 6 no-fit because enrichment lacks the 5 new states. Hero window closed Nov 6: 7/50, missed. <span class="stale">FROM CALL, GHL CHECK PENDING</span></p><div class="lbl">Next</div><ul><li>William: enrichment for the 5 states · Wed Nov 18</li><li>Nov 12 weekly skipped for the Sandler summit</li></ul></div>
+  <div class="card edge-y"><h3>Aviro360</h3><div class="who">Brian Murphy · William, Yona</div><p style="margin-top:8px">Ads still bring leads, but they are not being worked. GHL Oct 21–Nov 12: 16 leads, 1 call (Brian Murphy, 31s), 1 booked, 0 showed. No recording of the Nov 11 sync.</p><div class="lbl">Next</div><ul><li>Brian owns the 5-minute call; log every attempt in GHL</li><li>Yona: send the Nov 25 check-in invite</li></ul></div>
+  <div class="card edge-y"><h3>All Tips Matter</h3><div class="who">Brian Mas · William</div><p style="margin-top:8px">Funnel #2 launched Oct 30 and is a win, but volume is thin. GHL Oct 21–Nov 12: 11 leads, 10 outbound calls by Brian Mas to 5 unique leads, avg 1m 31s, 7 booked, 4 no-shows, 0 showed.</p><div class="lbl">Next</div><ul><li>Watch Funnel #2 for 7 days, kill sub-1% CTR ads</li><li>No dated next step in sources: William to set one</li></ul></div>
+  <div class="card edge-g"><h3>Sandler / Summit Vista <span class="pill" style="margin-left:6px;color:var(--grn);border-color:rgba(62,207,110,.4)">Green · 79</span></h3><div class="who">Michael Pape · William, Shane</div><p style="margin-top:8px">GHL Oct 21–Nov 12: 13 leads (1 staff), 26 outbound calls by Michael Pape to 12 unique leads, 22 answered, avg 2m 43s, 3 booked, 1 showed. Enrichment still lacks the 5 new states. Earlier first-month result (window closed Nov 6) was reported as missed; that older window was not fully re-checked in GHL this time.</p><div class="lbl">Next</div><ul><li>William: enrichment for the 5 states · Wed Nov 18</li><li>Nov 12 weekly skipped for the Sandler summit</li></ul></div>
  </div>
- <div class="foot"><span>Sources: CEO report Nov 12, Fathom Imorgon Nov 11, Fathom Lockton Nov 11, Notion CS Agent Run</span><span>09</span></div>
+ <div class="foot"><span>Sources: CEO report Nov 12, Fathom Imorgon Nov 11, Fathom Lockton Nov 11, Notion CS Agent Run</span><span>10</span></div>
 </div></section>
 
-<!-- 10 HERO METRICS -->
-<section class="slide" id="s10"><div class="in">
+<!-- 11 HERO METRICS -->
+<section class="slide" id="s11"><div class="in">
  <div class="eyebrow">First-month hero metrics · leads from GHL, spend from Windsor</div>
  <h2>Every client in its first 30 days, against the hero bar</h2>
- <p class="sub">Hero bar: 50+ leads and cost per lead at the $40 target (never above the $55 ceiling) within 30 days of launch. Leads count only from each client's GHL sub-account; ad spend only from Windsor. As of Fri 13 Nov, 12:10 Madrid (CET).</p>
+ <p class="sub">Hero bar: 50+ leads and cost per lead at the $40 target (never above the $55 ceiling) within 30 days of launch. Leads count only from each client's GHL sub-account; ad spend only from Windsor. As of Fri 13 Nov, 13:10 Madrid (CET).</p>
  <div class="body hero-grid" style="grid-template-columns:2.1fr 1fr">
   <div class="card" style="padding:8px 14px;align-self:start">
    <table>
@@ -328,9 +380,9 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
     <tr><td><b>Workzone</b><small>launched Oct 21</small></td><td class="n">Oct 21–Nov 19<small>day 24 of 30 · 6 left</small></td><td class="n" style="color:var(--grn)">42 / 50<small>Oct 21–Nov 12 · 2 staff excluded</small></td><td class="n">$1,402.97<small>Oct 21–Nov 3</small></td><td><span class="pill" style="color:var(--grn);border-color:rgba(62,207,110,.4)"><i class="bg-g"></i>On pace</span><small>CPL pending Windsor</small></td></tr>
     <tr><td><b>Rigol</b><small>pre-launch</small></td><td class="n">Not started<small>launch due Mon Nov 16</small></td><td class="n" style="color:var(--mu)">0 / 50<small>1 internal test contact only</small></td><td class="n" style="color:var(--mu)">No Windsor account yet</td><td><span class="pill">Not launched</span></td></tr>
     <tr><td><b>Lockton</b><small>new client</small></td><td class="n">Not started<small>kickoff Mon Nov 16</small></td><td class="n" style="color:var(--mu)">0 / 50<small>no GHL sub-account yet</small></td><td class="n" style="color:var(--mu)">n/a</td><td><span class="pill">Not started</span></td></tr>
-    <tr><td><b>Xplor</b><small>FieldEdge, Meta live</small></td><td class="n">Nov 3–Dec 2<small>day 11 of 30 · 19 left</small></td><td class="n" style="color:var(--yel)">16 / 50<small>since Nov 3 · 1 staff excluded</small></td><td class="n" style="color:var(--yel)">Not in Windsor</td><td><span class="pill" style="color:var(--yel);border-color:rgba(245,181,68,.45)"><i class="bg-y"></i>Slightly behind</span><small>CPL pending Windsor</small></td></tr>
+    <tr><td><b>Xplor</b><small>FieldEdge, Meta live</small></td><td class="n">Nov 3–Dec 2<small>day 11 of 30 · 19 left</small></td><td class="n" style="color:var(--yel)">14 / 50<small>Oct 21–Nov 12 · 1 staff excluded</small></td><td class="n" style="color:var(--yel)">Not in Windsor</td><td><span class="pill" style="color:var(--yel);border-color:rgba(245,181,68,.45)"><i class="bg-y"></i>Behind pace</span><small>CPL pending Windsor</small></td></tr>
    </table>
-   <p class="src" style="padding:0 10px 6px">Recently closed: Aviro360 Sep 27–Oct 26, 21/50 leads (GHL, live) on $3,253.35 Windsor spend = $155 CPL, missed. Sandler Oct 8–Nov 6, missed; live GHL recount pending. Onboarding, not launched: Dan Greenberg, Lyrion, Anchor Point.</p>
+   <p class="src" style="padding:0 10px 6px">Recently closed: Aviro360 Sep 27–Oct 26, 21/50 leads (GHL, live) on $3,253.35 Windsor spend = $155 CPL, missed. Sandler Oct 8–Nov 6, earlier reported as missed; that older window was not fully re-checked in GHL this time. GHL Oct 21–Nov 12: 13 leads (1 staff). Onboarding, not launched: Dan Greenberg, Lyrion, Anchor Point.</p>
   </div>
   <div style="display:grid;grid-template-rows:auto auto 1fr;gap:12px">
    <div class="card"><div class="lbl" style="margin-top:0">Workzone · hero window used</div>
@@ -343,51 +395,51 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
      <text x="0" y="74">Oct 21</text>
     </svg></div>
    <div class="card"><div class="lbl" style="margin-top:0">Workzone · Windsor ad spend</div><p><span class="num ci" style="font-size:26px">$1,402.97</span><br>Oct 21–Nov 3, about $100 a day. Windsor reads are paused since Nov 3, so Nov 4–13 is pending Windsor.</p></div>
-   <div class="card" style="font-size:13px"><div class="lbl" style="margin-top:0">What it means this week</div><ul><li>Workzone is on pace: 42 of 50, about 1.75 leads a day, lands around 52 by Nov 19.</li><li>Xplor is slightly behind: 16 of 50 through day 11, about 1.45 a day projects about 44. Needs about 1.8 a day from here.</li><li>CPL is pending Windsor for both. Workzone spend is only Oct 21–Nov 3 ($1,402.97); Xplor is not in Windsor.</li><li>Rigol has 0 real leads (one internal test contact). Launch due Mon Nov 16. Lockton window opens at launch.</li></ul></div>
+   <div class="card" style="font-size:13px"><div class="lbl" style="margin-top:0">What it means this week</div><ul><li>Workzone is on pace: 42 of 50, about 1.75 leads a day, lands around 52 by Nov 19.</li><li>Xplor is behind pace: 14 of 50 through day 11, about 1.3 a day projects about 38. Needs about 1.9 a day from here.</li><li>CPL is pending Windsor for both. Workzone spend is only Oct 21–Nov 3 ($1,402.97); Xplor is not in Windsor.</li><li>Rigol has 0 real leads (one internal test contact). Launch due Mon Nov 16. Lockton window opens at launch.</li></ul></div>
   </div>
  </div>
- <div class="foot"><span>Sources: leads = GHL sub-account, live Fri 13 Nov, 12:10 Madrid (CET), agency browser login, staff and test contacts excluded. Spend = Windsor (Meta), last read Nov 3.</span><span>10</span></div>
+ <div class="foot"><span>Sources: leads = GHL sub-account, Oct 21–Nov 12, live Fri 13 Nov, 13:10 Madrid (CET), staff and test contacts excluded. Spend = Windsor (Meta), last read Nov 3.</span><span>11</span></div>
 </div></section>
 
-<!-- 11 LEAD ENGINE -->
-<section class="slide" id="s11"><div class="in">
+<!-- 12 LEAD ENGINE -->
+<section class="slide" id="s12"><div class="in">
  <div class="eyebrow">Ad spend and lead engine</div>
  <h2>Ad spend by client, against leads, MQLs and bookings</h2>
- <p class="sub">Ad spend from Windsor (Meta), Oct 21–27, last read Nov 3 <span class="stale">WINDSOR PAUSED</span> Leads, MQL and booked only from each client's GHL sub-account. Workzone, Xplor, Rigol, Aviro360 and FamCare live Fri 13 Nov, 12:10 Madrid (CET). CPL = ad spend ÷ GHL leads, same days; green at or under the $55 ceiling, red above $120.</p>
+ <p class="sub">Ad spend from Windsor (Meta), Oct 21–27, last read Nov 3 <span class="stale">WINDSOR PAUSED</span> Leads and booked from each client's GHL sub-account, Oct 21–Nov 12, read Fri 13 Nov, 13:10 Madrid (CET). MQL is not shown in GHL for this pull, so no same-window CPL is shown. Heal, Evolve and TrustStar are not tracked in GHL.</p>
  <div class="body" style="grid-template-columns:1.6fr 1fr">
   <div class="card" style="padding:6px 16px">
    <table class="sp"><tr><th>Client</th><th>Ad spend · Oct 21–27 · Windsor</th><th>Leads</th><th>MQL</th><th>Booked</th><th>CPL</th></tr>
-   <tr><td class="cl">TrustStar</td><td class="sb"><div class="bar"><span style="width:100.0%"></span></div><b class="num">$1,506.43</b></td><td class="n" colspan="4" style="color:var(--mu)">GHL count pending access</td></tr><tr><td class="cl">Clockspring</td><td class="sb"><div class="bar"><span style="width:96.6%"></span></div><b class="num">$1,455.69</b></td><td class="n" colspan="4" style="color:var(--mu)">GHL count pending access</td></tr><tr><td class="cl">HRG (both funnels)</td><td class="sb"><div class="bar"><span style="width:94.2%"></span></div><b class="num">$1,419.22</b></td><td class="n" colspan="4" style="color:var(--mu)">GHL count pending access</td></tr><tr><td class="cl">Imorgon</td><td class="sb"><div class="bar"><span style="width:74.5%"></span></div><b class="num">$1,121.54</b></td><td class="n" colspan="4" style="color:var(--mu)">GHL count pending access</td></tr><tr><td class="cl">FamCare</td><td class="sb"><div class="bar"><span style="width:71.9%"></span></div><b class="num">$1,083.59</b></td><td class="n">8</td><td class="n">4</td><td class="n">1</td><td class="n r">$135</td></tr><tr><td class="cl">Heal</td><td class="sb"><div class="bar"><span style="width:67.9%"></span></div><b class="num">$1,023.39</b></td><td class="n" colspan="4" style="color:var(--mu)">GHL count pending access</td></tr><tr><td class="cl">All Tips Matter</td><td class="sb"><div class="bar"><span style="width:53.2%"></span></div><b class="num">$801.94</b></td><td class="n" colspan="4" style="color:var(--mu)">GHL count pending access</td></tr><tr><td class="cl">Aviro360</td><td class="sb"><div class="bar"><span style="width:51.2%"></span></div><b class="num">$771.73</b></td><td class="n">8</td><td class="n">6</td><td class="n">0</td><td class="n y">$96</td></tr><tr><td class="cl">VBO Tickets</td><td class="sb"><div class="bar"><span style="width:49.9%"></span></div><b class="num">$751.35</b></td><td class="n" colspan="4" style="color:var(--mu)">GHL count pending access</td></tr><tr><td class="cl">Evolve</td><td class="sb"><div class="bar"><span style="width:48.9%"></span></div><b class="num">$736.88</b></td><td class="n" colspan="4" style="color:var(--mu)">GHL count pending access</td></tr><tr><td class="cl">Workzone</td><td class="sb"><div class="bar"><span style="width:46.5%"></span></div><b class="num">$701.21</b></td><td class="n">42<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">n/a</td><td class="n" style="color:var(--mu)">n/a</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">Xplor / FieldEdge</td><td class="sb" style="color:var(--mu)">Not in Windsor</td><td class="n">16<small>since Nov 3</small></td><td class="n" style="color:var(--mu)">n/a</td><td class="n" style="color:var(--mu)">n/a</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">Sandler</td><td class="sb"><div class="bar"><span style="width:25.1%"></span></div><b class="num">$378.71</b></td><td class="n" colspan="4" style="color:var(--mu)">GHL count pending access</td></tr><tr class="dim"><td class="cl">DBSync</td><td colspan="5">Handled by Jake</td></tr><tr class="tot"><td class="cl">Total · 13 funnels <small>incl. DBSync; Xplor has no Windsor spend in this total</small></td><td class="sb"><b class="num">$12,209.45</b></td><td class="n" colspan="4">GHL live for Workzone, Xplor, Aviro360, FamCare; others pending</td></tr>
+   <tr><td class="cl">TrustStar</td><td class="sb"><div class="bar"><span style="width:100.0%"></span></div><b class="num">$1,506.43</b></td><td class="n" colspan="4" style="color:var(--mu)">Not tracked in GHL</td></tr><tr><td class="cl">Clockspring</td><td class="sb"><div class="bar"><span style="width:96.6%"></span></div><b class="num">$1,455.69</b></td><td class="n">16<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">3</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">HRG (both funnels)</td><td class="sb"><div class="bar"><span style="width:94.2%"></span></div><b class="num">$1,419.22</b></td><td class="n">49<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">5</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">Imorgon</td><td class="sb"><div class="bar"><span style="width:74.5%"></span></div><b class="num">$1,121.54</b></td><td class="n">11<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">5</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">FamCare</td><td class="sb"><div class="bar"><span style="width:71.9%"></span></div><b class="num">$1,083.59</b></td><td class="n">20<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">7</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">Heal</td><td class="sb"><div class="bar"><span style="width:67.9%"></span></div><b class="num">$1,023.39</b></td><td class="n" colspan="4" style="color:var(--mu)">Not tracked in GHL</td></tr><tr><td class="cl">All Tips Matter</td><td class="sb"><div class="bar"><span style="width:53.2%"></span></div><b class="num">$801.94</b></td><td class="n">11<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">7</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">Aviro360</td><td class="sb"><div class="bar"><span style="width:51.2%"></span></div><b class="num">$771.73</b></td><td class="n">16<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">1</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">VBO Tickets</td><td class="sb"><div class="bar"><span style="width:49.9%"></span></div><b class="num">$751.35</b></td><td class="n">12<small>1 staff/test · Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">1</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">Evolve</td><td class="sb"><div class="bar"><span style="width:48.9%"></span></div><b class="num">$736.88</b></td><td class="n" colspan="4" style="color:var(--mu)">Not tracked in GHL</td></tr><tr><td class="cl">Workzone</td><td class="sb"><div class="bar"><span style="width:46.5%"></span></div><b class="num">$701.21</b></td><td class="n">42<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">1</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">Xplor / FieldEdge</td><td class="sb" style="color:var(--mu)">Not in Windsor</td><td class="n">14<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">0</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">Sandler</td><td class="sb"><div class="bar"><span style="width:25.1%"></span></div><b class="num">$378.71</b></td><td class="n">13<small>1 staff · Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">3</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr class="dim"><td class="cl">DBSync</td><td colspan="5">Handled by Jake</td></tr><tr class="tot"><td class="cl">Total · 13 funnels <small>incl. DBSync; Xplor has no Windsor spend in this total</small></td><td class="sb"><b class="num">$12,209.45</b></td><td class="n" colspan="4">GHL read for every active client with a sub-account. Heal, Evolve and TrustStar not tracked in GHL</td></tr>
    </table>
   </div>
   <div style="display:grid;gap:10px;grid-auto-rows:1fr">
-   <div class="card edge-g"><div class="lbl" style="margin-top:0">Total ad spend · Oct 21–27 · Windsor</div><p><span class="num ci" style="font-size:26px">$12,209.45</span><br>All 13 funnels. Overall CPL still waits on the remaining GHL counts and a full Windsor window.</p></div>
-   <div class="card edge-y"><div class="lbl" style="margin-top:0">Live GHL, as of Fri 13 Nov, 12:10</div><p>Workzone <span class="num ci">42 leads</span> Oct 21–Nov 12 (2 staff excluded)<br>Xplor <span class="num ci">16 leads</span> since Nov 3 (1 staff excluded)<br>Aviro360 <span class="num ci">16 leads · 10 MQL · 1 booked</span><br>FamCare <span class="num ci">20 contacts · 7 MQL · 5 booked</span><br>Rigol: 0 real leads (one test contact)</p></div>
+   <div class="card edge-g"><div class="lbl" style="margin-top:0">Total ad spend · Oct 21–27 · Windsor</div><p><span class="num ci" style="font-size:26px">$12,209.45</span><br>All 13 funnels. Overall CPL still waits on a full Windsor window.</p></div>
+   <div class="card edge-y"><div class="lbl" style="margin-top:0">Live GHL, as of Fri 13 Nov, 13:10</div><p>Every active client with a sub-account has been read. Window Oct 21–Nov 12.<br>Workzone <span class="num ci">42 leads</span> · Xplor <span class="num ci">14 leads</span><br>HRG <span class="num ci">49</span> · FamCare <span class="num ci">20</span> · Aviro360 <span class="num ci">16</span><br>Clockspring <span class="num ci">16</span> · Sandler <span class="num ci">13</span> · VBO <span class="num ci">12</span><br>Imorgon and All Tips Matter <span class="num ci">11</span> each · Rigol 0 real leads<br>Heal, Evolve and TrustStar: not tracked in GHL</p></div>
    <div class="card edge-y"><div class="lbl" style="margin-top:0">Spend after Nov 3</div><p>Pending Windsor. Reads paused since Nov 3; no spend from other sources is shown here.</p></div>
-   <div class="card edge-r"><div class="lbl" style="margin-top:0">Why counts changed</div><p>The earlier version used dashboard lead counts. This version uses only GHL sub-accounts and Windsor, per the new rule.</p></div>
+   <div class="card edge-r"><div class="lbl" style="margin-top:0">Why counts changed</div><p>Call-based lead counts have been replaced with each client's GHL sub-account, Oct 21–Nov 12. Heal, Evolve and TrustStar are not tracked in GHL.</p></div>
   </div>
  </div>
- <div class="foot"><span>Sources: Windsor Meta daily (through Nov 3); GHL sub-accounts, live Fri 13 Nov, 12:10 Madrid (CET) (Workzone, Xplor, Rigol, Aviro360, FamCare). Other clients pending a GHL check.</span><span>11</span></div>
+ <div class="foot"><span>Sources: Windsor Meta daily (through Nov 3); GHL sub-accounts, Oct 21–Nov 12, live Fri 13 Nov, 13:10 Madrid (CET). Heal, Evolve and TrustStar not tracked in GHL.</span><span>12</span></div>
 </div></section>
 
-<!-- 12 DATA GAPS -->
-<section class="slide" id="s12"><div class="in">
+<!-- 13 DATA GAPS -->
+<section class="slide" id="s13"><div class="in">
  <div class="eyebrow">Data gaps and fixes</div>
- <h2>Six data gaps, and who closes each one</h2>
- <p class="sub">GHL access is now working via the agency browser login. The remaining open gap is Windsor, paused until the upgrade. As of Fri 13 Nov, 12:10 Madrid (CET).</p>
+ <h2>GHL is fully read. Here is what is still missing</h2>
+ <p class="sub">GHL has now been fully read for every active client with a sub-account. Still missing: Windsor (paused), staff login dates, and Heal, Evolve and TrustStar, which are not tracked in GHL. As of Fri 13 Nov, 13:10 Madrid (CET).</p>
  <div class="body rows" style="display:flex">
   <div class="row gap-row"><span class="num r">01</span><span class="o">Meta data stops Nov 3</span><span class="t">Windsor license expired Nov 5 (6 sources vs 5 allowed), Ryze Meta revoked. No fresher spend or CPL for any client until the upgrade.</span><span class="w">Jake · Windsor upgrade</span></div>
-  <div class="row gap-row"><span class="num r">02</span><span class="o">No same-window CPL yet</span><span class="t">Workzone and Xplor leads are now from GHL (42 and 16). Workzone spend is only Oct 21–Nov 3 ($1,402.97), so there is no same-window CPL yet.</span><span class="w">Jake · Windsor upgrade</span></div>
-  <div class="row gap-row"><span class="num r">03</span><span class="o">Xplor spend not in Windsor</span><span class="t">16 GHL leads since Nov 3 (day 11 of 30, slightly behind pace). Spend and CPL still missing. No client call recorded in Fathom.</span><span class="w">William · add Xplor after the upgrade</span></div>
-  <div class="row gap-row"><span class="num r">04</span><span class="o">Missing call recordings</span><span class="t">No Fathom for the Evolve Nov 6 alignment or the Aviro Nov 11 sync. Record every client call.</span><span class="w">Yona · ongoing</span></div>
-  <div class="row gap-row"><span class="num r">05</span><span class="o">VBO qualified-call count</span><span class="t">Nobody has tracked qualified calls for VBO. Jake needs the count tonight.</span><span class="w">William + Yona · before 19:30</span></div>
-  <div class="row gap-row"><span class="num r">06</span><span class="o">Bookings under-reported</span><span class="t">GHL misses HRG's HubSpot bookings. Heal's dead URL can't be checked without Meta access.</span><span class="w">William · Andrew emails each booking</span></div>
+  <div class="row gap-row"><span class="num r">02</span><span class="o">No same-window CPL yet</span><span class="t">Workzone and Xplor leads are now from GHL (42 and 14). Workzone spend is only Oct 21–Nov 3 ($1,402.97), so there is no same-window CPL yet.</span><span class="w">Jake · Windsor upgrade</span></div>
+  <div class="row gap-row"><span class="num r">03</span><span class="o">Xplor spend not in Windsor</span><span class="t">14 GHL leads Oct 21–Nov 12 (day 11 of 30, behind pace). Spend and CPL still missing. No client call recorded in Fathom.</span><span class="w">William · add Xplor after the upgrade</span></div>
+  <div class="row gap-row"><span class="num r">04</span><span class="o">Staff login dates</span><span class="t">GHL does not show last-login or last-active dates, so daily CRM logins can't be checked from the CRM.</span><span class="w">Not shown in GHL</span></div>
+  <div class="row gap-row"><span class="num r">05</span><span class="o">Three accounts not in GHL</span><span class="t">Heal's sub-account has 0 contacts. Both Evolve sub-accounts are empty. No TrustStar sub-account was found. Their leads are not tracked in GHL.</span><span class="w">William · find a GHL home</span></div>
+  <div class="row gap-row"><span class="num r">06</span><span class="o">Missing call recordings</span><span class="t">No Fathom for the Evolve Nov 6 alignment or the Aviro Nov 11 sync. Record every client call.</span><span class="w">Yona · ongoing</span></div>
  </div>
- <div class="foot"><span>Sources: source pack gaps list Nov 13, Notion CS Agent Run, Ryze status check Nov 13</span><span>12</span></div>
+ <div class="foot"><span>Sources: source pack gaps list Nov 13, Notion CS Agent Run, Ryze status check Nov 13</span><span>13</span></div>
 </div></section>
 
-<!-- 13 NEXT WEEK -->
-<section class="slide" id="s13"><div class="in">
+<!-- 14 NEXT WEEK -->
+<section class="slide" id="s14"><div class="in">
  <div class="eyebrow">Next week · Nov 16–22</div>
  <h2>Only Jake can do, and what the team owns</h2>
  <div class="body nw">
@@ -417,11 +469,11 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
    </table>
   </div>
  </div>
- <div class="foot"><span>Source: team memo "Next week (Nov 16–22)", calendar plan Nov 13</span><span>13</span></div>
+ <div class="foot"><span>Source: team memo "Next week (Nov 16–22)", calendar plan Nov 13</span><span>14</span></div>
 </div></section>
 
-<!-- 14 OWNERS -->
-<section class="slide" id="s14"><div class="in">
+<!-- 15 OWNERS -->
+<section class="slide" id="s15"><div class="in">
  <div class="eyebrow">Owners board</div>
  <h2>Who owns what, from today to Fri Nov 20</h2>
  <div class="body cols4">
@@ -430,11 +482,11 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
   <div class="card owner"><h3>Yona <span class="num">7</span></h3><div class="who">Ops · calendar, clients, tickets</div><ul style="margin-top:12px"><li><b>Today</b> VBO qualified-call count with William</li><li><b>Today</b> George's script placeholders</li><li>Lockton surveys + Notion row · Mon</li><li>Fix Fri Nov 20 Pulse Check clash</li><li>Book Xplor Retention walkthrough</li><li>Aviro Nov 25 invite</li><li>Ticket cleanup #13–#38, Zapier by Nov 15</li></ul></div>
   <div class="card owner"><h3>Rian <span class="num">1</span></h3><div class="who">Sales · Lockton handoff</div><ul style="margin-top:12px"><li>Lockton references in the kickoff brief · Mon Nov 16</li></ul><div class="lbl" style="margin-top:18px">Heads-up</div><p>Rian declined the Lockton kickoff (out of office). Rian organizes Manuel's scope call Wed Nov 18 16:00, which clashes with Sales Spotlight (decision C).</p></div>
  </div>
- <div class="foot"><span>Source: team memo, CS escalations Nov 12, calendar plan Nov 13</span><span>14</span></div>
+ <div class="foot"><span>Source: team memo, CS escalations Nov 12, calendar plan Nov 13</span><span>15</span></div>
 </div></section>
 
-<!-- 15 CLOSE -->
-<section class="slide" id="s15"><div class="in">
+<!-- 16 CLOSE -->
+<section class="slide" id="s16"><div class="in">
  <div class="eyebrow">Close</div>
  <h2>Four decisions waiting on Jake</h2>
  <p class="sub">Jake can't attend today. Don't act on these until he answers; Yona relays.</p>
@@ -445,11 +497,11 @@ td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
   <div class="card"><span class="k">D · Wed Nov 18, 17:00–18:00</span><h3>HRG and Xplor calls need a US-friendly time</h3><p>Madrid mornings are 03:30–07:00 ET. Jake decides whether to use Wed afternoon.</p></div>
  </div>
  <div class="esc"><span><b>Blocked on anything?</b> Tell Jake today, not next Friday.</span><span class="mono" style="color:var(--mu);font-size:12px">Reply on the team thread</span></div>
- <div class="foot"><span>Source: calendar plan conflicts A–D, Nov 13</span><span>15</span></div>
+ <div class="foot"><span>Source: calendar plan conflicts A–D, Nov 13</span><span>16</span></div>
 </div></section>
 
 </main>
-<div class="hud"><button id="prev" aria-label="Previous slide">&#8593;</button><span class="ctr" id="ctr">1 / 15</span><button id="next" aria-label="Next slide">&#8595;</button></div>
+<div class="hud"><button id="prev" aria-label="Previous slide">&#8593;</button><span class="ctr" id="ctr">1 / 16</span><button id="next" aria-label="Next slide">&#8595;</button></div>
 <script>
 // nav
 const deck=document.getElementById('deck'),S=[...document.querySelectorAll('.slide')],N=S.length,ctr=document.getElementById('ctr'),prog=document.getElementById('prog');
