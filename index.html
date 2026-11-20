@@ -1,1433 +1,160 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow, noarchive">
-<meta name="googlebot" content="noindex, nofollow">
-<title>Aletto CS Pulse Check · Fri 13 Nov 2026</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive"><meta name="googlebot" content="noindex, nofollow">
+<title>Aletto CS Pulse Check · Week of Fri Nov 13 to Thu Nov 19, 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0B0C0E;--p1:#121417;--p2:#1A1C20;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.14);--tx:#F7F8F8;--mu:#9095A0;--mu2:#62666F;--red:#FF4438;--grn:#3ECF6E;--yel:#F5B544;--gry:#6B7079}
+:root{--bg:#07080A;--tx:#F5F6F7;--mu:#9AA0AA;--mu2:#6B7079;--line:rgba(255,255,255,.10);--glass:rgba(255,255,255,.045);--red:#FF4438;--grn:#3ECF6E;--yel:#F5B544}
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--bg);color:var(--tx);font-family:Geist,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
-body{overflow:hidden}
-.deck{height:100vh;overflow-y:auto;scroll-snap-type:y mandatory;scroll-behavior:smooth}
-.slide{position:relative;height:100vh;min-height:620px;scroll-snap-align:start;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:56px 64px 64px}
-.slide::before{content:"";position:absolute;inset:0;background:radial-gradient(900px 500px at 100% 0%,rgba(255,68,56,.07),transparent 60%);pointer-events:none}
-.in{position:relative;width:100%;max-width:1360px;height:100%;max-height:820px;display:flex;flex-direction:column}
-.mono,.num{font-family:"JetBrains Mono",ui-monospace,monospace;font-feature-settings:"tnum"}
-.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 12px/1 "JetBrains Mono",monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--mu)}
-.eyebrow::before{content:"";width:7px;height:7px;border-radius:2px;background:var(--red)}
-h1{font-weight:700;letter-spacing:-.035em;line-height:.95}
-h2{font-size:clamp(28px,3.1vw,44px);font-weight:650;letter-spacing:-.03em;line-height:1.05;margin:14px 0 6px}
-.sub{color:var(--mu);font-size:15px;line-height:1.5;max-width:900px}
-.body{flex:1;min-height:0;margin-top:26px;display:grid;gap:14px}
-.card{background:var(--p1);border:1px solid var(--line);border-radius:16px;padding:18px 20px;min-width:0}
-.card h3{font-size:17px;font-weight:600;letter-spacing:-.01em}
-.card .who{color:var(--mu);font-size:12.5px;margin-top:3px}
-.lbl{font:600 10.5px/1 "JetBrains Mono",monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--mu2);margin:12px 0 5px}
-.card p,.card li{font-size:13.5px;line-height:1.48;color:#D5D7DB}
-.card ul{list-style:none}.card li{padding-left:14px;position:relative;margin:3px 0}.card li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;border-radius:50%;background:var(--mu2)}
-.pill{display:inline-flex;align-items:center;gap:6px;font:600 10.5px/1 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;padding:5px 8px;border-radius:999px;border:1px solid var(--line2);color:var(--mu);white-space:nowrap}
-.pill i{width:7px;height:7px;border-radius:50%;display:inline-block}
-.r{color:var(--red)}.g{color:var(--grn)}.y{color:var(--yel)}
-.bg-r{background:var(--red)}.bg-g{background:var(--grn)}.bg-y{background:var(--yel)}.bg-x{background:var(--gry)}
-.edge-r{box-shadow:inset 3px 0 0 var(--red)}.edge-y{box-shadow:inset 3px 0 0 var(--yel)}.edge-g{box-shadow:inset 3px 0 0 var(--grn)}.edge-x{box-shadow:inset 3px 0 0 var(--gry)}
-.foot{position:absolute;left:0;right:150px;bottom:-34px;display:flex;justify-content:space-between;color:var(--mu2);font:500 11px/1 "JetBrains Mono",monospace;letter-spacing:.04em}
-.src{color:var(--mu2);font-size:11.5px;margin-top:10px;line-height:1.45}
-.ci{color:var(--tx);font-weight:600}
-.tag-ci{display:inline-block;font:600 10px/1 "JetBrains Mono",monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--yel);border:1px solid rgba(245,181,68,.35);background:rgba(245,181,68,.07);padding:4px 7px;border-radius:6px}
-/* title */
-.title-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:48px;align-items:center;height:100%}
-.title-grid h1{font-size:clamp(64px,8.6vw,132px)}
-.title-grid h1 span{color:var(--red)}
-.meta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
-.three{display:grid;gap:12px}
-.three .card{display:flex;align-items:center;gap:22px;padding:22px 24px}
-.three .big{font:600 54px/1 "JetBrains Mono",monospace;letter-spacing:-.04em;min-width:96px}
-.three p{font-size:15px;color:var(--tx)}.three small{display:block;color:var(--mu);font-size:12.5px;margin-top:4px}
-/* kpi */
-.kpis{grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr}
-.kpi .v{font:600 46px/1 "JetBrains Mono",monospace;letter-spacing:-.04em;margin-top:14px}
-.kpi .v small{font-size:15px;color:var(--mu);letter-spacing:0;margin-left:6px}
-.kpi .d{color:var(--mu);font-size:13px;margin-top:10px;line-height:1.45}
-.stack{display:flex;height:10px;border-radius:99px;overflow:hidden;margin-top:16px;gap:3px}
-/* rows */
-.rows{display:flex;flex-direction:column;gap:10px}
-.row{display:grid;grid-template-columns:110px 120px 1fr 120px;gap:18px;align-items:center;background:var(--p1);border:1px solid var(--line);border-radius:14px;padding:16px 20px}
-.row .o{font-weight:600}.row .c{color:var(--mu);font-size:13px}.row .t{font-size:14px;line-height:1.45;color:#DADCE0}.row .w{text-align:right;font:600 13px/1.2 "JetBrains Mono",monospace;color:var(--red)}
-.calls{margin-top:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;border:1px dashed var(--line2);border-radius:14px;padding:14px 18px;color:var(--mu);font-size:13px}
-.calls b{color:var(--tx);font-weight:600}
-/* health board */
-.hb{grid-template-columns:repeat(6,1fr);grid-auto-rows:1fr}
-.hb .card{padding:13px 14px;display:flex;flex-direction:column;gap:6px}
-.hb .nm{display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:14px;gap:6px}
-.hb .nm i{width:9px;height:9px;border-radius:50%;flex:none}
-.hb .own{color:var(--mu2);font-size:11px;font-family:"JetBrains Mono",monospace}
-.hb p{font-size:12.3px;line-height:1.4;color:#C9CBD0}
-/* divider */
-.div-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;align-items:center;height:100%}
-.div-grid .huge{font:700 clamp(160px,20vw,300px)/.8 Geist;letter-spacing:-.06em;color:var(--red)}
-.stake{padding:26px 28px}.stake h3{font-size:22px;margin:10px 0 8px}
-.stake.hot{background:linear-gradient(135deg,rgba(255,68,56,.16),rgba(255,68,56,.04));border-color:rgba(255,68,56,.35)}
-/* detail columns */
-.cols3{grid-template-columns:repeat(3,1fr)}.cols5{grid-template-columns:repeat(5,1fr)}.cols3x2{grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr}
-.cols5 .card p,.cols5 .card li{font-size:12.6px}
-.cols3x2 .card p,.cols3x2 .card li{font-size:12.8px}
-.eof{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-size:12px;color:var(--mu)}
-.eof b{font-family:"JetBrains Mono",monospace;color:var(--tx);font-weight:600}
-/* hero */
-.hero-grid{grid-template-columns:1.25fr 1fr}
-table{width:100%;border-collapse:collapse}
-th{font:600 10.5px/1 "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--mu2);text-align:left;padding:10px 10px;border-bottom:1px solid var(--line2)}
-td{padding:13px 10px;border-bottom:1px solid var(--line);font-size:13.5px;vertical-align:top;line-height:1.4}
-td.n{font-family:"JetBrains Mono",monospace;white-space:nowrap}
-td small{display:block;color:var(--mu);font-size:11.5px;margin-top:3px}
-.stale{display:inline-block;font:600 9.5px/1 "JetBrains Mono",monospace;letter-spacing:.08em;color:var(--yel);border:1px solid rgba(245,181,68,.4);border-radius:5px;padding:3px 5px;margin-left:6px;vertical-align:middle}
-/* charts */
-.chart text{font-family:"JetBrains Mono",monospace;fill:var(--mu);font-size:11px}
-.legend{display:flex;gap:16px;font-size:12px;color:var(--mu);margin-top:6px}.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
-.sp td{padding:7px 8px;font-size:12.8px;vertical-align:middle}.sp .cl{font-weight:600;white-space:nowrap}.sp .cl small{display:inline;color:var(--mu2);font-weight:400;margin-left:6px}
-.sp .sb{display:flex;align-items:center;gap:10px;min-width:260px}.bar{flex:1;height:8px;background:#1E2024;border-radius:99px;overflow:hidden}.bar span{display:block;height:100%;background:linear-gradient(90deg,#FF4438,#ff7a6f);border-radius:99px}
-.sp .sb b{font-size:12.5px;width:84px;text-align:right}.sp tr.dim td{color:var(--mu)}.sp tr.tot td{border-bottom:0;border-top:1px solid var(--line2);font-weight:700}.sp tr.tot .sb{justify-content:flex-end}
-/* gaps */
-.gap-row{grid-template-columns:44px 1.1fr 1.4fr 150px}
-.gap-row .w{color:var(--tx)}
-/* next week */
-.nw{grid-template-columns:1fr 1.25fr}
-.day{display:grid;grid-template-columns:118px 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--line)}
-.day:last-child{border-bottom:0}
-.day .dl{font:600 12px/1.35 "JetBrains Mono",monospace;color:var(--red)}
-.day .dl small{display:block;color:var(--mu2);font-weight:500;margin-top:3px}
-.day ul{list-style:none}.day li{font-size:13px;line-height:1.45;color:#D5D7DB;margin-bottom:3px}
-.tt td{padding:8.5px 8px;font-size:12.6px}.tt td.ow{font-weight:600;white-space:nowrap}.tt td.du{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--mu);white-space:nowrap}
-/* owners */
-.cols4{grid-template-columns:repeat(4,1fr)}
-.owner h3{display:flex;justify-content:space-between;align-items:baseline}
-.owner h3 .num{font-size:30px;color:var(--red)}
-.owner li{font-size:12.8px}
-/* close */
-.dec{grid-template-columns:repeat(2,1fr);grid-template-rows:1fr 1fr}
-.dec .card{padding:26px 28px;display:flex;flex-direction:column;justify-content:center}.dec .card h3{font-size:22px;letter-spacing:-.02em;margin:12px 0 10px;line-height:1.25}.dec .card p{font-size:15px;color:var(--mu)}
-.dec .k{font:700 13px/1 "JetBrains Mono",monospace;color:var(--red)}
-.esc{margin-top:14px;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(90deg,rgba(255,68,56,.14),rgba(255,68,56,.02));border:1px solid rgba(255,68,56,.3);border-radius:14px;padding:16px 22px;font-size:15px}
-/* chrome */
-.hud{position:fixed;right:22px;bottom:18px;display:flex;align-items:center;gap:8px;z-index:9;font:600 12px/1 "JetBrains Mono",monospace;color:var(--mu)}
-.hud button{all:unset;cursor:pointer;width:30px;height:30px;border-radius:9px;border:1px solid var(--line2);display:grid;place-items:center;color:var(--tx);background:rgba(18,20,23,.8);backdrop-filter:blur(8px)}
-.hud button:hover{border-color:var(--red)}
-.hud .ctr{padding:0 8px;min-width:64px;text-align:center}
-.prog{position:fixed;left:0;top:0;height:2px;background:var(--red);z-index:9;transition:width .25s ease}
-.brand{position:fixed;left:24px;bottom:22px;z-index:9;font:700 13px/1 Geist;letter-spacing:-.01em;color:var(--tx)}
-.brand span{color:var(--red)}
-
-/* compliance */
-.slide-comp{padding:32px 48px 44px}
-.slide-comp h2{margin:8px 0 4px;font-size:clamp(24px,2.6vw,36px)}
-.slide-comp .sub{font-size:13.5px}
-.slide-comp .body{margin-top:10px}
-.comp{min-height:0;display:flex;flex-direction:column;gap:8px}
-.comp table{width:100%}
-.comp th{padding:3px 6px;font-size:9px;letter-spacing:.08em}
-.comp td{padding:3px 6px;border-bottom:1px solid var(--line);font-size:11px;line-height:1.28;vertical-align:top}
-.comp td.n{font-size:11px;white-space:normal}
-.comp td small{display:block;color:var(--mu);font-size:10px;margin-top:0}
-.comp .ver{color:#C9CBD0;font-size:11px}
-.gaps{background:var(--p1);border:1px solid rgba(255,68,56,.3);border-radius:12px;padding:8px 14px;box-shadow:inset 3px 0 0 var(--red)}
-.gaps h3{font-size:13px;letter-spacing:-.01em;margin:0 0 2px}
-.gaps p{font-size:12px;line-height:1.4;color:#D5D7DB}
-.fn{color:var(--mu2);font-size:10.8px;line-height:1.4}
-.slide-comp .foot{bottom:-26px}
-
-/* accounts to date — update window.ATD in the page script when the second GHL pass lands */
-.slide-atd{padding:28px 48px 80px;height:auto;min-height:100vh;overflow:visible;align-items:flex-start}
-.slide-atd .in{max-height:none;height:auto}
-.slide-atd h2{margin:8px 0 4px;font-size:clamp(24px,2.6vw,36px)}
-.slide-atd .sub{font-size:13.5px}
-.slide-atd .body{margin-top:10px}
-.slide-atd .foot{position:static;margin-top:14px;right:auto}
-.atd{min-height:0;display:flex;flex-direction:column;gap:10px}
-.atd-card{padding:2px 6px}
-.atd table{width:100%}
-.atd th{padding:6px 7px;font-size:9.5px;letter-spacing:.08em;white-space:nowrap}
-.atd td{padding:5px 7px;border-bottom:1px solid var(--line);font-size:12px;line-height:1.35;vertical-align:middle}
-.atd td.n{font-family:"JetBrains Mono",ui-monospace,monospace;white-space:nowrap;font-size:12px}
-.atd td small{display:block;color:var(--mu);font-size:10.5px;margin-top:2px;white-space:normal}
-.atd tr.dim td{color:var(--mu)}
-.flag-raw,.flag-unv,.flag-pend{display:inline-block;font:600 9px/1 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;border-radius:5px;padding:3px 5px;margin-left:5px;vertical-align:middle}
-.flag-raw{color:var(--yel);border:1px solid rgba(245,181,68,.4)}
-.flag-unv{color:var(--yel);border:1px solid rgba(245,181,68,.4)}
-.flag-pend{color:var(--mu);border:1px solid var(--line2)}
-.pending{color:var(--mu);font-size:12px}
-.approx{color:var(--mu2)}
-.spark-wrap{min-width:120px;max-width:220px}
-.spark{display:flex;align-items:flex-end;gap:2px;height:22px}
-.spark i{flex:1;min-width:3px;background:var(--red);border-radius:2px 2px 0 0;opacity:.9;display:block}
-.spark-axis{display:flex;justify-content:space-between;color:var(--mu2);font:500 9px/1 "JetBrains Mono",monospace;margin-top:3px}
-.spark-nums{display:none}
-.spark-flag{font:600 9px/1 "JetBrains Mono",monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--yel);margin-bottom:3px}
-.atd-obs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.atd-obs .card{padding:16px 18px}
-.atd-obs h3{font-size:15px;margin-bottom:8px;letter-spacing:-.01em}
-.atd-obs p{font-size:13.5px;line-height:1.5;color:#D5D7DB}
-.atd-obs .card.fill{border-color:rgba(245,181,68,.35);box-shadow:inset 3px 0 0 var(--yel)}
-.atd-obs .card:last-child{grid-column:1/-1}
-
-/* tablet: stack some grids, keep type close to desktop */
-@media (max-width:1100px){
-  body{overflow:auto;overflow-x:hidden}
-  .deck{height:auto;overflow:visible;scroll-snap-type:none}
-  .slide{height:auto;min-height:auto;overflow:visible;align-items:flex-start;padding:36px 32px 88px}
-  .slide-comp{padding:28px 28px 88px}
-  .slide-atd{padding:28px 28px 88px}
-  .in{max-height:none;height:auto;width:100%;max-width:100%}
-  .title-grid,.div-grid{height:auto;gap:28px}
-  .hb{grid-template-columns:repeat(3,1fr)}
-  .cols5,.cols4{grid-template-columns:repeat(2,1fr)}
-  .cols3,.cols3x2,.kpis,.hero-grid,.nw,.title-grid,.div-grid,.dec,.comp,.body{grid-template-columns:1fr !important;grid-template-rows:auto !important}
-  .row,.gap-row{grid-template-columns:1fr !important}
-  .row .w{text-align:left}
-  .foot{position:static;margin-top:20px;right:auto}
-  .sp .sb{min-width:0}
-}
-
-/* phone: tight padding, readable type, stacked tables */
-@media (max-width:700px){
-  html,body{-webkit-text-size-adjust:100%;text-size-adjust:100%;overflow-x:hidden}
-  body{overflow:auto}
-  .deck{height:auto;overflow:visible;scroll-snap-type:none}
-  .slide,.slide-comp,.slide-atd{
-    height:auto !important;
-    min-height:100svh;
-    overflow:visible;
-    align-items:flex-start;
-    justify-content:flex-start;
-    padding:18px 14px 100px;
-    padding-left:max(14px, env(safe-area-inset-left));
-    padding-right:max(14px, env(safe-area-inset-right));
-    padding-bottom:max(100px, calc(80px + env(safe-area-inset-bottom)));
-  }
-  .in{max-height:none;height:auto;width:100%;max-width:100%}
-  .title-grid,.div-grid{height:auto;gap:20px;align-items:start}
-  .title-grid h1{font-size:clamp(44px, 14vw, 64px)}
-  h2,h2[style]{font-size:26px !important;margin:10px 0 8px;line-height:1.15}
-  .sub,.sub[style]{font-size:15px !important;line-height:1.5;max-width:none}
-  .eyebrow{font-size:11px;gap:8px;flex-wrap:wrap}
-  .lbl{font-size:11px;margin:10px 0 6px}
-  .card{padding:16px}
-  .card h3,.comp td:first-child{font-size:17px}
-  .card p,.card li,.row .t,.row .c,.hb p,.day li,td,.kpi .d,.calls,.fn,.gaps p,.comp .ver,.esc,.dec .card p,.stake p,.three p,.owner li,.eof{
-    font-size:15px !important;
-    line-height:1.5;
-  }
-  .card .who,.hb .own,td small,.src,.three small,.fn{font-size:13px !important}
-  th{font-size:11px;padding:10px 8px}
-  .kpi .v,.kpi .v[style]{font-size:34px !important;margin-top:10px}
-  .kpi .v small{font-size:14px !important;display:inline}
-  .three .big{font-size:40px;min-width:48px}
-  .three .card{padding:16px;gap:14px}
-  .three p{font-size:15px}
-  .div-grid .huge,.huge{font-size:92px !important;line-height:.85}
-  .owner h3 .num{font-size:26px}
-  .dec .card{padding:18px}
-  .dec .card h3,.stake h3{font-size:20px !important;line-height:1.25}
-  .meta-row{margin-top:18px}
-  .hb{grid-template-columns:1fr !important;grid-auto-rows:auto}
-  .cols5,.cols4,.cols3,.cols3x2,.kpis,.hero-grid,.nw,.title-grid,.div-grid,.dec,.comp,.body,.row,.gap-row,.day{
-    grid-template-columns:1fr !important;
-    grid-template-rows:none !important;
-    gap:12px;
-  }
-  #s10 .card[style*="grid-template-columns"]{grid-template-columns:1fr !important;padding:16px !important;gap:14px !important}
-  #s10 .card[style*="grid-template-columns"] > div[style*="grid-template-columns"]{grid-template-columns:1fr 1fr !important}
-  #s10 .kpi{padding:12px}
-  #s10 .kpi .v,#s10 .kpi .v[style]{font-size:22px !important;margin-top:8px;white-space:nowrap}
-  .row{padding:14px 16px;gap:6px}
-  .row .w{text-align:left;margin-top:4px}
-  .gap-row .w{color:var(--tx)}
-  .sp .sb{min-width:0;width:100%}
-  .sp .sb b{width:auto;text-align:left}
-  .calls{align-items:flex-start;gap:8px;padding:14px}
-  .esc{flex-direction:column;align-items:flex-start;gap:8px;padding:14px 16px}
-  .foot{position:static;margin-top:18px;right:auto;flex-wrap:wrap;gap:8px;font-size:11px}
-  .brand{left:12px;bottom:14px;font-size:12px}
-  .hud{right:10px;bottom:10px}
-  .chart,.chart text{max-width:100%}
-  svg.chart{width:100%;height:auto}
-  .pill{white-space:normal;line-height:1.3}
-
-  /* text-heavy tables become stacked cards */
-  .stack-cards{padding:0 !important;background:transparent;border:0}
-  .comp .card{padding:0 !important;background:transparent;border:0}
-  .comp table,.hero-grid table,table.tt{
-    width:100%;
-  }
-  .comp tr:first-child,
-  .hero-grid table tr:first-child{display:none}
-  .comp tr,
-  .hero-grid table tr,
-  table.tt tr{
-    display:block;
-    background:var(--p1);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:14px 16px;
-    margin:0 0 10px;
-  }
-  .comp td,
-  .hero-grid table td,
-  table.tt td{
-    display:block;
-    width:100%;
-    padding:8px 0;
-    border-bottom:1px solid var(--line);
-    white-space:normal !important;
-    font-size:15px !important;
-  }
-  .comp td:last-child,
-  .hero-grid table td:last-child,
-  table.tt td:last-child{border-bottom:0;padding-bottom:0}
-  .comp td:first-child,
-  .hero-grid table td:first-child{padding-top:0;border-bottom:0;padding-bottom:4px;font-size:17px !important;font-weight:600}
-  .comp td::before,
-  .hero-grid table td::before,
-  table.tt td::before{
-    display:block;
-    font:600 11px/1 "JetBrains Mono",monospace;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--mu2);
-    margin:0 0 4px;
-  }
-  .comp td:first-child::before{content:none}
-  .comp td:nth-child(2)::before{content:"GHL leads"}
-  .comp td:nth-child(3)::before{content:"Calls logged in GHL"}
-  .comp td:nth-child(4)::before{content:"Booked / showed / no-show"}
-  .comp td:nth-child(5)::before{content:"Verdict"}
-  .comp tr:last-child td:nth-child(2)::before{content:"Status"}
-  .comp tr:last-child td:nth-child(3)::before{content:"Verdict"}
-  .hero-grid table td:first-child::before{content:none}
-  .hero-grid table td:nth-child(2)::before{content:"Window"}
-  .hero-grid table td:nth-child(3)::before{content:"Leads vs 50 · GHL"}
-  .hero-grid table td:nth-child(4)::before{content:"Ad spend · Windsor"}
-  .hero-grid table td:nth-child(5)::before{content:"CPL · Pace"}
-  table.tt td:nth-child(1)::before{content:"Owner"}
-  table.tt td:nth-child(2)::before{content:"Task"}
-  table.tt td:nth-child(3)::before{content:"Due"}
-  table.tt td.ow{font-size:15px !important}
-  table.tt td.du{font-size:15px !important;color:var(--tx)}
-  td small{display:block;font-size:13px !important;margin-top:3px}
-
-  /* spend table: stacked cards so amounts stay on screen */
-  #s14 .card:has(table.sp){
-    overflow:visible;
-    padding:0 !important;
-    background:transparent;
-    border:0;
-  }
-  table.sp{min-width:0;width:100%}
-  table.sp tr:first-child{display:none}
-  table.sp tr{
-    display:block;
-    background:var(--p1);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:14px 16px;
-    margin:0 0 10px;
-  }
-  table.sp td,table.sp th{
-    display:block;
-    width:100%;
-    padding:8px 0;
-    border-bottom:1px solid var(--line);
-    white-space:normal !important;
-    font-size:15px !important;
-  }
-  table.sp td:last-child{border-bottom:0;padding-bottom:0}
-  table.sp td:first-child{padding-top:0;border-bottom:0;padding-bottom:4px;font-size:17px !important;font-weight:600}
-  table.sp td::before{
-    display:block;
-    font:600 11px/1 "JetBrains Mono",monospace;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--mu2);
-    margin:0 0 4px;
-  }
-  table.sp td:first-child::before{content:none}
-  table.sp td:nth-child(2)::before{content:"Ad spend · Oct 21–27 · Windsor"}
-  table.sp td:nth-child(3)::before{content:"Leads"}
-  table.sp td:nth-child(4)::before{content:"MQL"}
-  table.sp td:nth-child(5)::before{content:"Booked"}
-  table.sp td:nth-child(6)::before{content:"CPL"}
-  table.sp tr:has(td[colspan]) td:nth-child(3)::before{content:"Leads / MQL / booked / CPL"}
-  table.sp tr.dim td:nth-child(2)::before{content:"Status"}
-  table.sp tr.tot td:nth-child(2)::before{content:"Total ad spend"}
-  table.sp tr.tot td:nth-child(3)::before{content:"Notes"}
-  table.sp .cl,table.sp .cl small{font-size:15px !important;white-space:normal}
-  table.sp .cl small{display:block;font-size:13px !important}
-  table.sp td.sb{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;min-width:0;width:100%}
-  table.sp td.sb::before{flex:0 0 100%;margin-bottom:2px}
-  table.sp td.sb .bar{flex:1;min-width:80px}
-  table.sp td.sb b{width:auto;min-width:88px;text-align:right;font-size:15px;flex:none}
-
-  .slide-atd{padding:18px 14px 100px;padding-left:max(14px, env(safe-area-inset-left));padding-right:max(14px, env(safe-area-inset-right));padding-bottom:max(100px, calc(80px + env(safe-area-inset-bottom)))}
-  .atd-obs{grid-template-columns:1fr !important}
-  .atd-obs h3{font-size:17px}
-  .atd-obs p{font-size:15px !important;line-height:1.5}
-  .atd .card{padding:0 !important;background:transparent;border:0}
-  .atd table{width:100%}
-  .atd tr:first-child{display:none}
-  .atd tr{
-    display:block;
-    background:var(--p1);
-    border:1px solid var(--line);
-    border-radius:14px;
-    padding:14px 16px;
-    margin:0 0 10px;
-  }
-  .atd td{
-    display:block;
-    width:100%;
-    padding:8px 0;
-    border-bottom:1px solid var(--line);
-    white-space:normal !important;
-    font-size:15px !important;
-  }
-  .atd td.n{font-size:15px !important;white-space:normal !important}
-  .atd td:last-child{border-bottom:0;padding-bottom:0}
-  .atd td:first-child{padding-top:0;border-bottom:0;padding-bottom:4px;font-size:17px !important;font-weight:600}
-  .atd td::before{
-    display:block;
-    font:600 11px/1 "JetBrains Mono",monospace;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-    color:var(--mu2);
-    margin:0 0 4px;
-  }
-  .atd td:first-child::before{content:none}
-  .atd td:nth-child(2)::before{content:"First lead"}
-  .atd td:nth-child(3)::before{content:"All-time leads"}
-  .atd td:nth-child(4)::before{content:"Leads per month"}
-  .atd td:nth-child(5)::before{content:"All-time calls"}
-  .atd td:nth-child(6)::before{content:"Answered"}
-  .atd td:nth-child(7)::before{content:"Booked"}
-  .atd td:nth-child(8)::before{content:"Showed"}
-  .atd td:nth-child(9)::before{content:"No-shows"}
-  .atd td:nth-child(10)::before{content:"Show rate"}
-  .atd tr.dim td:nth-child(2)::before{content:"Status"}
-  .atd tr.dim td:nth-child(n+3)::before{content:none}
-  .atd tr.dim td:nth-child(n+3){display:none}
-  .spark-wrap{min-width:0;max-width:none}
-  .spark{height:36px;gap:3px}
-  .spark-nums{display:block;color:var(--mu);font-size:13px !important;line-height:1.45;margin-top:6px;white-space:normal}
-  .spark-axis{font-size:11px}
-  .flag-raw,.flag-unv,.flag-pend{margin-left:0;margin-top:4px}
-}
-
-@media print{
- @page{size:1600px 900px;margin:0}
- body{overflow:visible}.deck{height:auto;overflow:visible}
- .slide{height:900px;width:1600px;page-break-after:always;break-after:page;min-height:0}
- .hud,.prog,.brand{display:none}
- *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-}
-</style>
-</head>
-<body>
-<div class="prog" id="prog"></div>
-<div class="brand">aletto<span>.</span></div>
-<main class="deck" id="deck">
-
-<!-- 1 TITLE -->
-<section class="slide" id="s1"><div class="in">
- <div class="title-grid">
-  <div>
-   <div class="eyebrow">CS Pulse Check · Memo from Jake</div>
-   <h1 style="margin-top:22px">CS Pulse<br><span>Check</span></h1>
-   <p class="sub" style="font-size:19px;margin-top:22px;color:#C9CBD0">Friday 13 November 2026 · for Shane, William, Yona and Rian</p>
-   <div class="meta-row"><span class="pill"><i class="bg-r"></i>Jake can't attend today</span><span class="pill">Run the meeting off this deck</span><span class="pill">All times Madrid (CET)</span></div>
-  </div>
-  <div class="three">
-   <div class="lbl" style="margin:0 0 2px">Today in three numbers</div>
-   <div class="card"><div class="big r">5</div><div><p>Items due today</p><small>Shane 3 · William 2, first deadline 15:00</small></div></div>
-   <div class="card"><div class="big">3</div><div><p>Client calls for Jake tonight</p><small>18:00 Heal · 18:30 Workzone · 19:30 VBO</small></div></div>
-   <div class="card"><div class="big y">2</div><div><p>Clients inside their first 30 days</p><small>Workzone 42/50, day 24, on pace. Xplor 14/50, day 11, behind pace. Rigol and Lockton start Nov 16</small></div></div>
-  </div>
- </div>
- <div class="foot"><span>Aletto · CS Pulse Check · Team version</span><span>01</span></div>
-</div></section>
-
-<!-- 2 AT A GLANCE -->
-<section class="slide" id="s2"><div class="in">
- <div class="eyebrow">Today at a glance</div>
- <h2>Where we stand this morning</h2>
- <p class="sub">As of Fri 13 Nov, 13:10 Madrid (CET). Each tile names its window. Meta data stops Nov 3 (Windsor expired), so ad numbers are older than the status notes.</p>
- <div class="body kpis">
-  <div class="card kpi"><div class="lbl" style="margin-top:0">Account health · 16 accounts</div>
-   <div class="v"><span class="r">5</span> <span class="mu2" style="color:var(--mu2)">/</span> <span class="y">10</span> <span style="color:var(--mu2)">/</span> <span class="g">1</span></div>
-   <div class="stack"><span class="bg-r" style="flex:5"></span><span class="bg-y" style="flex:10"></span><span class="bg-g" style="flex:1"></span></div>
-   <div class="d">Red · amber · green. CEO report score adjusted for this week's emails and calls. Pre-launch accounts not counted.</div></div>
-  <div class="card kpi"><div class="lbl" style="margin-top:0">Ad spend · Oct 21–27 · Windsor</div>
-   <div class="v">$12,209<small>13 funnels</small></div>
-   <div class="d">Meta via Windsor, last read Nov 3 <span class="stale">WINDSOR PAUSED</span> Leads now come only from GHL sub-accounts. GHL has been read for every active client with a sub-account. Heal, Evolve and TrustStar are not tracked in GHL.</div></div>
-  <div class="card kpi"><div class="lbl" style="margin-top:0">First-month hero metrics</div>
-   <div class="v">42<small>/ 50 · Workzone · on pace</small></div>
-   <div class="d">Day 24 of 30, 6 days left. At about 1.75 leads a day it lands around 52. Xplor is also in its first 30 days: 14 of 50, day 11, behind pace. CPL pending Windsor.</div></div>
-  <div class="card kpi"><div class="lbl" style="margin-top:0">CS responsiveness · last week</div>
-   <div class="v">0.23<small>business hrs median</small></div>
-   <div class="d">29 client emails, 1 red. Nov 12: no red flags, nothing unanswered.</div></div>
-  <div class="card kpi"><div class="lbl" style="margin-top:0">SLA-breached tickets</div>
-   <div class="v r">4<small>+ 20 old to clean up</small></div>
-   <div class="d">#39 Xplor · #40 Workzone · #42 VBO · #43 Heal. Old tickets #13–#38 need cleanup (Yona).</div></div>
-  <div class="card kpi"><div class="lbl" style="margin-top:0">End of flight inside 30 days</div>
-   <div class="v">3<small>accounts</small></div>
-   <div class="d">VBO Nov 30 · Evolve Nov 30 · Rigol Dec 15. DBSync is handled by Jake.</div></div>
- </div>
- <div class="foot"><span>Sources: CEO report (built Nov 12), GHL sub-accounts Oct 21–Nov 12 (read Fri 13 Nov, 13:10 Madrid), CS escalations Nov 12, CS Rundown Nov 13</span><span>02</span></div>
-</div></section>
-
-<!-- 3 DUE TODAY -->
-<section class="slide" id="s3"><div class="in">
- <div class="eyebrow">Due today · Madrid time</div>
- <h2>Five things that must land today</h2>
- <p class="sub">Sorted by deadline. Reply on the team thread the moment each one is done.</p>
- <div class="body rows" style="display:flex">
-  <div class="row"><span class="o">William</span><span class="c">Imorgon</span><span class="t">Apply Andy's small edits to the "Andy's Letter" page (sent 03:19, he likes it) and confirm to him.</span><span class="w">Before 15:00</span></div>
-  <div class="row"><span class="o">Shane</span><span class="c">Rigol</span><span class="t">Recap to Mike.Wohlert@rigol.com, his written OK on AD20, AD14 and AD17, and chase his discovery questions. Last night's reminder went to his atlasnova.ai address. If the assessment form, AI report, landing page and workflow won't be live Monday, tell Mike and Jake with a new date.</span><span class="w">By 18:00</span></div>
-  <div class="row"><span class="o">William</span><span class="c">Workzone</span><span class="t">Send the qualifying-question change, and confirm in writing to Ash that the Instagram ad now goes to the booking page (3 days late).</span><span class="w">By 18:00</span></div>
-  <div class="row"><span class="o">Shane</span><span class="c">Workzone</span><span class="t">GHL says the A2P campaign verification failed last night. Fix it, book Ash's text-bot walkthrough, and tell Jake where it stands.</span><span class="w">Before 18:30</span></div>
-  <div class="row"><span class="o">Shane</span><span class="c">Xplor</span><span class="t">Answer Jon's Meta budget question in writing (he replied Nov 11, we said "on it"), with the new daily setting.</span><span class="w">Before 19:00</span></div>
- </div>
- <div class="calls"><span class="eyebrow" style="margin-right:6px">Jake's calls tonight</span><b>18:00</b> Tim Moran, Heal Clinical <span style="color:var(--mu2)">·</span> <b>18:30</b> Ash Didwania, Workzone <span style="color:var(--mu2)">·</span> <b>19:30</b> Mike MacPherson, VBO Tickets</div>
- <div class="foot"><span>Sources: CS escalations Nov 12 (P24, P27, P29, P33, P34), CS Rundown Nov 13, Google Calendar</span><span>03</span></div>
-</div></section>
-
-<!-- 4 HEALTH BOARD -->
-<section class="slide" id="s4"><div class="in">
- <div class="eyebrow">Portfolio health</div>
- <h2>16 accounts: <span class="r">5 red</span> · <span class="y">10 amber</span> · <span class="g">1 green</span></h2>
- <p class="sub">Green 70+, amber 45–69, red under 45 on the CEO report scale, adjusted for this week. Vega Claims, Tiger Capital and Hyphen are prospects, not clients, and aren't on the board.</p>
- <div class="body hb">
-  <div class="card edge-r"><div class="nm">VBO Tickets<i class="bg-r"></i></div><div class="own">William</div><p>Mike has raised concerns about results. Jake talks to him tonight at 19:30.</p></div>
-  <div class="card edge-r"><div class="nm">Evolve<i class="bg-r"></i></div><div class="own">William · Shane</div><p>Ads paused at Dave's request until about Nov 18. Leads not tracked in GHL. No call since Oct 28.</p></div>
-  <div class="card edge-r"><div class="nm">Rigol<i class="bg-r"></i></div><div class="own">Shane · William</div><p>Not live since May kickoff. Ads approved Nov 12, go-live Mon Nov 16.</p></div>
-  <div class="card edge-r"><div class="nm">DBSync<i class="bg-r"></i></div><div class="own">Jake</div><p>Handled by Jake.</p></div>
-  <div class="card edge-r"><div class="nm">Clockspring<i class="bg-r"></i></div><div class="own">William</div><p>GHL Oct 21–Nov 12: 16 leads, 0 calls logged, 3 booked, 0 showed, 1 no-show. Funnel 2.0 yes/no from Adam still pending.</p></div>
-  <div class="card edge-y"><div class="nm">Xplor / FieldEdge<i class="bg-y"></i></div><div class="own">Shane · William</div><p>Meta live. Jon frustrated about the Meta budget level. GHL Oct 21–Nov 12: 14 leads (1 staff excluded), day 11 of 30, behind pace for 50.</p></div>
-  <div class="card edge-y"><div class="nm">Workzone<i class="bg-y"></i></div><div class="own">William · Shane</div><p>First self-booked call today. GHL: 42 of 50 leads, day 24 of 30, on pace. A2P failed.</p></div>
-  <div class="card edge-y"><div class="nm">Heal Clinical<i class="bg-y"></i></div><div class="own">William · Shane</div><p>Tim is happy, wants help on 2 new projects. Leads not tracked in GHL. Old VSL link still 404s.</p></div>
-  <div class="card edge-y"><div class="nm">HRG<i class="bg-y"></i></div><div class="own">William</div><p>GHL Oct 21–Nov 12: 49 leads, 80 outbound calls, 5 booked, 1 showed. Meta ads paused by an ad-account error, Scott silent.</p></div>
-  <div class="card edge-y"><div class="nm">FamCare<i class="bg-y"></i></div><div class="own">William · Shane</div><p>New page and 22 video ads live. George records next week. Volume still soft.</p></div>
-  <div class="card edge-y"><div class="nm">TrustStar<i class="bg-y"></i></div><div class="own">William · Shane</div><p>Admiral's Letter is the live page. Not tracked in GHL. Rob wants lower weekly ad spend. Steve's login unconfirmed.</p></div>
-  <div class="card edge-y"><div class="nm">Imorgon<i class="bg-y"></i></div><div class="own">William · Shane</div><p>Andy's Letter page ready. RSNA Chicago campaign from Nov 27.</p></div>
-  <div class="card edge-y"><div class="nm">Lockton<i class="bg-y"></i></div><div class="own">Yona · Rian · Shane</div><p>New client. Kickoff Mon Nov 16, 21:00. Lockton approves all copy.</p></div>
-  <div class="card edge-y"><div class="nm">Aviro360<i class="bg-y"></i></div><div class="own">William · Yona</div><p>Ads bring leads, Brian's team isn't calling them. Check-in Nov 25.</p></div>
-  <div class="card edge-y"><div class="nm">All Tips Matter<i class="bg-y"></i></div><div class="own">William</div><p>Funnel 2 live, volume thin. Kill sub-1% CTR ads.</p></div>
-  <div class="card edge-g"><div class="nm">Sandler<i class="bg-g"></i></div><div class="own">William · Shane</div><p>Leads up after the pivot. Enrichment missing the 5 new states.</p></div>
-  <div class="card" style="background:transparent;border-style:dashed"><div class="nm" style="color:var(--mu)">Key</div><p><span class="r">●</span> Red under 45<br><span class="y">●</span> Amber 45–69<br><span class="g">●</span> Green 70+</p></div>
- </div>
- <div class="foot"><span>Sources: CEO report Nov 12, GHL sub-accounts Oct 21–Nov 12, CS escalations Nov 12, Fathom weeklies Nov 11–12</span><span>04</span></div>
-</div></section>
-
-
-<!-- 5 COMPLIANCE -->
-<section class="slide slide-comp" id="s5"><div class="in">
- <div class="eyebrow">Client compliance · GHL Oct 21–Nov 12</div>
- <h2>Client compliance: are clients working their leads?</h2>
- <p class="sub">Calls, bookings and shows from each client's own GHL sub-account, Oct 21 to Nov 12, 2026. As of Fri 13 Nov, 13:10 Madrid (CET).</p>
- <div class="body comp">
-  <div class="card" style="padding:2px 6px">
-   <table>
-    <tr><th>Client</th><th>GHL leads</th><th>Calls logged in GHL</th><th>Booked / showed / no-show</th><th>Verdict</th></tr>
-    <tr><td><b>VBO Tickets</b></td><td class="n">12<small>1 staff/test</small></td><td>10 outbound, 8 unique leads, 6 answered, avg 36s<small>All by Courtney Files</small></td><td class="n">1 / 0 / 0<small>The booking was then cancelled</small></td><td class="ver">Courtney is calling, but calls are short and the one booking was cancelled.</td></tr>
-    <tr><td><b>Workzone</b></td><td class="n">42<small>44 contacts, 2 staff</small></td><td>0 calls in GHL<small>Automated email reached 19 of 20 newest sampled leads</small></td><td class="n">1 / 0 / 0<small>1 confirmed, none showed yet</small></td><td class="ver">No calls logged in GHL. Outreach is email only. One booking confirmed, none showed yet.</td></tr>
-    <tr><td><b>Xplor / FieldEdge</b></td><td class="n">14<small>15 contacts, 1 staff</small></td><td>0 calls in GHL<small>All 14 prospects got automated email, no SMS</small></td><td class="n">0 / 0 / 0</td><td class="ver">No calls logged in GHL. Email only, and none booked.</td></tr>
-    <tr><td><b>Aviro360</b></td><td class="n">16</td><td>1 outbound, 1 unique lead, 1 answered, avg 31s<small>Brian Murphy</small></td><td class="n">1 / 0 / 0</td><td class="ver">16 leads and only 1 call. Leads are not being worked.</td></tr>
-    <tr><td><b>FamCare</b></td><td class="n">20</td><td>945 outbound, 793 answered, avg 12s<small>Mark Sharp · dialer pattern. 153 unique contacts, includes older leads</small></td><td class="n">7 / 0 / 6</td><td class="ver">Heavy dialing and 7 bookings, but 6 no-shows and nobody showed.</td></tr>
-    <tr><td><b>HRG</b></td><td class="n">49</td><td>80 outbound, 71 answered, avg 35s<small>Andrew Garcia 75 (38 unique), Mellissa Harmon 5 (5 unique)</small></td><td class="n">5 / 1 / 0<small>4 confirmed</small></td><td class="ver">Strongest follow-up in the group. 5 booked, 1 showed so far.</td></tr>
-    <tr><td><b>Clockspring</b></td><td class="n">16</td><td>0 calls in GHL</td><td class="n">3 / 0 / 1<small>2 confirmed</small></td><td class="ver">No calls logged in GHL. 3 booked, none showed, 1 no-show.</td></tr>
-    <tr><td><b>Imorgon</b></td><td class="n">11</td><td>0 calls in GHL</td><td class="n">5 / 0 / 0<small>5 confirmed, none showed yet</small></td><td class="ver">No calls logged in GHL. 5 booked and confirmed, none showed yet.</td></tr>
-    <tr><td><b>All Tips Matter</b></td><td class="n">11</td><td>10 outbound to 5 unique leads, avg 1m 31s<small>Brian Mas</small></td><td class="n">7 / 0 / 4</td><td class="ver">Calling is happening, but 4 of 7 bookings were no-shows and nobody showed.</td></tr>
-    <tr><td><b>Sandler</b></td><td class="n">13<small>1 staff</small></td><td>26 outbound to 12 unique leads, 22 answered, avg 2m 43s<small>Michael Pape</small></td><td class="n">3 / 1 / 0</td><td class="ver">Solid calling. 3 booked, 1 showed.</td></tr>
-    <tr><td><b>Rigol</b></td><td class="n">0 real leads<small>1 test contact</small></td><td>0 calls in GHL</td><td class="n">0 / 0 / 0</td><td class="ver">Not launched. Go-live Mon Nov 16.</td></tr>
-    <tr><td><b>Heal Clinical</b></td><td class="n">Not tracked in GHL<small>Sub-account has 0 contacts</small></td><td>not shown in GHL</td><td class="n">not shown in GHL</td><td class="ver">Leads not tracked in GHL.</td></tr>
-    <tr><td><b>Evolve</b></td><td class="n">Not tracked in GHL<small>Both sub-accounts empty</small></td><td>not shown in GHL</td><td class="n">not shown in GHL</td><td class="ver">Leads not tracked in GHL. Ads paused at Dave's request.</td></tr>
-    <tr><td><b>TrustStar</b></td><td class="n">Not tracked in GHL<small>No sub-account found</small></td><td>not shown in GHL</td><td class="n">not shown in GHL</td><td class="ver">Not tracked in GHL.</td></tr>
-    <tr><td><b>Lockton</b></td><td class="n">No sub-account yet</td><td>not shown in GHL</td><td class="n">not shown in GHL</td><td class="ver">New. Kickoff Mon Nov 16.</td></tr>
-    <tr><td><b>DBSync</b></td><td colspan="3">Handled by Jake</td><td class="ver">Handled by Jake.</td></tr>
-   </table>
-  </div>
-  <div class="gaps"><h3>Biggest gaps</h3><p>Aviro360 (16 leads, 1 call). Workzone and Xplor (no calls logged, email only). Clockspring and Imorgon (no calls logged). FamCare and All Tips Matter (bookings not showing up). Heal, Evolve and TrustStar not tracked in GHL.</p></div>
-  <p class="fn">Answered means the call connected, not that a conversation happened. GHL doesn't show staff login dates, so daily CRM logins can't be checked. Calls made outside GHL won't show here.</p>
- </div>
- <div class="foot"><span>Source: each client's GHL sub-account, Oct 21–Nov 12, 2026. Read Fri 13 Nov, 13:10 Madrid (CET)</span><span>05</span></div>
-</div></section>
-
-
-<!-- 6 ACCOUNTS TO DATE -->
-<section class="slide slide-atd" id="s6"><div class="in">
- <div class="eyebrow">Accounts to date · all-time GHL</div>
- <h2>Every client's GHL history, not just since 21 Oct</h2>
- <p class="sub">All-time contacts, calls and bookings from each client's own GHL sub-account, through 13 Nov 2026. This is separate from the 21 Oct–12 Nov window on the other slides. November counts end 13 Nov. As of Fri 13 Nov 2026.</p>
- <div class="body atd">
-  <div class="card atd-card">
-   <table id="atd-table"></table>
-  </div>
-  <p class="fn">Lead counts are net of staff and test contacts, except Rigol's remaining phone-only record, which is unverified. Answered figures marked * are approximate (inferred from GHL chart percentages, not a separate status count). Call and appointment totals may include staff or test activity.</p>
- </div>
- <div class="foot"><span>Source: each client's GHL sub-account, all-time through 13 Nov 2026. Read Fri 13 Nov 2026. Heal, Evolve and TrustStar not tracked in GHL. Lockton has no sub-account yet.</span><span>06</span></div>
-</div></section>
-
-<!-- 7 WHAT HISTORY TELLS US -->
-<section class="slide slide-atd" id="s7"><div class="in">
- <div class="eyebrow">Accounts to date · what the numbers say</div>
- <h2>What history tells us</h2>
- <p class="sub">Plain readings of the all-time GHL counts on the previous slide. No figures here that are not in that table. As of Fri 13 Nov 2026.</p>
- <div class="body atd-obs">
-  <div class="card"><h3>History starts well before 21 Oct</h3><p>All Tips Matter has contacts since 28 Jul 2025 (467 net). Clockspring since 10 Nov 2025 (294 net). HRG since 10 Mar 2026 (279 net). FamCare since 2 Apr 2026 (345 net). Imorgon since 25 May 2026 (96 net). The 21 Oct–12 Nov window is only a slice for these accounts.</p></div>
-  <div class="card"><h3>Show rates, all-time</h3><p>HRG has the highest show rate in this set: 16 showed of 44 booked (36.4%). Sandler is 1 of 3. Clockspring is 7 of 35. Imorgon is 2 of 24. All Tips Matter is 6 of 94. FamCare is 2 of 59. VBO is 0 of 8. Aviro360 is 0 of 2. DBSync is 0 of 8. Workzone is 0 of 1. Xplor and Rigol have no bookings. Rigol is not launched yet (go-live 16 Nov).</p></div>
-  <div class="card"><h3>No-shows</h3><p>All Tips Matter has 41 no-shows of 94 booked. FamCare has 32 of 59. HRG has 15 of 44, and also the most shows (16). Clockspring has 9 of 35. Imorgon has 1 of 24. The other accounts with bookings have 0 no-shows in GHL.</p></div>
-  <div class="card"><h3>Calling vs leads</h3><p>FamCare has 3,403 calls on 345 net leads. All Tips Matter has 453 calls on 467 net. HRG has 709 on 279 net. Sandler has 30 calls on 14 net leads. Workzone, Xplor, DBSync and Rigol have 0 calls in GHL. Aviro360 has 1 call on 30 net leads. Clockspring has 8 calls on 294 net leads. Imorgon has 9 calls on 96 net leads. Rigol is not launched yet (go-live 16 Nov).</p></div>
-  <div class="card"><h3>Recent months</h3><p>DBSync has 0 new contacts from 1–13 Nov, after 14 in Aug, 28 in Sep and 22 in Oct. FamCare's highest month is May (73 net); 1–13 Nov is 12. HRG's highest month is Oct (55 net); 1–13 Nov is already 27. VBO's highest month is Sep (45 net).</p></div>
- </div>
- <div class="foot"><span>Source: the all-time GHL counts on the previous slide, through 13 Nov 2026. Read Fri 13 Nov 2026.</span><span>07</span></div>
-</div></section>
-
-<!-- 8 DIVIDER -->
-<section class="slide" id="s8"><div class="in">
- <div class="div-grid">
-  <div><div class="eyebrow">Section · Red accounts</div><div class="huge" style="margin-top:20px">5</div><h2 style="font-size:44px">Red accounts</h2><p class="sub">VBO, Evolve, Rigol, Clockspring, and DBSync (handled by Jake).</p></div>
-  <div style="display:grid;gap:14px">
-   <div class="card stake hot"><span class="pill" style="border-color:rgba(255,68,56,.5);color:#ffb3ad">Biggest stake 1</span><h3>VBO: results concerns</h3><p style="font-size:15px">Mike has raised concerns about results. Jake talks to him on tonight's 19:30 call. Have the qualified-call count and the latest numbers ready for Jake.</p><p class="lbl" style="color:var(--red)">Next · William + Yona get Jake the qualified-call count before 19:30</p></div>
-   <div class="card stake"><span class="pill">Biggest stake 2</span><h3>Rigol: not live since May</h3><p style="font-size:15px">Kickoff May 22, launch call Sep 25, still not live. Mike approved the corrected ads Nov 12 and the Free Custom Assessment replaces the jitter worksheet. End of flight Dec 15.</p><p class="lbl" style="color:var(--red)">Next · live Mon Nov 16, or a new date to Mike and Jake by 18:00 today</p></div>
-  </div>
- </div>
- <div class="foot"><span>Sources: Fathom VBO Nov 11, Fathom Rigol Nov 12, Notion CS Agent Run Nov 13</span><span>08</span></div>
-</div></section>
-
-<!-- 9 RED DETAIL 1 -->
-<section class="slide" id="s9"><div class="in">
- <div class="eyebrow">Red accounts · 1 of 2</div>
- <h2>VBO, Evolve and Rigol: what it takes to hold them</h2>
- <div class="body cols3">
-  <div class="card edge-r" style="display:flex;flex-direction:column"><h3>VBO Tickets</h3><div class="who">Mike MacPherson, Frank Sumner · owner William</div>
-   <div class="lbl">Status</div><p>Mike said on Nov 11 the campaign isn't delivering and that it's the results, not our service. Jake talks to him tonight at 19:30.</p>
-   <div class="lbl">What the numbers say</div><ul><li>GHL Oct 21–Nov 12: 12 leads (1 staff/test), 10 outbound calls by Courtney Files (8 unique leads), 6 answered, avg 36s</li><li>1 booked, then cancelled, 0 showed</li><li>Meta reports 0 leads Nov 5–11</li></ul>
-   <div class="lbl">Next</div><ul><li>William: guest-experience page + creatives live, confirm the live daily budget (sources differ) · Tue Nov 17</li><li>Courtney (VBO) is calling the 3 museum leads who hit STOP</li></ul>
-   <div class="eof"><span>End of flight</span><b>Nov 30</b></div></div>
-  <div class="card edge-r" style="display:flex;flex-direction:column"><h3>Evolve Leadership</h3><div class="who">Dave Newell · owners William, Shane</div>
-   <div class="lbl">Status</div><p>Dave declined the Nov 4 weekly and asked for a 2-week pause, regroup about Nov 18. Paused the same day. No recording of the planned Nov 6 alignment.</p>
-   <div class="lbl">What the numbers say</div><ul><li>Leads not tracked in GHL. Both GHL sub-accounts have no contacts and no pipeline.</li><li>Ads paused at Dave's request.</li><li>First deal closed from our leads (Oct 23)</li></ul>
-   <div class="lbl">Next</div><ul><li>Jake syncs with Dave Fri Nov 20 on restart criteria: creatives, what "working" means</li><li>Yona: fix the Nov 20 clash with this Pulse Check</li></ul>
-   <div class="eof"><span>End of flight</span><b>Nov 30</b></div></div>
-  <div class="card edge-r" style="display:flex;flex-direction:column"><h3>Rigol</h3><div class="who">Mike Wohlert · owner Shane, ads William</div>
-   <div class="lbl">Status</div><p>Not live since the May 22 kickoff. Launch due Mon Nov 16. GHL: 0 real leads since Oct 21 (the only new contact is an internal test contact). Nov 12: Mike approved AD20/AD14/AD17. Message pivots to "high value at a low cost". New Free Custom Assessment: a 4–6 question form plus a one-time AI email report.</p>
-   <div class="lbl">Late (Shane)</div><ul><li>Same-day recap + Mike's written OK, not sent</li><li>Reminder went to the atlasnova.ai address</li><li>Mike's discovery questions not in yet</li></ul>
-   <div class="lbl">Next</div><ul><li>Live Mon Nov 16, or new date to Mike + Jake by 18:00 today</li><li>William points ads and page at the assessment</li></ul>
-   <div class="eof"><span>End of flight</span><b>Dec 15</b></div></div>
- </div>
- <div class="foot"><span>Sources: Fathom 896184484 (VBO), CEO report Nov 12, Fathom 897602537 (Rigol), CS escalations</span><span>09</span></div>
-</div></section>
-
-<!-- 10 RED DETAIL 2 -->
-<section class="slide" id="s10"><div class="in">
- <div class="eyebrow">Red accounts · 2 of 2</div>
- <h2>DBSync and Clockspring</h2>
- <div class="body" style="grid-template-rows:auto 1fr">
-  <div class="row edge-r" style="grid-template-columns:200px 1fr 130px"><span class="o">DBSync</span><span class="t">Handled by Jake. No team action; route anything from DBSync to Jake.</span><span class="w" style="color:var(--mu)">Jake</span></div>
-  <div class="card edge-r" style="display:grid;grid-template-columns:1.1fr 1fr;gap:28px;padding:28px 32px;align-self:start">
-   <div><h3 style="font-size:22px">Clockspring</h3><div class="who">Adam Goerdt, Chad Truhn · owner William · score 38</div>
-    <div class="lbl">Status</div><p>Quiet disengagement. GHL Oct 21–Nov 12: 16 leads, 0 calls logged, 3 booked (2 confirmed), 0 showed, 1 no-show. Weekly ad spend cut from $1,400 to $700. Funnel 2.0 proposal sent Nov 4, no yes/no yet. Structural CTR problem remains.</p>
-    <div class="lbl">Next</div><ul><li>William: get Adam's yes or no on Funnel 2.0 · Wed Nov 18</li><li>Concentrate the $700/wk on ads above 1% CTR until Funnel 2.0 ships</li></ul></div>
-   <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;align-content:start">
-    <div class="card kpi" style="background:var(--p2)"><div class="lbl" style="margin-top:0">Ad spend · Oct 21–27</div><div class="v" style="font-size:32px">$1,454.92</div></div>
-    <div class="card kpi" style="background:var(--p2)"><div class="lbl" style="margin-top:0">CPL</div><div class="v" style="font-size:28px;color:var(--yel)">Pending</div></div>
-    <div class="card kpi" style="background:var(--p2)"><div class="lbl" style="margin-top:0">Leads · booked · showed</div><div class="v" style="font-size:32px">16 · 3 · 0</div></div>
-    <div class="card kpi" style="background:var(--p2)"><div class="lbl" style="margin-top:0">Calls logged in GHL</div><div class="v" style="font-size:32px">0</div></div>
-    <p class="src" style="grid-column:1/-1">Leads, bookings and calls: GHL Oct 21–Nov 12. Ad spend: Windsor Oct 21–27. Earlier first-month result was reported as a hit; that older window was not re-checked in GHL this time.</p>
-   </div>
-  </div>
- </div>
- <p class="src">Sources: CEO report Nov 12, Notion CS Agent Run Nov 13.</p>
- <div class="foot"><span>Aletto · CS Pulse Check</span><span>10</span></div>
-</div></section>
-
-<!-- 11 AMBER 1 -->
-<section class="slide" id="s11"><div class="in">
- <div class="eyebrow">Amber accounts · 1 of 2</div>
- <h2>Five amber accounts with momentum to protect</h2>
- <div class="body cols5">
-  <div class="card edge-y"><h3>Xplor / FieldEdge</h3><div class="who">Jon Blissenbach · Shane, William</div><div class="lbl">Now</div><p>Meta live. GHL Oct 21–Nov 12: 14 leads (1 staff excluded), day 11 of 30, behind pace for 50. CPL pending Windsor. Google audit: pause non-brand Google, keep brand, scale Meta. Jon wrote Nov 11 that the Meta budget is below what was agreed. Ticket #39 SLA-breached ~48h.</p><div class="lbl">Next</div><ul><li>Shane: written answer to Jon today</li><li>Shane: #39 Google cap with Dmytro, P20 creative proof · Tue Nov 17</li><li>Yona: book the Retention Flight walkthrough</li></ul></div>
-  <div class="card edge-y"><h3>Workzone</h3><div class="who">Ash Didwania · William, Shane</div><div class="lbl">Now</div><p>20 new AD11-based creatives live. Windsor ad spend Oct 21–Nov 3: $1,402.97. GHL: 42 leads Oct 21–Nov 12 (2 staff excluded), 42 of 50, on pace. CPL pending Windsor. First self-booked call today 19:00. A2P verification failed.</p><div class="lbl">Next</div><ul><li>Today: qualifying question, IG-ad confirmation, A2P</li><li>William: calendar on the VSL page + freebie / direct-to-VSL split · Tue Nov 17</li></ul></div>
-  <div class="card edge-y"><h3>Heal Clinical</h3><div class="who">Tim Moran · William, Shane</div><div class="lbl">Now</div><p>Tim is positive ("partners for life"). Leads not tracked in GHL: the Heal Clinical sub-account has 0 contacts. healclinical.com/vsl-4263 still 404s (heal-clinical.com works). Unverified whether ads still point there.</p><div class="lbl">Next</div><ul><li>William: confirm no ad uses the dead URL · Mon Nov 16</li><li>Jake covers Tim's 2 new projects on tonight's 18:00 call</li></ul></div>
-  <div class="card edge-y"><h3>HRG</h3><div class="who">Scott Weidemeyer · William</div><div class="lbl">Now</div><p>GHL Oct 21–Nov 12: 49 leads, 80 outbound calls (Andrew Garcia 75, Mellissa Harmon 5), 5 booked, 4 confirmed, 1 showed. Two deals moving. Meta ads paused by an ad-account error. Scott hasn't replied since Wed.</p><div class="lbl">Next</div><ul><li>William: chase Scott daily until ads run; split pipeline by funnel</li><li>Shane: date for the LinkedIn test talk</li></ul></div>
-  <div class="card edge-y"><h3>FamCare</h3><div class="who">George Ritacco · William, Shane</div><div class="lbl">Now</div><p>Sentiment back to Neutral. New page + 22 AI-cut video ads live. Yona sent George the scripts Nov 12. GHL Oct 21–Nov 12: 20 leads, 945 outbound calls by Mark Sharp, 7 booked, 0 showed, 6 no-shows. Nov 5–11 GHL: 8 leads, 2 MQL, 2 booked.</p><div class="lbl">Next</div><ul><li>Jake: 5 script answers · Sun Nov 15</li><li>William: "Funders" headline + retargeting with the 22 videos · Wed Nov 18</li><li>Yona: George's placeholders</li></ul></div>
- </div>
- <div class="foot"><span>Sources: cs-log Google Ads Audit Nov 11, Fathom 896184476 / 896184478 / 897427123, CEO report Nov 12</span><span>11</span></div>
-</div></section>
-
-<!-- 12 AMBER 2 + GREEN -->
-<section class="slide" id="s12"><div class="in">
- <div class="eyebrow">Amber accounts · 2 of 2 · and our one green</div>
- <h2>Five more amber, and Sandler in the green</h2>
- <div class="body cols3x2">
-  <div class="card edge-y"><h3>TrustStar / BlueStar</h3><div class="who">Rob Wray, Steve Carey · William, Shane</div><p style="margin-top:8px">Admiral's Letter is the live page. Leads not tracked in GHL: no sub-account was found.</p><div class="lbl">Next</div><ul><li>William: confirm Steve's login · Wed Nov 18</li><li>Rob asked to cut weekly ad spend; William defends Admiral's Letter, Jake decides</li></ul></div>
-  <div class="card edge-y"><h3>Imorgon Medical</h3><div class="who">Andy Milkowski · William, Shane</div><p style="margin-top:8px">"Andy's Letter" page live, replaces the VSL page. GHL Oct 21–Nov 12: 11 leads, 0 calls logged, 5 booked, 5 confirmed, 0 showed yet. RSNA Chicago geo campaign Nov 27–Dec 3.</p><div class="lbl">Next</div><ul><li>William: Andy's edits before 15:00 today</li><li>William: RSNA geo campaign ready · Fri Nov 20</li><li>Jake: reviewed scripts + editing example · Sun</li></ul></div>
-  <div class="card edge-y"><h3>Lockton</h3><div class="who">Aaron Marsden, Spencer Scheitler · Yona, Rian</div><p style="margin-top:8px">New client, alignment held Nov 11. Lockton approves all ad copy. Kickoff Mon Nov 16 21:00, Shane runs it per Yona (Jake to confirm).</p><div class="lbl">Next</div><ul><li>Yona: surveys + Notion client row · Mon Nov 16</li><li>Rian: references in the kickoff brief</li><li>Jake: pre-kickoff pack · Sun</li></ul></div>
-  <div class="card edge-y"><h3>Aviro360</h3><div class="who">Brian Murphy · William, Yona</div><p style="margin-top:8px">Ads still bring leads, but they are not being worked. GHL Oct 21–Nov 12: 16 leads, 1 call (Brian Murphy, 31s), 1 booked, 0 showed. No recording of the Nov 11 sync.</p><div class="lbl">Next</div><ul><li>Brian owns the 5-minute call; log every attempt in GHL</li><li>Yona: send the Nov 25 check-in invite</li></ul></div>
-  <div class="card edge-y"><h3>All Tips Matter</h3><div class="who">Brian Mas · William</div><p style="margin-top:8px">Funnel #2 launched Oct 30 and is a win, but volume is thin. GHL Oct 21–Nov 12: 11 leads, 10 outbound calls by Brian Mas to 5 unique leads, avg 1m 31s, 7 booked, 4 no-shows, 0 showed.</p><div class="lbl">Next</div><ul><li>Watch Funnel #2 for 7 days, kill sub-1% CTR ads</li><li>No dated next step in sources: William to set one</li></ul></div>
-  <div class="card edge-g"><h3>Sandler / Summit Vista <span class="pill" style="margin-left:6px;color:var(--grn);border-color:rgba(62,207,110,.4)">Green · 79</span></h3><div class="who">Michael Pape · William, Shane</div><p style="margin-top:8px">GHL Oct 21–Nov 12: 13 leads (1 staff), 26 outbound calls by Michael Pape to 12 unique leads, 22 answered, avg 2m 43s, 3 booked, 1 showed. Enrichment still lacks the 5 new states. Earlier first-month result (window closed Nov 6) was reported as missed; that older window was not fully re-checked in GHL this time.</p><div class="lbl">Next</div><ul><li>William: enrichment for the 5 states · Wed Nov 18</li><li>Nov 12 weekly skipped for the Sandler summit</li></ul></div>
- </div>
- <div class="foot"><span>Sources: CEO report Nov 12, Fathom Imorgon Nov 11, Fathom Lockton Nov 11, Notion CS Agent Run</span><span>12</span></div>
-</div></section>
-
-<!-- 13 HERO METRICS -->
-<section class="slide" id="s13"><div class="in">
- <div class="eyebrow">First-month hero metrics · leads from GHL, spend from Windsor</div>
- <h2>Every client in its first 30 days, against the hero bar</h2>
- <p class="sub">Hero bar: 50+ leads and cost per lead at the $40 target (never above the $55 ceiling) within 30 days of launch. Leads count only from each client's GHL sub-account; ad spend only from Windsor. As of Fri 13 Nov, 13:10 Madrid (CET).</p>
- <div class="body hero-grid" style="grid-template-columns:2.1fr 1fr">
-  <div class="card" style="padding:8px 14px;align-self:start">
-   <table>
-    <tr><th>Client</th><th>Window</th><th>Leads vs 50 · GHL</th><th>Ad spend · Windsor</th><th>CPL · Pace</th></tr>
-    <tr><td><b>Workzone</b><small>launched Oct 21</small></td><td class="n">Oct 21–Nov 19<small>day 24 of 30 · 6 left</small></td><td class="n" style="color:var(--grn)">42 / 50<small>Oct 21–Nov 12 · 2 staff excluded</small></td><td class="n">$1,402.97<small>Oct 21–Nov 3</small></td><td><span class="pill" style="color:var(--grn);border-color:rgba(62,207,110,.4)"><i class="bg-g"></i>On pace</span><small>CPL pending Windsor</small></td></tr>
-    <tr><td><b>Rigol</b><small>pre-launch</small></td><td class="n">Not started<small>launch due Mon Nov 16</small></td><td class="n" style="color:var(--mu)">0 / 50<small>1 internal test contact only</small></td><td class="n" style="color:var(--mu)">No Windsor account yet</td><td><span class="pill">Not launched</span></td></tr>
-    <tr><td><b>Lockton</b><small>new client</small></td><td class="n">Not started<small>kickoff Mon Nov 16</small></td><td class="n" style="color:var(--mu)">0 / 50<small>no GHL sub-account yet</small></td><td class="n" style="color:var(--mu)">n/a</td><td><span class="pill">Not started</span></td></tr>
-    <tr><td><b>Xplor</b><small>FieldEdge, Meta live</small></td><td class="n">Nov 3–Dec 2<small>day 11 of 30 · 19 left</small></td><td class="n" style="color:var(--yel)">14 / 50<small>Oct 21–Nov 12 · 1 staff excluded</small></td><td class="n" style="color:var(--yel)">Not in Windsor</td><td><span class="pill" style="color:var(--yel);border-color:rgba(245,181,68,.45)"><i class="bg-y"></i>Behind pace</span><small>CPL pending Windsor</small></td></tr>
-   </table>
-   <p class="src" style="padding:0 10px 6px">Recently closed: Aviro360 Sep 27–Oct 26, 21/50 leads (GHL, live) on $3,253.35 Windsor spend = $155 CPL, missed. Sandler Oct 8–Nov 6, earlier reported as missed; that older window was not fully re-checked in GHL this time. GHL Oct 21–Nov 12: 13 leads (1 staff). Onboarding, not launched: Dan Greenberg, Lyrion, Anchor Point.</p>
-  </div>
-  <div style="display:grid;grid-template-rows:auto auto 1fr;gap:12px">
-   <div class="card"><div class="lbl" style="margin-top:0">Workzone · hero window used</div>
-    <svg class="chart" viewBox="0 0 460 92" width="100%" role="img" aria-label="Workzone day 24 of 30">
-     <rect x="0" y="26" width="460" height="22" rx="11" fill="#1E2024"/>
-     <rect x="0" y="26" width="368" height="22" rx="11" fill="#F5B544"/>
-     <line x1="459" y1="18" x2="459" y2="56" stroke="#3ECF6E" stroke-width="2"/>
-     <text x="0" y="14" style="fill:#F7F8F8;font-size:12px">Day 24 of 30 (80% of the window)</text>
-     <text x="458" y="74" text-anchor="end" style="fill:#3ECF6E">Nov 19</text>
-     <text x="0" y="74">Oct 21</text>
-    </svg></div>
-   <div class="card"><div class="lbl" style="margin-top:0">Workzone · Windsor ad spend</div><p><span class="num ci" style="font-size:26px">$1,402.97</span><br>Oct 21–Nov 3, about $100 a day. Windsor reads are paused since Nov 3, so Nov 4–13 is pending Windsor.</p></div>
-   <div class="card" style="font-size:13px"><div class="lbl" style="margin-top:0">What it means this week</div><ul><li>Workzone is on pace: 42 of 50, about 1.75 leads a day, lands around 52 by Nov 19.</li><li>Xplor is behind pace: 14 of 50 through day 11, about 1.3 a day projects about 38. Needs about 1.9 a day from here.</li><li>CPL is pending Windsor for both. Workzone spend is only Oct 21–Nov 3 ($1,402.97); Xplor is not in Windsor.</li><li>Rigol has 0 real leads (one internal test contact). Launch due Mon Nov 16. Lockton window opens at launch.</li></ul></div>
-  </div>
- </div>
- <div class="foot"><span>Sources: leads = GHL sub-account, Oct 21–Nov 12, live Fri 13 Nov, 13:10 Madrid (CET), staff and test contacts excluded. Spend = Windsor (Meta), last read Nov 3.</span><span>13</span></div>
-</div></section>
-
-<!-- 14 LEAD ENGINE -->
-<section class="slide" id="s14"><div class="in">
- <div class="eyebrow">Ad spend and lead engine</div>
- <h2>Ad spend by client, against leads, MQLs and bookings</h2>
- <p class="sub">Ad spend from Windsor (Meta), Oct 21–27, last read Nov 3 <span class="stale">WINDSOR PAUSED</span> Leads and booked from each client's GHL sub-account, Oct 21–Nov 12, read Fri 13 Nov, 13:10 Madrid (CET). MQL is not shown in GHL for this pull, so no same-window CPL is shown. Heal, Evolve and TrustStar are not tracked in GHL.</p>
- <div class="body" style="grid-template-columns:1.6fr 1fr">
-  <div class="card" style="padding:6px 16px">
-   <table class="sp"><tr><th>Client</th><th>Ad spend · Oct 21–27 · Windsor</th><th>Leads</th><th>MQL</th><th>Booked</th><th>CPL</th></tr>
-   <tr><td class="cl">TrustStar</td><td class="sb"><div class="bar"><span style="width:100.0%"></span></div><b class="num">$1,506.43</b></td><td class="n" colspan="4" style="color:var(--mu)">Not tracked in GHL</td></tr><tr><td class="cl">Clockspring</td><td class="sb"><div class="bar"><span style="width:96.6%"></span></div><b class="num">$1,455.69</b></td><td class="n">16<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">3</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">HRG (both funnels)</td><td class="sb"><div class="bar"><span style="width:94.2%"></span></div><b class="num">$1,419.22</b></td><td class="n">49<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">5</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">Imorgon</td><td class="sb"><div class="bar"><span style="width:74.5%"></span></div><b class="num">$1,121.54</b></td><td class="n">11<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">5</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">FamCare</td><td class="sb"><div class="bar"><span style="width:71.9%"></span></div><b class="num">$1,083.59</b></td><td class="n">20<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">7</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">Heal</td><td class="sb"><div class="bar"><span style="width:67.9%"></span></div><b class="num">$1,023.39</b></td><td class="n" colspan="4" style="color:var(--mu)">Not tracked in GHL</td></tr><tr><td class="cl">All Tips Matter</td><td class="sb"><div class="bar"><span style="width:53.2%"></span></div><b class="num">$801.94</b></td><td class="n">11<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">7</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">Aviro360</td><td class="sb"><div class="bar"><span style="width:51.2%"></span></div><b class="num">$771.73</b></td><td class="n">16<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">1</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">VBO Tickets</td><td class="sb"><div class="bar"><span style="width:49.9%"></span></div><b class="num">$751.35</b></td><td class="n">12<small>1 staff/test · Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">1</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">Evolve</td><td class="sb"><div class="bar"><span style="width:48.9%"></span></div><b class="num">$736.88</b></td><td class="n" colspan="4" style="color:var(--mu)">Not tracked in GHL</td></tr><tr><td class="cl">Workzone</td><td class="sb"><div class="bar"><span style="width:46.5%"></span></div><b class="num">$701.21</b></td><td class="n">42<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">1</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">Xplor / FieldEdge</td><td class="sb" style="color:var(--mu)">Not in Windsor</td><td class="n">14<small>Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">0</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr><td class="cl">Sandler</td><td class="sb"><div class="bar"><span style="width:25.1%"></span></div><b class="num">$378.71</b></td><td class="n">13<small>1 staff · Oct 21–Nov 12</small></td><td class="n" style="color:var(--mu)">not shown in GHL</td><td class="n">3</td><td class="n" style="color:var(--yel)">Pending Windsor</td></tr><tr class="dim"><td class="cl">DBSync</td><td colspan="5">Handled by Jake</td></tr><tr class="tot"><td class="cl">Total · 13 funnels <small>incl. DBSync; Xplor has no Windsor spend in this total</small></td><td class="sb"><b class="num">$12,209.45</b></td><td class="n" colspan="4">GHL read for every active client with a sub-account. Heal, Evolve and TrustStar not tracked in GHL</td></tr>
-   </table>
-  </div>
-  <div style="display:grid;gap:10px;grid-auto-rows:1fr">
-   <div class="card edge-g"><div class="lbl" style="margin-top:0">Total ad spend · Oct 21–27 · Windsor</div><p><span class="num ci" style="font-size:26px">$12,209.45</span><br>All 13 funnels. Overall CPL still waits on a full Windsor window.</p></div>
-   <div class="card edge-y"><div class="lbl" style="margin-top:0">Live GHL, as of Fri 13 Nov, 13:10</div><p>Every active client with a sub-account has been read. Window Oct 21–Nov 12.<br>Workzone <span class="num ci">42 leads</span> · Xplor <span class="num ci">14 leads</span><br>HRG <span class="num ci">49</span> · FamCare <span class="num ci">20</span> · Aviro360 <span class="num ci">16</span><br>Clockspring <span class="num ci">16</span> · Sandler <span class="num ci">13</span> · VBO <span class="num ci">12</span><br>Imorgon and All Tips Matter <span class="num ci">11</span> each · Rigol 0 real leads<br>Heal, Evolve and TrustStar: not tracked in GHL</p></div>
-   <div class="card edge-y"><div class="lbl" style="margin-top:0">Spend after Nov 3</div><p>Pending Windsor. Reads paused since Nov 3; no spend from other sources is shown here.</p></div>
-   <div class="card edge-r"><div class="lbl" style="margin-top:0">Why counts changed</div><p>Call-based lead counts have been replaced with each client's GHL sub-account, Oct 21–Nov 12. Heal, Evolve and TrustStar are not tracked in GHL.</p></div>
-  </div>
- </div>
- <div class="foot"><span>Sources: Windsor Meta daily (through Nov 3); GHL sub-accounts, Oct 21–Nov 12, live Fri 13 Nov, 13:10 Madrid (CET). Heal, Evolve and TrustStar not tracked in GHL.</span><span>14</span></div>
-</div></section>
-
-<!-- 15 DATA GAPS -->
-<section class="slide" id="s15"><div class="in">
- <div class="eyebrow">Data gaps and fixes</div>
- <h2>GHL is fully read. Here is what is still missing</h2>
- <p class="sub">GHL has now been fully read for every active client with a sub-account. Still missing: Windsor (paused), staff login dates, and Heal, Evolve and TrustStar, which are not tracked in GHL. As of Fri 13 Nov, 13:10 Madrid (CET).</p>
- <div class="body rows" style="display:flex">
-  <div class="row gap-row"><span class="num r">01</span><span class="o">Meta data stops Nov 3</span><span class="t">Windsor license expired Nov 5 (6 sources vs 5 allowed), Ryze Meta revoked. No fresher spend or CPL for any client until the upgrade.</span><span class="w">Jake · Windsor upgrade</span></div>
-  <div class="row gap-row"><span class="num r">02</span><span class="o">No same-window CPL yet</span><span class="t">Workzone and Xplor leads are now from GHL (42 and 14). Workzone spend is only Oct 21–Nov 3 ($1,402.97), so there is no same-window CPL yet.</span><span class="w">Jake · Windsor upgrade</span></div>
-  <div class="row gap-row"><span class="num r">03</span><span class="o">Xplor spend not in Windsor</span><span class="t">14 GHL leads Oct 21–Nov 12 (day 11 of 30, behind pace). Spend and CPL still missing. No client call recorded in Fathom.</span><span class="w">William · add Xplor after the upgrade</span></div>
-  <div class="row gap-row"><span class="num r">04</span><span class="o">Staff login dates</span><span class="t">GHL does not show last-login or last-active dates, so daily CRM logins can't be checked from the CRM.</span><span class="w">Not shown in GHL</span></div>
-  <div class="row gap-row"><span class="num r">05</span><span class="o">Three accounts not in GHL</span><span class="t">Heal's sub-account has 0 contacts. Both Evolve sub-accounts are empty. No TrustStar sub-account was found. Their leads are not tracked in GHL.</span><span class="w">William · find a GHL home</span></div>
-  <div class="row gap-row"><span class="num r">06</span><span class="o">Missing call recordings</span><span class="t">No Fathom for the Evolve Nov 6 alignment or the Aviro Nov 11 sync. Record every client call.</span><span class="w">Yona · ongoing</span></div>
- </div>
- <div class="foot"><span>Sources: source pack gaps list Nov 13, Notion CS Agent Run, Ryze status check Nov 13</span><span>15</span></div>
-</div></section>
-
-<!-- 16 NEXT WEEK -->
-<section class="slide" id="s16"><div class="in">
- <div class="eyebrow">Next week · Nov 16–22</div>
- <h2>Only Jake can do, and what the team owns</h2>
- <div class="body nw">
-  <div class="card"><div class="lbl" style="margin-top:0;color:var(--red)">Only Jake · on Jake's calendar</div>
-   <div class="day"><div class="dl">Sun Nov 15<small>09:30–11:00</small></div><ul><li>FamCare: answer George's 5 script questions</li><li>Imorgon: Andy's RSNA scripts + editing example, RSNA plan, who cuts clips</li><li>Lockton: case studies, references, access, LinkedIn steps</li></ul></div>
-   <div class="day"><div class="dl">Mon Nov 16<small>Yona check-in 13:45</small></div><ul><li>Shane's GHL agency access: yes/no</li><li>Data access: Windsor, Meta in Ryze, ads_read</li><li>Lockton kickoff: confirm Shane runs it</li></ul></div>
-   <div class="day"><div class="dl">Tue Nov 17<small>10:00–12:00</small></div><ul><li>VBO: written plan to Mike after tonight's call</li><li>Xplor: back Shane with Jon, lock the walkthrough</li><li>Heal: follow up on Tim's 2 new projects. TrustStar: Rob's ad-spend ask</li></ul></div>
-   <div class="day"><div class="dl">Fri Nov 20<small>time pending</small></div><ul><li>Evolve: restart criteria with Dave</li><li>DBSync: handled by Jake</li></ul></div>
-  </div>
-  <div class="card" style="padding:12px 16px"><div class="lbl" style="margin:4px 0 6px">Team</div>
-   <table class="tt">
-    <tr><td class="ow">Shane</td><td>Rigol live, or new date to Mike and Jake</td><td class="du">Mon 16</td></tr>
-    <tr><td class="ow">Shane</td><td>Workzone A2P fixed + Ash's walkthrough</td><td class="du">Mon 16</td></tr>
-    <tr><td class="ow">Shane</td><td>Run the Lockton kickoff, 21:00</td><td class="du">Mon 16</td></tr>
-    <tr><td class="ow">Shane</td><td>Xplor #39 Google cap with Dmytro + P20 creative proof</td><td class="du">Tue 17</td></tr>
-    <tr><td class="ow">Shane</td><td>Dates for Dan's lead magnet + logo, HRG LinkedIn test, Anchor Point next step</td><td class="du">Tue 17</td></tr>
-    <tr><td class="ow">William</td><td>Heal: no ad on healclinical.com/vsl-4263</td><td class="du">Mon 16</td></tr>
-    <tr><td class="ow">William</td><td>Workzone: calendar on VSL page + budget split</td><td class="du">Tue 17</td></tr>
-    <tr><td class="ow">William</td><td>VBO: guest-experience page + creatives live</td><td class="du">Tue 17</td></tr>
-    <tr><td class="ow">William</td><td>HRG: Meta ad-account error fixed with Scott, pipeline by funnel</td><td class="du">Daily</td></tr>
-    <tr><td class="ow">William</td><td>FamCare headline + retargeting, Steve's login, Sandler enrichment, Adam's Funnel 2.0 answer</td><td class="du">Wed 18</td></tr>
-    <tr><td class="ow">William</td><td>Imorgon RSNA geo campaign ready</td><td class="du">Fri 20</td></tr>
-    <tr><td class="ow">Yona</td><td>Lockton surveys + Notion client row</td><td class="du">Mon 16</td></tr>
-    <tr><td class="ow">Yona</td><td>Fix Fri 20 clash, book Xplor walkthrough, Aviro Nov 25 invite</td><td class="du">Tue 17</td></tr>
-    <tr><td class="ow">Yona</td><td>George's placeholders, ticket cleanup #13–#38, Zapier reconnect</td><td class="du">Fri 20</td></tr>
-    <tr><td class="ow">Rian</td><td>Lockton references in the kickoff brief</td><td class="du">Mon 16</td></tr>
-   </table>
-  </div>
- </div>
- <div class="foot"><span>Source: team memo "Next week (Nov 16–22)", calendar plan Nov 13</span><span>16</span></div>
-</div></section>
-
-<!-- 17 OWNERS -->
-<section class="slide" id="s17"><div class="in">
- <div class="eyebrow">Owners board</div>
- <h2>Who owns what, from today to Fri Nov 20</h2>
- <div class="body cols4">
-  <div class="card owner"><h3>Shane <span class="num">8</span></h3><div class="who">CS lead · Rigol, Xplor, Workzone texting</div><ul style="margin-top:12px"><li><b>Today</b> Rigol recap + OK, or new date by 18:00</li><li><b>Today</b> Workzone A2P status before 18:30</li><li><b>Today</b> Xplor written answer to Jon</li><li>Rigol live Mon Nov 16</li><li>Lockton kickoff Mon 21:00</li><li>Xplor #39 + P20 creative proof · Tue</li><li>Dan's lead magnet + logo (10 days late)</li><li>HRG LinkedIn test, Anchor Point: set dates</li></ul></div>
-  <div class="card owner"><h3>William <span class="num">9</span></h3><div class="who">Media · ads and pages</div><ul style="margin-top:12px"><li><b>Today</b> Imorgon edits before 15:00</li><li><b>Today</b> Workzone question + IG-ad confirmation by 18:00</li><li><b>Today</b> VBO qualified-call count for Jake</li><li>Heal dead-URL check · Mon</li><li>Workzone VSL calendar · Tue</li><li>VBO new page + creatives · Tue</li><li>HRG ad-account error · daily</li><li>FamCare, TrustStar, Sandler, Clockspring · Wed</li><li>Imorgon RSNA campaign · Fri</li></ul></div>
-  <div class="card owner"><h3>Yona <span class="num">7</span></h3><div class="who">Ops · calendar, clients, tickets</div><ul style="margin-top:12px"><li><b>Today</b> VBO qualified-call count with William</li><li><b>Today</b> George's script placeholders</li><li>Lockton surveys + Notion row · Mon</li><li>Fix Fri Nov 20 Pulse Check clash</li><li>Book Xplor Retention walkthrough</li><li>Aviro Nov 25 invite</li><li>Ticket cleanup #13–#38, Zapier by Nov 15</li></ul></div>
-  <div class="card owner"><h3>Rian <span class="num">1</span></h3><div class="who">Sales · Lockton handoff</div><ul style="margin-top:12px"><li>Lockton references in the kickoff brief · Mon Nov 16</li></ul><div class="lbl" style="margin-top:18px">Heads-up</div><p>Rian declined the Lockton kickoff (out of office). Rian organizes Manuel's scope call Wed Nov 18 16:00, which clashes with Sales Spotlight (decision C).</p></div>
- </div>
- <div class="foot"><span>Source: team memo, CS escalations Nov 12, calendar plan Nov 13</span><span>17</span></div>
-</div></section>
-
-<!-- 18 CLOSE -->
-<section class="slide" id="s18"><div class="in">
- <div class="eyebrow">Close</div>
- <h2>Four decisions waiting on Jake</h2>
- <p class="sub">Jake can't attend today. Don't act on these until he answers; Yona relays.</p>
- <div class="body dec">
-  <div class="card"><span class="k">A · Fri Nov 20</span><h3>Evolve sync with Dave (15:30) overlaps this Pulse Check (15:00–16:00)</h3><p>Proposal: move Dave to 17:00–17:30. Yona organizes the invite and Dave must accept.</p></div>
-  <div class="card"><span class="k">B · Mon Nov 16, 21:00</span><h3>Lockton kickoff on a meeting-free Monday while Jake travels</h3><p>Yona says Shane runs it. Jake confirms whether he comes off the invite.</p></div>
-  <div class="card"><span class="k">C · Wed Nov 18, 16:00</span><h3>Sales Spotlight overlaps Manuel's scope call</h3><p>One of them has to go. Rian organizes the scope call.</p></div>
-  <div class="card"><span class="k">D · Wed Nov 18, 17:00–18:00</span><h3>HRG and Xplor calls need a US-friendly time</h3><p>Madrid mornings are 03:30–07:00 ET. Jake decides whether to use Wed afternoon.</p></div>
- </div>
- <div class="esc"><span><b>Blocked on anything?</b> Tell Jake today, not next Friday.</span><span class="mono" style="color:var(--mu);font-size:12px">Reply on the team thread</span></div>
- <div class="foot"><span>Source: calendar plan conflicts A–D, Nov 13</span><span>18</span></div>
-</div></section>
-
-</main>
-<div class="hud"><button id="prev" aria-label="Previous slide">&#8593;</button><span class="ctr" id="ctr">1 / 18</span><button id="next" aria-label="Next slide">&#8595;</button></div>
-<script>
-
-// ACCOUNTS TO DATE
-// window.ATD is the source of truth for slides 6–7.
-// leadsKind: "net" | "raw" | "unverified"
-// answeredApprox: true adds an asterisk (chart-percentage inference)
-// months: null => "Months pending"; monthsProvisional: true labels the bars
-window.ATD = {
-  "asOf": "Fri 13 Nov 2026",
-  "note": "All-time GHL through 13 Nov 2026, not the 21 Oct\u201312 Nov window. November counts end 13 Nov. Lead counts are net of staff and test contacts. Calls and appointments are full-history report totals and may include staff or test activity.",
-  "clients": [
-    {
-      "name": "VBO Tickets",
-      "first": "27 Aug 2026",
-      "firstKind": "first lead",
-      "leads": 77,
-      "leadsKind": "net",
-      "leadsNote": "10 staff/test excluded",
-      "months": [
-        {
-          "label": "Aug 26",
-          "n": 5
-        },
-        {
-          "label": "Sep 26",
-          "n": 45
-        },
-        {
-          "label": "Oct 26",
-          "n": 18
-        },
-        {
-          "label": "Nov 1\u201313",
-          "n": 9
-        }
-      ],
-      "monthsProvisional": false,
-      "monthsKind": "net",
-      "calls": 54,
-      "answered": 37,
-      "answeredApprox": false,
-      "booked": 8,
-      "showed": 0,
-      "noshow": 0
-    },
-    {
-      "name": "Workzone",
-      "first": "21 Oct 2026",
-      "firstKind": "first lead",
-      "leads": 43,
-      "leadsKind": "net",
-      "leadsNote": "4 staff excluded",
-      "months": [
-        {
-          "label": "Oct 26",
-          "n": 18
-        },
-        {
-          "label": "Nov 1\u201313",
-          "n": 25
-        }
-      ],
-      "monthsProvisional": false,
-      "monthsKind": "net",
-      "calls": 0,
-      "answered": 0,
-      "answeredApprox": false,
-      "booked": 1,
-      "showed": 0,
-      "noshow": 0
-    },
-    {
-      "name": "Xplor / FieldEdge",
-      "first": "3 Nov 2026",
-      "firstKind": "first lead",
-      "leads": 18,
-      "leadsKind": "net",
-      "leadsNote": "no staff or test contacts found",
-      "months": [
-        {
-          "label": "Nov 1\u201313",
-          "n": 18
-        }
-      ],
-      "monthsProvisional": false,
-      "monthsKind": "net",
-      "calls": 0,
-      "answered": 0,
-      "answeredApprox": false,
-      "booked": 0,
-      "showed": 0,
-      "noshow": 0
-    },
-    {
-      "name": "Aviro360",
-      "first": "29 Sep 2026",
-      "firstKind": "first lead",
-      "leads": 30,
-      "leadsKind": "net",
-      "leadsNote": "1 staff excluded",
-      "months": [
-        {
-          "label": "Sep 26",
-          "n": 3
-        },
-        {
-          "label": "Oct 26",
-          "n": 21
-        },
-        {
-          "label": "Nov 1\u201313",
-          "n": 6
-        }
-      ],
-      "monthsProvisional": false,
-      "monthsKind": "net",
-      "calls": 1,
-      "answered": 1,
-      "answeredApprox": false,
-      "booked": 2,
-      "showed": 0,
-      "noshow": 0
-    },
-    {
-      "name": "FamCare",
-      "first": "2 Apr 2026",
-      "firstKind": "first lead",
-      "leads": 345,
-      "leadsKind": "net",
-      "leadsNote": "5 staff excluded",
-      "months": [
-        {
-          "label": "Apr 26",
-          "n": 38
-        },
-        {
-          "label": "May 26",
-          "n": 73
-        },
-        {
-          "label": "Jun 26",
-          "n": 49
-        },
-        {
-          "label": "Jul 26",
-          "n": 54
-        },
-        {
-          "label": "Aug 26",
-          "n": 47
-        },
-        {
-          "label": "Sep 26",
-          "n": 41
-        },
-        {
-          "label": "Oct 26",
-          "n": 31
-        },
-        {
-          "label": "Nov 1\u201313",
-          "n": 12
-        }
-      ],
-      "monthsProvisional": false,
-      "monthsKind": "net",
-      "calls": 3403,
-      "answered": 2704,
-      "answeredApprox": true,
-      "booked": 59,
-      "showed": 2,
-      "noshow": 32
-    },
-    {
-      "name": "HRG",
-      "first": "10 Mar 2026",
-      "firstKind": "earliest remaining",
-      "firstNote": "phone-only; identity not independently verified",
-      "leads": 279,
-      "leadsKind": "net",
-      "leadsNote": "6 staff/test excluded",
-      "months": [
-        {
-          "label": "Mar 26",
-          "n": 16
-        },
-        {
-          "label": "Apr 26",
-          "n": 18
-        },
-        {
-          "label": "May 26",
-          "n": 37
-        },
-        {
-          "label": "Jun 26",
-          "n": 21
-        },
-        {
-          "label": "Jul 26",
-          "n": 33
-        },
-        {
-          "label": "Aug 26",
-          "n": 23
-        },
-        {
-          "label": "Sep 26",
-          "n": 49
-        },
-        {
-          "label": "Oct 26",
-          "n": 55
-        },
-        {
-          "label": "Nov 1\u201313",
-          "n": 27
-        }
-      ],
-      "monthsProvisional": false,
-      "monthsKind": "net",
-      "calls": 709,
-      "answered": 590,
-      "answeredApprox": true,
-      "booked": 44,
-      "showed": 16,
-      "noshow": 15
-    },
-    {
-      "name": "Clockspring",
-      "first": "10 Nov 2025",
-      "firstKind": "first lead",
-      "leads": 294,
-      "leadsKind": "net",
-      "leadsNote": "7 staff/test excluded",
-      "months": [
-        {
-          "label": "Oct 25",
-          "n": 0
-        },
-        {
-          "label": "Nov 25",
-          "n": 2
-        },
-        {
-          "label": "Dec 25",
-          "n": 59
-        },
-        {
-          "label": "Jan 26",
-          "n": 47
-        },
-        {
-          "label": "Feb 26",
-          "n": 18
-        },
-        {
-          "label": "Mar 26",
-          "n": 20
-        },
-        {
-          "label": "Apr 26",
-          "n": 15
-        },
-        {
-          "label": "May 26",
-          "n": 10
-        },
-        {
-          "label": "Jun 26",
-          "n": 14
-        },
-        {
-          "label": "Jul 26",
-          "n": 13
-        },
-        {
-          "label": "Aug 26",
-          "n": 33
-        },
-        {
-          "label": "Sep 26",
-          "n": 29
-        },
-        {
-          "label": "Oct 26",
-          "n": 23
-        },
-        {
-          "label": "Nov 1\u201313",
-          "n": 11
-        }
-      ],
-      "monthsProvisional": false,
-      "monthsKind": "net",
-      "calls": 8,
-      "answered": 1,
-      "answeredApprox": false,
-      "booked": 35,
-      "showed": 7,
-      "noshow": 9
-    },
-    {
-      "name": "DBSync",
-      "first": "15 Aug 2026",
-      "firstKind": "first lead",
-      "leads": 64,
-      "leadsKind": "net",
-      "leadsNote": "4 staff excluded \u00b7 handled by Jake",
-      "months": [
-        {
-          "label": "Aug 26",
-          "n": 14
-        },
-        {
-          "label": "Sep 26",
-          "n": 28
-        },
-        {
-          "label": "Oct 26",
-          "n": 22
-        },
-        {
-          "label": "Nov 1\u201313",
-          "n": 0
-        }
-      ],
-      "monthsProvisional": false,
-      "monthsKind": "net",
-      "calls": 0,
-      "answered": 0,
-      "answeredApprox": false,
-      "booked": 8,
-      "showed": 0,
-      "noshow": 0
-    },
-    {
-      "name": "Imorgon",
-      "first": "25 May 2026",
-      "firstKind": "first lead",
-      "leads": 96,
-      "leadsKind": "net",
-      "leadsNote": "1 staff excluded",
-      "months": [
-        {
-          "label": "May 26",
-          "n": 5
-        },
-        {
-          "label": "Jun 26",
-          "n": 13
-        },
-        {
-          "label": "Jul 26",
-          "n": 29
-        },
-        {
-          "label": "Aug 26",
-          "n": 16
-        },
-        {
-          "label": "Sep 26",
-          "n": 11
-        },
-        {
-          "label": "Oct 26",
-          "n": 14
-        },
-        {
-          "label": "Nov 1\u201313",
-          "n": 8
-        }
-      ],
-      "monthsProvisional": false,
-      "monthsKind": "net",
-      "calls": 9,
-      "answered": 3,
-      "answeredApprox": false,
-      "booked": 24,
-      "showed": 2,
-      "noshow": 1
-    },
-    {
-      "name": "All Tips Matter",
-      "first": "28 Jul 2025",
-      "firstKind": "first lead",
-      "leads": 467,
-      "leadsKind": "net",
-      "leadsNote": "3 staff excluded",
-      "months": [
-        {
-          "label": "Jul 25",
-          "n": 2
-        },
-        {
-          "label": "Aug 25",
-          "n": 24
-        },
-        {
-          "label": "Sep 25",
-          "n": 60
-        },
-        {
-          "label": "Oct 25",
-          "n": 62
-        },
-        {
-          "label": "Nov 25",
-          "n": 52
-        },
-        {
-          "label": "Dec 25",
-          "n": 22
-        },
-        {
-          "label": "Jan 26",
-          "n": 6
-        },
-        {
-          "label": "Feb 26",
-          "n": 14
-        },
-        {
-          "label": "Mar 26",
-          "n": 20
-        },
-        {
-          "label": "Apr 26",
-          "n": 16
-        },
-        {
-          "label": "May 26",
-          "n": 34
-        },
-        {
-          "label": "Jun 26",
-          "n": 21
-        },
-        {
-          "label": "Jul 26",
-          "n": 38
-        },
-        {
-          "label": "Aug 26",
-          "n": 47
-        },
-        {
-          "label": "Sep 26",
-          "n": 26
-        },
-        {
-          "label": "Oct 26",
-          "n": 18
-        },
-        {
-          "label": "Nov 1\u201313",
-          "n": 5
-        }
-      ],
-      "monthsProvisional": false,
-      "monthsKind": "net",
-      "calls": 453,
-      "answered": 356,
-      "answeredApprox": true,
-      "booked": 94,
-      "showed": 6,
-      "noshow": 41
-    },
-    {
-      "name": "Sandler",
-      "first": "8 Oct 2026",
-      "firstKind": "first lead",
-      "leads": 14,
-      "leadsKind": "net",
-      "leadsNote": "1 staff excluded",
-      "months": [
-        {
-          "label": "Oct 26",
-          "n": 8
-        },
-        {
-          "label": "Nov 1\u201313",
-          "n": 6
-        }
-      ],
-      "monthsProvisional": false,
-      "monthsKind": "net",
-      "calls": 30,
-      "answered": 23,
-      "answeredApprox": false,
-      "booked": 3,
-      "showed": 1,
-      "noshow": 0
-    },
-    {
-      "name": "Rigol",
-      "first": "6 Oct 2026",
-      "firstKind": "earliest remaining",
-      "firstNote": "unverified phone-only record \u00b7 go-live 16 Nov",
-      "leads": 1,
-      "leadsKind": "unverified",
-      "leadsNote": "6 staff/test excluded; remaining contact unverified. Not launched; go-live 16 Nov",
-      "months": [
-        {
-          "label": "Sep 26",
-          "n": 0
-        },
-        {
-          "label": "Oct 26",
-          "n": 1
-        },
-        {
-          "label": "Nov 1\u201313",
-          "n": 0
-        }
-      ],
-      "monthsProvisional": false,
-      "monthsKind": "net",
-      "calls": 0,
-      "answered": 0,
-      "answeredApprox": false,
-      "booked": 0,
-      "showed": 0,
-      "noshow": 0,
-      "reportsPending": false
-    }
-  ],
-  "notInGhl": [
-    {
-      "name": "Heal Clinical",
-      "status": "Not tracked in GHL"
-    },
-    {
-      "name": "Evolve",
-      "status": "Not tracked in GHL"
-    },
-    {
-      "name": "TrustStar",
-      "status": "Not tracked in GHL"
-    },
-    {
-      "name": "Lockton",
-      "status": "No sub-account yet"
-    }
-  ]
-};
-(function(){
-  const D = window.ATD;
-  const tbl = document.getElementById('atd-table');
-  if (!tbl || !D) return;
-  const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-  const fmt = n => n == null ? null : Number(n).toLocaleString('en-US');
-  function rate(c){
-    if (c.reportsPending || c.booked == null) return '<span class="pending">Pending</span>';
-    if (c.booked === 0) return '—';
-    const pct = (c.showed / c.booked) * 100;
-    const s = Number.isInteger(pct) ? String(pct) : pct.toFixed(1);
-    return s + '% <small>' + c.showed + ' / ' + c.booked + '</small>';
-  }
-  function spark(c){
-    if (!c.months) return '<span class="pending">Months pending</span>';
-    const max = Math.max(...c.months.map(m => m.n), 1);
-    const bars = c.months.map(m => {
-      const h = m.n === 0 ? 2 : Math.max(4, Math.round(m.n / max * 100));
-      return '<i style="height:' + h + '%" title="' + esc(m.label) + ': ' + m.n + (c.monthsKind ? ' (' + c.monthsKind + ')' : '') + '"></i>';
-    }).join('');
-    const first = esc(c.months[0].label), last = esc(c.months[c.months.length-1].label);
-    const flag = c.monthsProvisional ? '<div class="spark-flag">Provisional</div>' : '';
-    const kind = c.monthsKind ? ' · ' + c.monthsKind : '';
-    const nums = c.months.map(m => esc(m.label) + ': ' + m.n).join(' · ') + esc(kind);
-    return '<div class="spark-wrap">' + flag + '<div class="spark" aria-hidden="true">' + bars + '</div><div class="spark-axis"><span>' + first + '</span><span>' + last + '</span></div><div class="spark-nums">' + nums + '</div></div>';
-  }
-  function leads(c){
-    if (c.leadsKind === 'unverified') {
-      return fmt(c.leads) + ' <span class="flag-unv">unverified</span>' + (c.leadsNote ? '<small>' + esc(c.leadsNote) + '</small>' : '');
-    }
-    if (c.leadsKind === 'raw') {
-      return fmt(c.leads) + ' <span class="flag-raw">raw</span>' + (c.leadsNote ? '<small>' + esc(c.leadsNote) + '</small>' : '');
-    }
-    return fmt(c.leads) + ' <small>net' + (c.leadsNote ? ' · ' + esc(c.leadsNote) : '') + '</small>';
-  }
-  function first(c){
-    const k = c.firstKind === 'first lead' ? '' : '<small>' + esc(c.firstKind) + '</small>';
-    const n = c.firstNote ? '<small>' + esc(c.firstNote) + '</small>' : '';
-    return esc(c.first) + k + n;
-  }
-  function num(v, approx){
-    if (v == null) return '<span class="pending">Pending</span>';
-    return fmt(v) + (approx ? ' <span class="approx">*</span>' : '');
-  }
-  let html = '<tr><th>Client</th><th>First lead</th><th>Leads</th><th>Leads per month</th><th>Calls</th><th>Answered</th><th>Booked</th><th>Showed</th><th>No-show</th><th>Show rate</th></tr>';
-  for (const c of D.clients) {
-    html += '<tr><td><b>' + esc(c.name) + '</b></td><td>' + first(c) + '</td><td class="n">' + leads(c) + '</td><td>' + spark(c) + '</td><td class="n">' + num(c.calls) + '</td><td class="n">' + num(c.answered, c.answeredApprox) + '</td><td class="n">' + num(c.booked) + '</td><td class="n">' + num(c.showed) + '</td><td class="n">' + num(c.noshow) + '</td><td class="n">' + rate(c) + '</td></tr>';
-  }
-  tbl.innerHTML = html;
-})();
-
-// nav
-const deck=document.getElementById('deck'),S=[...document.querySelectorAll('.slide')],N=S.length,ctr=document.getElementById('ctr'),prog=document.getElementById('prog');
-let cur=0;
-function go(i,smooth=true){cur=Math.max(0,Math.min(N-1,i));S[cur].scrollIntoView({behavior:smooth?'smooth':'instant'});upd();history.replaceState(null,'','#'+(cur+1));}
-function upd(){ctr.textContent=(cur+1)+' / '+N;prog.style.width=((cur+1)/N*100)+'%';}
-const ioOpts=()=>({root:window.matchMedia('(max-width:1100px)').matches?null:deck,threshold:[.15,.6]});
-let io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting&&e.intersectionRatio>=(window.matchMedia('(max-width:1100px)').matches?.15:.6)){cur=S.indexOf(e.target);upd();history.replaceState(null,'','#'+(cur+1));}})},ioOpts());
-S.forEach(s=>io.observe(s));
-window.matchMedia('(max-width:1100px)').addEventListener('change',()=>{io.disconnect();io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){cur=S.indexOf(e.target);upd();history.replaceState(null,'','#'+(cur+1));}})},ioOpts());S.forEach(s=>io.observe(s));});
-document.addEventListener('keydown',e=>{if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(cur+1)}else if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(cur-1)}else if(e.key==='Home'){go(0)}else if(e.key==='End'){go(N-1)}});
-document.getElementById('next').onclick=()=>go(cur+1);document.getElementById('prev').onclick=()=>go(cur-1);
-function spy(){if(!window.matchMedia('(max-width:1100px)').matches)return;let best=cur,d=1e9;S.forEach((s,i)=>{const r=s.getBoundingClientRect();if(r.bottom>80&&r.top<innerHeight*0.55){const t=Math.abs(Math.min(0,r.top));if(t<d){d=t;best=i;}}});if(best!==cur){cur=best;upd();history.replaceState(null,'','#'+(cur+1));}}
-window.addEventListener('scroll',spy,{passive:true});deck.addEventListener('scroll',spy,{passive:true});
-const h=parseInt(location.hash.slice(1));if(h>=1&&h<=N){cur=h-1;requestAnimationFrame(()=>go(h-1,false));}upd();
-</script>
-</body>
-</html>
+html{-webkit-text-size-adjust:100%}
+body{background:radial-gradient(900px 600px at 100% -10%,rgba(255,68,56,.14),transparent 60%),radial-gradient(700px 500px at -20% 30%,rgba(90,120,255,.08),transparent 60%),var(--bg);background-attachment:fixed;color:var(--tx);font:400 17px/1.5 Geist,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:760px;margin:0 auto;padding:10px 10px 40px}
+.glass{background:var(--glass);border:1px solid var(--line);border-radius:18px;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px)}
+.hero{padding:20px 16px;margin-bottom:8px}
+.brand{font:800 22px/1 Geist;letter-spacing:-.04em}.brand span{color:var(--red)}
+.eyebrow{margin-top:14px;font:600 12px/1.3 "JetBrains Mono",monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--mu)}
+h1{font-size:32px;line-height:1.08;letter-spacing:-.03em;margin:8px 0 6px;font-weight:750}
+h2{font-size:26px;letter-spacing:-.02em;margin:30px 4px 4px;font-weight:700}
+h3{font-size:19px;margin:18px 4px 8px}
+.muted{color:var(--mu)}.small{font-size:14px}.note{color:var(--mu2);font-size:14px;margin:8px 4px}
+section>.muted{margin:0 4px 10px}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.tile{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:10px}
+.tile b{display:block;font:700 30px/1 Geist}.tile span{font-size:13px;color:var(--mu)}
+nav{display:flex;gap:6px;overflow-x:auto;margin-top:14px;padding-bottom:2px;scrollbar-width:none}
+nav a{flex:none;color:var(--tx);text-decoration:none;font-size:14px;border:1px solid var(--line);border-radius:999px;padding:7px 12px;background:rgba(255,255,255,.03)}
+.card{padding:14px 14px;margin:8px 0;border-left-width:4px}
+.b-r{border-left-color:var(--red)}.b-y{border-left-color:var(--yel)}.b-g{border-left-color:var(--grn)}
+.row{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.client{font-weight:700;font-size:19px;letter-spacing:-.01em}
+.big{font-size:17px;margin-top:6px}
+.card p{margin-top:6px}
+.num{font:700 15px/1 "JetBrains Mono";background:var(--red);color:#fff;border-radius:8px;padding:5px 8px}
+.pill{font:600 12px/1 "JetBrains Mono",monospace;letter-spacing:.05em;text-transform:uppercase;border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:var(--mu)}
+.tag{margin-left:auto;font:600 12px/1 "JetBrains Mono",monospace;text-transform:uppercase;border-radius:999px;padding:5px 9px}
+.t-r{background:rgba(255,68,56,.16);color:#FF7A70}.t-y{background:rgba(245,181,68,.15);color:var(--yel)}.t-g{background:rgba(62,207,110,.14);color:var(--grn)}
+.dot{width:11px;height:11px;border-radius:50%}.d-r{background:var(--red)}.d-y{background:var(--yel)}.d-g{background:var(--grn)}
+.c-r{color:#FF6A5F}.c-y{color:var(--yel)}.c-g{color:var(--grn)}
+.meta{display:grid;gap:4px;margin-top:10px;font-size:15px;color:var(--mu)}.meta b{color:var(--tx);font-weight:600;margin-right:4px}
+dl{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin-top:10px;font-size:15px}dt{color:var(--mu2);font-weight:600}dd{color:#D9DCE0}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:10px}.kpis.k4{grid-template-columns:repeat(2,1fr)}
+.kpis div{background:rgba(255,255,255,.035);border-radius:12px;padding:10px}
+.kpis b{display:block;font:700 24px/1.1 Geist}.kpis b small{font-size:15px;color:var(--mu)}.kpis span{font-size:13px;color:var(--mu);line-height:1.3;display:block;margin-top:3px}
+.sub{margin-top:12px;font:600 12px/1 "JetBrains Mono";text-transform:uppercase;letter-spacing:.08em;color:var(--mu2)}
+ul{margin:6px 0 0 20px}li{margin:3px 0;font-size:16px}ul.plain{margin:0 4px 0 24px}
+.line p{margin-top:2px}
+.spend{display:grid;gap:2px}
+.sp{display:grid;grid-template-columns:1fr auto;gap:0 10px;padding:8px 0;border-bottom:1px solid var(--line)}.sp:last-child{border:0}
+.sp b{font-family:"JetBrains Mono";font-size:16px}.sp small{grid-column:1/3;font-size:13px;color:var(--mu)}
+footer{margin:30px 4px 0}
+@media(min-width:700px){main{padding:24px 18px 60px}h1{font-size:40px}.tiles{grid-template-columns:repeat(6,1fr)}.kpis.k4{grid-template-columns:repeat(4,1fr)}.card{padding:18px 20px}}
+</style></head><body><main>
+<header class="hero glass"><div class="brand">aletto<span>.</span></div><div class="eyebrow">CS Pulse Check · Shane, William, Yona</div>
+<h1>Week of Fri Nov 13 to Thu Nov 19, 2026</h1><p class="muted">Madrid time (CET). Built Fri Nov 20, 2026, 10:45 Madrid (CET). Older data is marked with its date.</p>
+<div class="tiles"><div class="tile"><b class="c-r">5</b><span>red</span></div><div class="tile"><b class="c-y">10</b><span>yellow</span></div><div class="tile"><b class="c-g">2</b><span>green</span></div>
+<div class="tile"><b>2</b><span>replies over 6h</span></div><div class="tile"><b>6</b><span>late promises</span></div><div class="tile"><b>12</b><span>client calls</span></div></div>
+<nav><a href="#prio">Priorities</a><a href="#health">Health</a><a href="#hero-m">Hero metrics</a><a href="#team">Team</a><a href="#emails">Emails</a><a href="#risk">Risk and growth</a><a href="#wins">Wins</a><a href="#spend">Ad spend</a><a href="#atd">All-time</a></nav></header>
+<section id="prio"><h2>This week's 5 priorities</h2><p class="muted">Reply on the team thread the moment each one is done.</p>
+<div class="glass card prio"><div class="row"><span class="num">1</span><span class="pill">Shane</span><span class="client">Rigol</span></div><p class="big">Email Mike the call recap, get his written okay on AD20, AD14 and AD17, and give Mike and Jake a new go-live date.</p><div class="meta"><span><b>Due</b> Today, Fri Nov 20, 18:00</span><span><b>Why</b> Recap 8 days late, launch 4 business days late</span></div></div>
+<div class="glass card prio"><div class="row"><span class="num">2</span><span class="pill">William</span><span class="client">FamCare</span></div><p class="big">Send George feedback on video 1 before he leaves. Add Mohamed&#x27;s phone for SMS lead alerts. Get Mark to clear the long Outlook blocks so the VSL calendar shows slots. Check go-famcare.com/vsl against George&#x27;s scripts.</p><div class="meta"><span><b>Due</b> Today, Fri Nov 20, 15:00 (feedback) and 18:00</span><span><b>Why</b> Bookings are blocked until Mark&#x27;s calendar is open</span></div></div>
+<div class="glass card prio"><div class="row"><span class="num">3</span><span class="pill">Shane</span><span class="client">FamCare</span></div><p class="big">Create Mohamed&#x27;s GHL login so he can shadow Mark next week.</p><div class="meta"><span><b>Due</b> Today, Fri Nov 20, 18:00</span><span><b>Why</b> George asked for it Thursday</span></div></div>
+<div class="glass card prio"><div class="row"><span class="num">4</span><span class="pill">Shane</span><span class="client">Xplor / FieldEdge</span></div><p class="big">Confirm the new Meta daily ad spend to Jon in writing. Answer Brittany on raw-data access and the 40% Facebook recommend rating. Bring a plan to get CPL under $55.</p><div class="meta"><span><b>Due</b> Late since Nov 11</span><span><b>Why</b> CPL $77.94 vs $55 ceiling, Jon cooling</span></div></div>
+<div class="glass card prio"><div class="row"><span class="num">5</span><span class="pill">Yona</span><span class="client">Workzone</span></div><p class="big">Send the invite for the rebooked sales training, Tue Nov 24, 19:00 Madrid, and make sure it is on Jake&#x27;s calendar.</p><div class="meta"><span><b>Due</b> Today, Fri Nov 20, 12:00</span><span><b>Why</b> Steve was told the invite was set</span></div></div>
+</section>
+<section id="health"><h2>Client health board</h2><p class="muted">17 active clients, red first. One reason each. Status reflects results, client mood and our follow-through this week.</p>
+<div class="glass card hc b-r"><div class="row"><span class="dot d-r"></span><span class="client">DBSync</span><span class="tag t-r">Red</span></div><p class="big">Joel has asked 3 times for the two proposals (CRM and text Nov 18, email Nov 19 18:29). No reply yet.</p><dl><dt>Owner</dt><dd>Jake</dd><dt>Last touch</dt><dd>Joel email, Thu Nov 19 18:29 (waiting on us)</dd><dt>Next</dt><dd>Jake replies today. Route anything from DBSync to Jake.</dd></dl></div>
+<div class="glass card hc b-r"><div class="row"><span class="dot d-r"></span><span class="client">Rigol</span><span class="tag t-r">Red</span></div><p class="big">Launch 4 business days late with no new date. Mike&#x27;s discovery questions waited 26.6 business hours.</p><dl><dt>Owner</dt><dd>Shane · William</dd><dt>Last touch</dt><dd>Shane email, Wed Nov 18 17:38</dd><dt>Next</dt><dd>Recap, written okay and new go-live date to Mike today.</dd></dl></div>
+<div class="glass card hc b-r"><div class="row"><span class="dot d-r"></span><span class="client">Xplor / FieldEdge</span><span class="tag t-r">Red</span></div><p class="big">CPL $77.94 (Nov 6 to 12) vs $55 ceiling. Jon cooling. Meta spend increase unconfirmed since Nov 11.</p><dl><dt>Owner</dt><dd>Shane · William</dd><dt>Last touch</dt><dd>Shane email, Thu Nov 19 17:57 · no call this week</dd><dt>Next</dt><dd>Written spend confirmation, answer Brittany, CPL plan.</dd></dl></div>
+<div class="glass card hc b-r"><div class="row"><span class="dot d-r"></span><span class="client">Evolve</span><span class="tag t-r">Red</span></div><p class="big">Ads paused since Nov 4 at Dave&#x27;s request. No leads since. Sentiment negative.</p><dl><dt>Owner</dt><dd>William · Shane</dd><dt>Last touch</dt><dd>Email, Wed Nov 18 14:29</dd><dt>Next</dt><dd>Jake and Dave call today 15:30 Madrid: restart plan or clean wind-down.</dd></dl></div>
+<div class="glass card hc b-r"><div class="row"><span class="dot d-r"></span><span class="client">Dan Greenberg (RGA)</span><span class="tag t-r">Red</span></div><p class="big">Lead magnet range and logo swap promised &quot;first thing&quot; Nov 3. 17 days, no update.</p><dl><dt>Owner</dt><dd>Shane</dd><dt>Last touch</dt><dd>Shane email, Fri Nov 6 12:49</dd><dt>Next</dt><dd>Ship both and email Dan today.</dd></dl></div>
+<div class="glass card hc b-y"><div class="row"><span class="dot d-y"></span><span class="client">Clockspring</span><span class="tag t-y">Yellow</span></div><p class="big">About $130 CPL at $100/day. Leads 6, 5, then 3 per week. Broad funnel has stalled.</p><dl><dt>Owner</dt><dd>William</dd><dt>Last touch</dt><dd>Call, Tue Nov 17</dd><dt>Next</dt><dd>Ship the problem-focused funnel and freebie for next week&#x27;s test, plus new DirectVSL and Freebie creatives.</dd></dl></div>
+<div class="glass card hc b-y"><div class="row"><span class="dot d-y"></span><span class="client">Workzone</span><span class="tag t-y">Yellow</span></div><p class="big">Day 30 closed Nov 19: 42 leads through Nov 12, CPL $57.92. Likely miss on CPL. Recent run is 12 to 13 leads a week at $46.</p><dl><dt>Owner</dt><dd>William · Shane</dd><dt>Last touch</dt><dd>Call, Wed Nov 18 · Yona email, Fri Nov 20 02:22</dd><dt>Next</dt><dd>Route leads to Steve Atwood, SMS and Slack lead alerts, fix sender name, rotate sub-1% CTR ads.</dd></dl></div>
+<div class="glass card hc b-y"><div class="row"><span class="dot d-y"></span><span class="client">HRG</span><span class="tag t-y">Yellow</span></div><p class="big">Funnel 1: 0 booked from 4 MQLs. Mellissa waited 9.0 business hours. Meta ad-account error not confirmed fixed.</p><dl><dt>Owner</dt><dd>William</dd><dt>Last touch</dt><dd>Call, Wed Nov 18 · William email, Thu Nov 19 00:51</dd><dt>Next</dt><dd>Confirm ads are running, new Funnel 1 creatives, separate Funnel 1 and 2 pipelines.</dd></dl></div>
+<div class="glass card hc b-y"><div class="row"><span class="dot d-y"></span><span class="client">FamCare</span><span class="tag t-y">Yellow</span></div><p class="big">Mark&#x27;s Outlook blocks hide every booking slot. New VSL page brings fewer leads than the old one. GHL: 4 leads, 2 MQLs, 1 booked.</p><dl><dt>Owner</dt><dd>William · Shane</dd><dt>Last touch</dt><dd>Call, Thu Nov 19 · William email, Thu Nov 19 23:33</dd><dt>Next</dt><dd>Today&#x27;s four items, then decide old vs new page in the next few days.</dd></dl></div>
+<div class="glass card hc b-y"><div class="row"><span class="dot d-y"></span><span class="client">Imorgon</span><span class="tag t-y">Yellow</span></div><p class="big">Instagram login (2FA to a dead number) blocks ads on the main account. 2 booked calls no-showed.</p><dl><dt>Owner</dt><dd>William</dd><dt>Last touch</dt><dd>Call, Wed Nov 18 · William email, Thu Nov 19 17:23</dd><dt>Next</dt><dd>Fix the Instagram login. Compare Letter vs Roadmaps ($100/day each) after 7 days.</dd></dl></div>
+<div class="glass card hc b-y"><div class="row"><span class="dot d-y"></span><span class="client">All Tips Matter</span><span class="tag t-y">Yellow</span></div><p class="big">Opt-in 4.11% vs 10% target. Volume thin. No call this week.</p><dl><dt>Owner</dt><dd>William</dd><dt>Last touch</dt><dd>William email, Wed Nov 18 20:05</dd><dt>Next</dt><dd>Send a test lead to confirm forms reach GHL. Book this week&#x27;s call.</dd></dl></div>
+<div class="glass card hc b-y"><div class="row"><span class="dot d-y"></span><span class="client">Aviro360</span><span class="tag t-y">Yellow</span></div><p class="big">GHL: 2 leads this week (1 the week before), 0 MQLs, 0 calls logged.</p><dl><dt>Owner</dt><dd>William · Yona</dd><dt>Last touch</dt><dd>Call, Fri Nov 13 · William email, Thu Nov 19 21:57</dd><dt>Next</dt><dd>Brian logs every call in GHL. Read the gate campaign (live Nov 16) after 1 to 2 weeks.</dd></dl></div>
+<div class="glass card hc b-y"><div class="row"><span class="dot d-y"></span><span class="client">VBO Tickets</span><span class="tag t-y">Yellow</span></div><p class="big">Churn risk easing after Jake&#x27;s Nov 13 call. Demos still blocked: leads set DND or take the white paper only.</p><dl><dt>Owner</dt><dd>William · Shane</dd><dt>Last touch</dt><dd>Call, Wed Nov 18</dd><dt>Next</dt><dd>Shane books a 1:1 with Mike next week. Have Shannon&#x27;s call cadence ready for Dec 1.</dd></dl></div>
+<div class="glass card hc b-y"><div class="row"><span class="dot d-y"></span><span class="client">Heal Clinical</span><span class="tag t-y">Yellow</span></div><p class="big">Booked calls down 2 weeks running. &quot;Yes&quot; leads going dark. Opt-in 0.81%.</p><dl><dt>Owner</dt><dd>William · Shane</dd><dt>Last touch</dt><dd>Call, Mon Nov 16</dd><dt>Next</dt><dd>Confirm the calendar on the VSL page and new Direct VSL creatives shipped Nov 18.</dd></dl></div>
+<div class="glass card hc b-y"><div class="row"><span class="dot d-y"></span><span class="client">Sandler</span><span class="tag t-y">Yellow</span></div><p class="big">Hero window missed (7 leads, CPL $194), but Michael is engaged and collaborative.</p><dl><dt>Owner</dt><dd>William · Shane</dd><dt>Last touch</dt><dd>Call, Thu Nov 19</dd><dt>Next</dt><dd>Embedded calendar and 15-minute intro live. Michael rewrites the follow-up sequence.</dd></dl></div>
+<div class="glass card hc b-g"><div class="row"><span class="dot d-g"></span><span class="client">BlueStar Telehealth</span><span class="tag t-g">Green</span></div><p class="big">New creatives (Nov 5) took one week from 2 leads to 8 leads, 7 MQLs, 6 booked. Rob lost his mother; Yona sent condolences.</p><dl><dt>Owner</dt><dd>William · Shane · Yona</dd><dt>Last touch</dt><dd>Call, Wed Nov 18 · Yona note, Thu Nov 19</dd><dt>Next</dt><dd>Keep pausing weak ads. Fix duplicate company fields in the CRM. Go gentle with Rob.</dd></dl></div>
+<div class="glass card hc b-g"><div class="row"><span class="dot d-g"></span><span class="client">Lockton</span><span class="tag t-g">Green</span></div><p class="big">Kickoff Nov 16 and tech call Nov 18 done. Assets in build. Aaron positive.</p><dl><dt>Owner</dt><dd>Shane · William · Yona</dd><dt>Last touch</dt><dd>Tech call, Wed Nov 18</dd><dt>Next</dt><dd>Asset review Tue Nov 24, 18:00 Madrid. Shane sends the inbound calling playbook before launch.</dd></dl></div>
+<p class="note">Sources: Gmail and cs-log threads, Fathom calls Nov 13 to 19, GHL (Aviro360 and FamCare live keys, pulled Fri Nov 20 08:20), CEO client report built Fri Nov 20.</p></section>
+<section id="hero-m"><h2>First-month hero metrics</h2><p class="muted">First 30 days after launch: 50+ leads, CPL $40 goal, $55 ceiling. Leads from GHL or client reports, never from Meta.</p>
+<div class="glass card b-y"><div class="row"><span class="client">Xplor / FieldEdge</span><span class="tag t-y">In window</span></div><p class="muted">Day 18 of 30 · window ends Wed Dec 2</p><div class="kpis"><div><b>19<small>/50</small></b><span>leads · as of Nov 13 (GHL, no live key yet)</span></div><div><b>$77.94</b><span>CPL · Nov 6 to 12</span></div><div><b>12</b><span>days left</span></div></div><p class="big">On pace for about 52 leads, but CPL is over the $55 ceiling</p></div>
+<div class="glass card b-r"><div class="row"><span class="client">Workzone</span><span class="tag t-r">Closed Thu Nov 19</span></div><p class="muted">Day 30 reached</p><div class="kpis"><div><b>42<small>/50</small></b><span>leads · through Nov 12 (William&#x27;s reports; final count not verified in GHL)</span></div><div><b>$57.92</b><span>CPL · through Nov 12 · about $46 since</span></div><div><b>0</b><span>days left</span></div></div><p class="big">Likely miss on CPL. Leads probably close to 50</p></div>
+<div class="glass card b-r"><div class="row"><span class="client">Sandler</span><span class="tag t-r">Closed Fri Nov 6</span></div><p class="muted">Day 30 reached</p><div class="kpis"><div><b>7<small>/50</small></b><span>leads · final</span></div><div><b>$194</b><span>CPL · final, Meta via Windsor</span></div><div><b>0</b><span>days left</span></div></div><p class="big">Missed</p></div>
+<p class="note">Not started yet: Rigol (no new launch date) and Lockton (ads launch after the Tue Nov 24 asset review). Hero metrics start on launch day.</p></section>
+<section id="team"><h2>Team scorecard</h2><p class="muted">Week of Fri Nov 13 to Thu Nov 19, 2026. Business hours, Mon to Fri. Red flag = a client reply over 6 business hours. Previous week in grey.</p>
+<div class="glass card"><div class="row"><span class="client">Shane</span></div><div class="kpis k4"><div><b>6</b><span>emails · prev 10</span></div><div><b>0.62h</b><span>median · prev 0.32h</span></div><div><b>26.63h</b><span>slowest · prev 14.98h</span></div><div><b class="c-r">1</b><span>red flags · prev 1</span></div></div><div class="kpis k3"><div><b class="c-r">6</b><span>late promises</span></div><div><b>1</b><span>due today</span></div><div><b>12</b><span>client calls (Fathom)</span></div></div><p class="big">Red flag: Rigol, Mike&#x27;s discovery questions, 26.6h.</p>
+<div class="sub">Late</div><ul><li>Dan: lead magnet and logo (due Nov 3)</li><li>HRG: LinkedIn ads test (due Nov 6)</li><li>Xplor: regenerate the creative with garbled AI text (due Nov 5)</li><li>Xplor: confirm the higher Meta spend to Jon (since Nov 11)</li><li>Rigol: recap and Mike&#x27;s written okay (due Nov 12)</li><li>Rigol: go-live (due Nov 16)</li></ul>
+<div class="sub">Due today or waiting</div><ul><li>FamCare: Mohamed&#x27;s GHL login (today 18:00)</li></ul>
+</div>
+<div class="glass card"><div class="row"><span class="client">William</span></div><div class="kpis k4"><div><b>13</b><span>emails · prev 9</span></div><div><b>0h</b><span>median · prev 1.25h</span></div><div><b>9h</b><span>slowest · prev 5.05h</span></div><div><b class="c-r">1</b><span>red flags · prev 0</span></div></div><div class="kpis k3"><div><b class="c-g">0</b><span>late promises</span></div><div><b>2</b><span>due today</span></div><div><b>10</b><span>client calls (Fathom)</span></div></div><p class="big">Red flag: HRG, Mellissa&#x27;s Outlook and GHL questions, 9.0h.</p>
+<div class="sub">Due today or waiting</div><ul><li>FamCare: video 1 feedback to George (today 15:00)</li><li>FamCare: Mohamed&#x27;s SMS lead alerts (today 18:00)</li><li>Workzone: Steve&#x27;s SMS alert and webhook (waiting on Ash&#x27;s phone and URL)</li></ul>
+</div>
+<div class="glass card"><div class="row"><span class="client">Yona</span></div><div class="kpis k4"><div><b>9</b><span>emails · prev 7</span></div><div><b>1.12h</b><span>median · prev 0.52h</span></div><div><b>5.88h</b><span>slowest · prev 2.08h</span></div><div><b class="c-g">0</b><span>red flags · prev 0</span></div></div><div class="kpis k3"><div><b class="c-g">0</b><span>late promises</span></div><div><b>1</b><span>due today</span></div><div><b>0</b><span>client calls (Fathom)</span></div></div><p class="big">No red flags. Slowest reply 5.88h, close to the 6h line.</p>
+<div class="sub">Due today or waiting</div><ul><li>Workzone: training invite on Jake&#x27;s calendar (today 12:00)</li></ul>
+</div>
+<p class="note">Emails: cs-log and Jake's Gmail, Fri Nov 13 to Thu Nov 19. The Wed and Thu daily runs failed, so Nov 17 to 19 were rebuilt in one pass Fri Nov 20. No day is missing. Client calls = recorded Fathom client calls attended Nov 13 to 19.</p></section>
+<section id="emails"><h2>Missed or late emails</h2>
+<div class="glass card b-r"><div class="row"><span class="client">Rigol</span><span class="pill">Shane</span></div><p class="big">Mike sent his discovery questions Fri Nov 13 at 23:21. Shane answered Wed Nov 18 at 17:38. 26.6 business hours.</p></div>
+<div class="glass card b-r"><div class="row"><span class="client">HRG</span><span class="pill">William</span></div><p class="big">Mellissa emailed Mon Nov 16 at 22:39 about a missing Outlook appointment and 4 GHL questions. William replied Tue Nov 17 at 20:41. 9.0 business hours.</p></div>
+<p class="note">Both only showed up as quoted text inside later replies. Reply on the thread itself so it is counted on time.</p><h3>Threads waiting on us</h3>
+<div class="glass card line"><div class="row"><span class="client">DBSync</span><span class="pill">Jake</span></div><p>Joel asked for the two proposals 3 times. Last ask Thu Nov 19 18:29: &quot;Can I expect something this week?&quot;</p></div>
+<div class="glass card line"><div class="row"><span class="client">Xplor</span><span class="pill">Shane</span></div><p>Jon: confirmation of the higher Meta spend, open since Nov 11. Brittany: raw-data access and the 40% recommend rating.</p></div>
+<div class="glass card line"><div class="row"><span class="client">FamCare</span><span class="pill">William</span></div><p>George is waiting on video 1 feedback before he records videos 2 to 4.</p></div>
+<div class="glass card line"><div class="row"><span class="client">Dan Greenberg</span><span class="pill">Shane</span></div><p>Lead magnet range and logo swap, no update since Nov 6.</p></div>
+<div class="glass card line"><div class="row"><span class="client">Workzone</span><span class="pill">Yona</span></div><p>Steve was told the training invite was set. It is not on Jake&#x27;s calendar yet.</p></div>
+</section>
+<section id="risk"><h2>Churn risk</h2>
+<div class="glass card line b-r"><span class="client">DBSync</span><p>Joel upset and escalating. Jake owns it.</p></div>
+<div class="glass card line b-r"><span class="client">Evolve</span><p>Ads paused 16 days, sentiment negative. Today&#x27;s call decides restart or wind-down.</p></div>
+<div class="glass card line b-r"><span class="client">Xplor</span><p>Jon cooling, CPL over ceiling, promises open.</p></div>
+<div class="glass card line b-r"><span class="client">Rigol</span><p>Mike patient but still waiting on a date.</p></div>
+<div class="glass card line b-r"><span class="client">Dan Greenberg</span><p>17 days without the promised change.</p></div>
+<h2>Growth signals worth a meeting</h2>
+<div class="glass card line b-g"><span class="client">BlueStar Telehealth</span><p>Leads, MQLs and bookings jumped after the Nov 5 creatives. Steve has 4 of their own prospects at proposal stage, 2 targeted by Dec 1. Strong case study.</p></div>
+<div class="glass card line b-g"><span class="client">HRG Funnel 2</span><p>Calendar on the VSL page took booking rate from 5 to 6% up to 16%. Holding 7 to 11 leads a week.</p></div>
+<div class="glass card line b-g"><span class="client">Workzone</span><p>12 to 13 leads a week at $46 CPL, A2P done, calendar booking. Ash smoothed over after the day-30 email.</p></div>
+<div class="glass card line b-g"><span class="client">Sandler</span><p>Michael is booking a consult with Jake himself.</p></div>
+<div class="glass card line b-g"><span class="client">Heal Clinical</span><p>Tim asked for help on 2 new projects (Nov 13). Worth a conversation once bookings recover.</p></div>
+</section>
+<section id="wins"><h2>Wins of the week</h2>
+<div class="glass card line"><span class="client">🏆 FamCare</span><p>George recorded video 1 of 4, the VSL page fix went live Thu, and Mohamed is onboarding as the lead qualifier.</p></div>
+<div class="glass card line"><span class="client">🏆 BlueStar</span><p>New creatives: 8 leads, 7 MQLs, 6 booked in the week after Nov 5, with a strong show rate.</p></div>
+<div class="glass card line"><span class="client">🏆 Imorgon</span><p>The Letter page and campaign went live Wed Nov 18. Andy recorded RSNA videos.</p></div>
+<div class="glass card line"><span class="client">🏆 Workzone</span><p>A2P approved, SMS alerts unlocked, Steve Atwood set as the AE with dashboard access.</p></div>
+<div class="glass card line"><span class="client">🏆 Sandler</span><p>Michael agreed to an embedded calendar and a 15-minute intro, and will rewrite the follow-up in his own voice.</p></div>
+<div class="glass card line"><span class="client">🏆 Lockton</span><p>Kickoff and tech setup done in 3 days. Aaron positive.</p></div>
+<div class="glass card line"><span class="client">🏆 Team</span><p>12 recorded client calls this week. William&#x27;s median reply was 0.0 business hours on 13 emails.</p></div>
+</section>
+<section id="spend"><h2>Ad spend</h2><p class="muted"><b class="c-y">Stale:</b> the Windsor license expired, so Meta ad spend and CTR stop at Nov 3. This is the last full week, Mon Oct 27 to Sun Nov 2. Leads always come from GHL, not from here.</p><div class="glass card"><div class="spend">
+<div class="sp"><span>BlueStar Telehealth</span><b>$1,557.12</b><small class="">CTR 2.47%</small></div>
+<div class="sp"><span>HRG (both funnels)</span><b>$1,400.19</b><small class="">CTR 1.79%</small></div>
+<div class="sp"><span>All Tips Matter</span><b>$1,335.15</b><small class="">CTR 1.32%</small></div>
+<div class="sp"><span>Clockspring</span><b>$1,242.18</b><small class="c-r">CTR 0.54%</small></div>
+<div class="sp"><span>Heal Clinical</span><b>$1,056.69</b><small class="">CTR 1.32%</small></div>
+<div class="sp"><span>Imorgon</span><b>$837.60</b><small class="c-r">CTR 0.88%</small></div>
+<div class="sp"><span>FamCare</span><b>$833.54</b><small class="">CTR 1.29%</small></div>
+<div class="sp"><span>VBO Tickets</span><b>$758.37</b><small class="">CTR 1.20%</small></div>
+<div class="sp"><span>Aviro360</span><b>$747.01</b><small class="">CTR 1.11%</small></div>
+<div class="sp"><span>Workzone</span><b>$691.98</b><small class="c-r">CTR 0.53%</small></div>
+<div class="sp"><span>Evolve</span><b>$680.65</b><small class="c-r">CTR 0.79%</small></div>
+<div class="sp"><span>Sandler</span><b>$344.25</b><small class="c-r">CTR 0.88%</small></div>
+</div></div><h3>Known this week</h3><ul class="plain"><li>Clockspring: $100/day (call Nov 17).</li><li>Imorgon: Letter and Roadmaps at $100/day each for one week (call Nov 18).</li><li>Workzone: $825.75 for Nov 6 to 12 at $58.98 CPL (William&#x27;s client report).</li><li>Evolve: paused since Nov 4.</li></ul><p class="note">CTR under 1% in red: rotate those creatives first.</p></section>
+<section id="atd"><h2>Accounts to date (all-time history)</h2><p class="muted">All-time, from each client's own GHL sub-account, through Fri Nov 13, 2026. Not this week. The verdict line is lead follow-up from GHL, Oct 21 to Nov 12.</p>
+<div class="glass card"><div class="row"><span class="client">VBO Tickets</span><span class="muted small">since 27 Aug 2026</span></div><div class="kpis k4"><div><b>77</b><span>leads (net)</span></div><div><b>54</b><span>calls</span></div><div><b>8</b><span>booked</span></div><div><b>0%</b><span>show rate · 0 showed, 0 no-show</span></div></div><p class="muted small">Recent months: Aug: 5 · Sep: 45 · Oct: 18 · Nov 1 to 13: 9</p><p class="big">Courtney is calling, but calls are short and the one booking was cancelled.</p></div>
+<div class="glass card"><div class="row"><span class="client">Workzone</span><span class="muted small">since 21 Oct 2026</span></div><div class="kpis k4"><div><b>43</b><span>leads (net)</span></div><div><b>0</b><span>calls</span></div><div><b>1</b><span>booked</span></div><div><b>0%</b><span>show rate · 0 showed, 0 no-show</span></div></div><p class="muted small">Recent months: Oct: 18 · Nov 1 to 13: 25</p><p class="big">No calls logged in GHL. Outreach is email only.</p></div>
+<div class="glass card"><div class="row"><span class="client">Xplor / FieldEdge</span><span class="muted small">since 3 Nov 2026</span></div><div class="kpis k4"><div><b>18</b><span>leads (net)</span></div><div><b>0</b><span>calls</span></div><div><b>0</b><span>booked</span></div><div><b>n/a</b><span>show rate · 0 showed, 0 no-show</span></div></div><p class="muted small">Recent months: Nov 1 to 13: 18</p><p class="big">No calls logged in GHL. Email only, none booked.</p></div>
+<div class="glass card"><div class="row"><span class="client">Aviro360</span><span class="muted small">since 29 Sep 2026</span></div><div class="kpis k4"><div><b>30</b><span>leads (net)</span></div><div><b>1</b><span>calls</span></div><div><b>2</b><span>booked</span></div><div><b>0%</b><span>show rate · 0 showed, 0 no-show</span></div></div><p class="muted small">Recent months: Sep: 3 · Oct: 21 · Nov 1 to 13: 6</p><p class="big">16 leads and 1 call. Leads are not being worked.</p></div>
+<div class="glass card"><div class="row"><span class="client">FamCare</span><span class="muted small">since 2 Apr 2026</span></div><div class="kpis k4"><div><b>345</b><span>leads (net)</span></div><div><b>3,403</b><span>calls</span></div><div><b>59</b><span>booked</span></div><div><b>3.4%</b><span>show rate · 2 showed, 32 no-show</span></div></div><p class="muted small">Recent months: Aug: 47 · Sep: 41 · Oct: 31 · Nov 1 to 13: 12</p><p class="big">Heavy dialing and 7 bookings, but 6 no-shows.</p></div>
+<div class="glass card"><div class="row"><span class="client">HRG</span><span class="muted small">since 10 Mar 2026</span></div><div class="kpis k4"><div><b>279</b><span>leads (net)</span></div><div><b>709</b><span>calls</span></div><div><b>44</b><span>booked</span></div><div><b>36.4%</b><span>show rate · 16 showed, 15 no-show</span></div></div><p class="muted small">Recent months: Aug: 23 · Sep: 49 · Oct: 55 · Nov 1 to 13: 27</p><p class="big">Strongest follow-up in the group. 5 booked, 1 showed.</p></div>
+<div class="glass card"><div class="row"><span class="client">Clockspring</span><span class="muted small">since 10 Nov 2025</span></div><div class="kpis k4"><div><b>294</b><span>leads (net)</span></div><div><b>8</b><span>calls</span></div><div><b>35</b><span>booked</span></div><div><b>20%</b><span>show rate · 7 showed, 9 no-show</span></div></div><p class="muted small">Recent months: Aug: 33 · Sep: 29 · Oct: 23 · Nov 1 to 13: 11</p><p class="big">No calls logged. 3 booked, none showed.</p></div>
+<div class="glass card"><div class="row"><span class="client">DBSync</span><span class="muted small">since 15 Aug 2026</span></div><div class="kpis k4"><div><b>64</b><span>leads (net)</span></div><div><b>0</b><span>calls</span></div><div><b>8</b><span>booked</span></div><div><b>0%</b><span>show rate · 0 showed, 0 no-show</span></div></div><p class="muted small">Recent months: Aug: 14 · Sep: 28 · Oct: 22 · Nov 1 to 13: 0</p><p class="big">Handled by Jake.</p></div>
+<div class="glass card"><div class="row"><span class="client">Imorgon</span><span class="muted small">since 25 May 2026</span></div><div class="kpis k4"><div><b>96</b><span>leads (net)</span></div><div><b>9</b><span>calls</span></div><div><b>24</b><span>booked</span></div><div><b>8.3%</b><span>show rate · 2 showed, 1 no-show</span></div></div><p class="muted small">Recent months: Aug: 16 · Sep: 11 · Oct: 14 · Nov 1 to 13: 8</p><p class="big">No calls logged. 5 booked and confirmed.</p></div>
+<div class="glass card"><div class="row"><span class="client">All Tips Matter</span><span class="muted small">since 28 Jul 2025</span></div><div class="kpis k4"><div><b>467</b><span>leads (net)</span></div><div><b>453</b><span>calls</span></div><div><b>94</b><span>booked</span></div><div><b>6.4%</b><span>show rate · 6 showed, 41 no-show</span></div></div><p class="muted small">Recent months: Aug: 47 · Sep: 26 · Oct: 18 · Nov 1 to 13: 5</p><p class="big">Calling, but 4 of 7 bookings no-showed.</p></div>
+<div class="glass card"><div class="row"><span class="client">Sandler</span><span class="muted small">since 8 Oct 2026</span></div><div class="kpis k4"><div><b>14</b><span>leads (net)</span></div><div><b>30</b><span>calls</span></div><div><b>3</b><span>booked</span></div><div><b>33.3%</b><span>show rate · 1 showed, 0 no-show</span></div></div><p class="muted small">Recent months: Oct: 8 · Nov 1 to 13: 6</p><p class="big">Solid calling. 3 booked, 1 showed.</p></div>
+<div class="glass card"><div class="row"><span class="client">Rigol</span><span class="muted small">since 6 Oct 2026</span></div><div class="kpis k4"><div><b>1</b><span>leads (unverified)</span></div><div><b>0</b><span>calls</span></div><div><b>0</b><span>booked</span></div><div><b>n/a</b><span>show rate · 0 showed, 0 no-show</span></div></div><p class="muted small">Recent months: Sep: 0 · Oct: 1 · Nov 1 to 13: 0</p><p class="big">Not launched.</p></div>
+<p class="note">Heal Clinical, Evolve and BlueStar Telehealth are not tracked in GHL. Lockton has no sub-account yet. Answered calls and some call totals may include staff or test activity.</p></section>
+<footer class="muted small">Aletto · CS Pulse Check · team only, not for clients.</footer></main></body></html>

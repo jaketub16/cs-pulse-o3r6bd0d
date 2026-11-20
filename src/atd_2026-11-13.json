@@ -1,0 +1,539 @@
+{
+ "asOf": "Fri 13 Nov 2026",
+ "note": "All-time GHL through 13 Nov 2026, not the 21 Oct\u201312 Nov window. November counts end 13 Nov. Lead counts are net of staff and test contacts. Calls and appointments are full-history report totals and may include staff or test activity.",
+ "clients": [
+  {
+   "name": "VBO Tickets",
+   "first": "27 Aug 2026",
+   "firstKind": "first lead",
+   "leads": 77,
+   "leadsKind": "net",
+   "leadsNote": "10 staff/test excluded",
+   "months": [
+    {
+     "label": "Aug 26",
+     "n": 5
+    },
+    {
+     "label": "Sep 26",
+     "n": 45
+    },
+    {
+     "label": "Oct 26",
+     "n": 18
+    },
+    {
+     "label": "Nov 1\u201313",
+     "n": 9
+    }
+   ],
+   "monthsProvisional": false,
+   "monthsKind": "net",
+   "calls": 54,
+   "answered": 37,
+   "answeredApprox": false,
+   "booked": 8,
+   "showed": 0,
+   "noshow": 0
+  },
+  {
+   "name": "Workzone",
+   "first": "21 Oct 2026",
+   "firstKind": "first lead",
+   "leads": 43,
+   "leadsKind": "net",
+   "leadsNote": "4 staff excluded",
+   "months": [
+    {
+     "label": "Oct 26",
+     "n": 18
+    },
+    {
+     "label": "Nov 1\u201313",
+     "n": 25
+    }
+   ],
+   "monthsProvisional": false,
+   "monthsKind": "net",
+   "calls": 0,
+   "answered": 0,
+   "answeredApprox": false,
+   "booked": 1,
+   "showed": 0,
+   "noshow": 0
+  },
+  {
+   "name": "Xplor / FieldEdge",
+   "first": "3 Nov 2026",
+   "firstKind": "first lead",
+   "leads": 18,
+   "leadsKind": "net",
+   "leadsNote": "no staff or test contacts found",
+   "months": [
+    {
+     "label": "Nov 1\u201313",
+     "n": 18
+    }
+   ],
+   "monthsProvisional": false,
+   "monthsKind": "net",
+   "calls": 0,
+   "answered": 0,
+   "answeredApprox": false,
+   "booked": 0,
+   "showed": 0,
+   "noshow": 0
+  },
+  {
+   "name": "Aviro360",
+   "first": "29 Sep 2026",
+   "firstKind": "first lead",
+   "leads": 30,
+   "leadsKind": "net",
+   "leadsNote": "1 staff excluded",
+   "months": [
+    {
+     "label": "Sep 26",
+     "n": 3
+    },
+    {
+     "label": "Oct 26",
+     "n": 21
+    },
+    {
+     "label": "Nov 1\u201313",
+     "n": 6
+    }
+   ],
+   "monthsProvisional": false,
+   "monthsKind": "net",
+   "calls": 1,
+   "answered": 1,
+   "answeredApprox": false,
+   "booked": 2,
+   "showed": 0,
+   "noshow": 0
+  },
+  {
+   "name": "FamCare",
+   "first": "2 Apr 2026",
+   "firstKind": "first lead",
+   "leads": 345,
+   "leadsKind": "net",
+   "leadsNote": "5 staff excluded",
+   "months": [
+    {
+     "label": "Apr 26",
+     "n": 38
+    },
+    {
+     "label": "May 26",
+     "n": 73
+    },
+    {
+     "label": "Jun 26",
+     "n": 49
+    },
+    {
+     "label": "Jul 26",
+     "n": 54
+    },
+    {
+     "label": "Aug 26",
+     "n": 47
+    },
+    {
+     "label": "Sep 26",
+     "n": 41
+    },
+    {
+     "label": "Oct 26",
+     "n": 31
+    },
+    {
+     "label": "Nov 1\u201313",
+     "n": 12
+    }
+   ],
+   "monthsProvisional": false,
+   "monthsKind": "net",
+   "calls": 3403,
+   "answered": 2704,
+   "answeredApprox": true,
+   "booked": 59,
+   "showed": 2,
+   "noshow": 32
+  },
+  {
+   "name": "HRG",
+   "first": "10 Mar 2026",
+   "firstKind": "earliest remaining",
+   "firstNote": "phone-only; identity not independently verified",
+   "leads": 279,
+   "leadsKind": "net",
+   "leadsNote": "6 staff/test excluded",
+   "months": [
+    {
+     "label": "Mar 26",
+     "n": 16
+    },
+    {
+     "label": "Apr 26",
+     "n": 18
+    },
+    {
+     "label": "May 26",
+     "n": 37
+    },
+    {
+     "label": "Jun 26",
+     "n": 21
+    },
+    {
+     "label": "Jul 26",
+     "n": 33
+    },
+    {
+     "label": "Aug 26",
+     "n": 23
+    },
+    {
+     "label": "Sep 26",
+     "n": 49
+    },
+    {
+     "label": "Oct 26",
+     "n": 55
+    },
+    {
+     "label": "Nov 1\u201313",
+     "n": 27
+    }
+   ],
+   "monthsProvisional": false,
+   "monthsKind": "net",
+   "calls": 709,
+   "answered": 590,
+   "answeredApprox": true,
+   "booked": 44,
+   "showed": 16,
+   "noshow": 15
+  },
+  {
+   "name": "Clockspring",
+   "first": "10 Nov 2025",
+   "firstKind": "first lead",
+   "leads": 294,
+   "leadsKind": "net",
+   "leadsNote": "7 staff/test excluded",
+   "months": [
+    {
+     "label": "Oct 25",
+     "n": 0
+    },
+    {
+     "label": "Nov 25",
+     "n": 2
+    },
+    {
+     "label": "Dec 25",
+     "n": 59
+    },
+    {
+     "label": "Jan 26",
+     "n": 47
+    },
+    {
+     "label": "Feb 26",
+     "n": 18
+    },
+    {
+     "label": "Mar 26",
+     "n": 20
+    },
+    {
+     "label": "Apr 26",
+     "n": 15
+    },
+    {
+     "label": "May 26",
+     "n": 10
+    },
+    {
+     "label": "Jun 26",
+     "n": 14
+    },
+    {
+     "label": "Jul 26",
+     "n": 13
+    },
+    {
+     "label": "Aug 26",
+     "n": 33
+    },
+    {
+     "label": "Sep 26",
+     "n": 29
+    },
+    {
+     "label": "Oct 26",
+     "n": 23
+    },
+    {
+     "label": "Nov 1\u201313",
+     "n": 11
+    }
+   ],
+   "monthsProvisional": false,
+   "monthsKind": "net",
+   "calls": 8,
+   "answered": 1,
+   "answeredApprox": false,
+   "booked": 35,
+   "showed": 7,
+   "noshow": 9
+  },
+  {
+   "name": "DBSync",
+   "first": "15 Aug 2026",
+   "firstKind": "first lead",
+   "leads": 64,
+   "leadsKind": "net",
+   "leadsNote": "4 staff excluded \u00b7 handled by Jake",
+   "months": [
+    {
+     "label": "Aug 26",
+     "n": 14
+    },
+    {
+     "label": "Sep 26",
+     "n": 28
+    },
+    {
+     "label": "Oct 26",
+     "n": 22
+    },
+    {
+     "label": "Nov 1\u201313",
+     "n": 0
+    }
+   ],
+   "monthsProvisional": false,
+   "monthsKind": "net",
+   "calls": 0,
+   "answered": 0,
+   "answeredApprox": false,
+   "booked": 8,
+   "showed": 0,
+   "noshow": 0
+  },
+  {
+   "name": "Imorgon",
+   "first": "25 May 2026",
+   "firstKind": "first lead",
+   "leads": 96,
+   "leadsKind": "net",
+   "leadsNote": "1 staff excluded",
+   "months": [
+    {
+     "label": "May 26",
+     "n": 5
+    },
+    {
+     "label": "Jun 26",
+     "n": 13
+    },
+    {
+     "label": "Jul 26",
+     "n": 29
+    },
+    {
+     "label": "Aug 26",
+     "n": 16
+    },
+    {
+     "label": "Sep 26",
+     "n": 11
+    },
+    {
+     "label": "Oct 26",
+     "n": 14
+    },
+    {
+     "label": "Nov 1\u201313",
+     "n": 8
+    }
+   ],
+   "monthsProvisional": false,
+   "monthsKind": "net",
+   "calls": 9,
+   "answered": 3,
+   "answeredApprox": false,
+   "booked": 24,
+   "showed": 2,
+   "noshow": 1
+  },
+  {
+   "name": "All Tips Matter",
+   "first": "28 Jul 2025",
+   "firstKind": "first lead",
+   "leads": 467,
+   "leadsKind": "net",
+   "leadsNote": "3 staff excluded",
+   "months": [
+    {
+     "label": "Jul 25",
+     "n": 2
+    },
+    {
+     "label": "Aug 25",
+     "n": 24
+    },
+    {
+     "label": "Sep 25",
+     "n": 60
+    },
+    {
+     "label": "Oct 25",
+     "n": 62
+    },
+    {
+     "label": "Nov 25",
+     "n": 52
+    },
+    {
+     "label": "Dec 25",
+     "n": 22
+    },
+    {
+     "label": "Jan 26",
+     "n": 6
+    },
+    {
+     "label": "Feb 26",
+     "n": 14
+    },
+    {
+     "label": "Mar 26",
+     "n": 20
+    },
+    {
+     "label": "Apr 26",
+     "n": 16
+    },
+    {
+     "label": "May 26",
+     "n": 34
+    },
+    {
+     "label": "Jun 26",
+     "n": 21
+    },
+    {
+     "label": "Jul 26",
+     "n": 38
+    },
+    {
+     "label": "Aug 26",
+     "n": 47
+    },
+    {
+     "label": "Sep 26",
+     "n": 26
+    },
+    {
+     "label": "Oct 26",
+     "n": 18
+    },
+    {
+     "label": "Nov 1\u201313",
+     "n": 5
+    }
+   ],
+   "monthsProvisional": false,
+   "monthsKind": "net",
+   "calls": 453,
+   "answered": 356,
+   "answeredApprox": true,
+   "booked": 94,
+   "showed": 6,
+   "noshow": 41
+  },
+  {
+   "name": "Sandler",
+   "first": "8 Oct 2026",
+   "firstKind": "first lead",
+   "leads": 14,
+   "leadsKind": "net",
+   "leadsNote": "1 staff excluded",
+   "months": [
+    {
+     "label": "Oct 26",
+     "n": 8
+    },
+    {
+     "label": "Nov 1\u201313",
+     "n": 6
+    }
+   ],
+   "monthsProvisional": false,
+   "monthsKind": "net",
+   "calls": 30,
+   "answered": 23,
+   "answeredApprox": false,
+   "booked": 3,
+   "showed": 1,
+   "noshow": 0
+  },
+  {
+   "name": "Rigol",
+   "first": "6 Oct 2026",
+   "firstKind": "earliest remaining",
+   "firstNote": "unverified phone-only record \u00b7 go-live 16 Nov",
+   "leads": 1,
+   "leadsKind": "unverified",
+   "leadsNote": "6 staff/test excluded; remaining contact unverified. Not launched; go-live 16 Nov",
+   "months": [
+    {
+     "label": "Sep 26",
+     "n": 0
+    },
+    {
+     "label": "Oct 26",
+     "n": 1
+    },
+    {
+     "label": "Nov 1\u201313",
+     "n": 0
+    }
+   ],
+   "monthsProvisional": false,
+   "monthsKind": "net",
+   "calls": 0,
+   "answered": 0,
+   "answeredApprox": false,
+   "booked": 0,
+   "showed": 0,
+   "noshow": 0,
+   "reportsPending": false
+  }
+ ],
+ "notInGhl": [
+  {
+   "name": "Heal Clinical",
+   "status": "Not tracked in GHL"
+  },
+  {
+   "name": "Evolve",
+   "status": "Not tracked in GHL"
+  },
+  {
+   "name": "TrustStar",
+   "status": "Not tracked in GHL"
+  },
+  {
+   "name": "Lockton",
+   "status": "No sub-account yet"
+  }
+ ]
+}
