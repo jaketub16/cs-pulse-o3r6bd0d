@@ -4,95 +4,91 @@ import json, html, os
 E = html.escape
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, '..', 'index.html')
-WEEK = 'Week of Fri Nov 13 to Thu Nov 19, 2026'
-BUILT = 'Built Fri Nov 20, 2026, 10:45 Madrid (CET)'
+WEEK = 'Week of Fri Nov 20 to Thu Nov 26, 2026'
+BUILT = 'Built Mon Nov 23, 2026, 09:55 Madrid (CET). Covers Fri Nov 20 to Mon morning so far'
+TILES = (0, 9, 0)  # replies over 6h, late promises, client calls recorded so far
 
 PRIORITIES = [
-  ('Shane', 'Rigol', 'Email Mike the call recap, get his written okay on AD20, AD14 and AD17, and give Mike and Jake a new go-live date.', 'Today, Fri Nov 20, 18:00', 'Recap 8 days late, launch 4 business days late'),
-  ('William', 'FamCare', 'Send George feedback on video 1 before he leaves. Add Mohamed\'s phone for SMS lead alerts. Get Mark to clear the long Outlook blocks so the VSL calendar shows slots. Check go-famcare.com/vsl against George\'s scripts.', 'Today, Fri Nov 20, 15:00 (feedback) and 18:00', 'Bookings are blocked until Mark\'s calendar is open'),
-  ('Shane', 'FamCare', 'Create Mohamed\'s GHL login so he can shadow Mark next week.', 'Today, Fri Nov 20, 18:00', 'George asked for it Thursday'),
-  ('Shane', 'Xplor / FieldEdge', 'Confirm the new Meta daily ad spend to Jon in writing. Answer Brittany on raw-data access and the 40% Facebook recommend rating. Bring a plan to get CPL under $55.', 'Late since Nov 11', 'CPL $77.94 vs $55 ceiling, Jon cooling'),
-  ('Yona', 'Workzone', 'Send the invite for the rebooked sales training, Tue Nov 24, 19:00 Madrid, and make sure it is on Jake\'s calendar.', 'Today, Fri Nov 20, 12:00', 'Steve was told the invite was set'),
+  ('Shane', 'Rigol', 'Email Mike today: the call recap, his written okay on AD20, AD14 and AD17, and a new go-live date. Copy Jake.', 'Today, Mon Nov 23, 18:00', 'Recap 11 days late, launch 5 business days late, no email to Mike since Nov 18'),
+  ('Shane · William', 'Xplor / FieldEdge', 'Ship the new creative batch for C02 and audit the opt-in page (3.89%). Bring a plan to get CPL back under $55 before the first month ends Dec 2.', 'Wed Nov 25', 'CPL $143.27 last week, 0 booked calls'),
+  ('Shane', 'Lockton', 'Answer Aaron in writing: what stops his future leads from getting the confusing automated messages he got. Then run the asset review.', 'Before Tue Nov 24, 18:00', 'Aaron asked Fri and only got a one-line reply'),
+  ('William', 'FamCare', 'Review George\'s video 2 and tell him if anything needs a re-record. Confirm Mohamed\'s SMS lead alerts are on.', 'Today, Mon Nov 23', 'George is away this week but checking in'),
+  ('William · Yona', 'Aviro360 · Evolve', 'William books this week\'s call with Brian. Yona locks Dave\'s time for his call with Jake and sends the invite.', 'Tue Nov 24', 'Both calls fell through last week'),
 ]
 
 # (status, client, owner, reason, last touch, next step)
 HEALTH = [
-  ('r','DBSync','Jake','Joel has asked 3 times for the two proposals (CRM and text Nov 18, email Nov 19 18:29). No reply yet.','Joel email, Thu Nov 19 18:29 (waiting on us)','Jake replies today. Route anything from DBSync to Jake.'),
-  ('r','Rigol','Shane · William','Launch 4 business days late with no new date. Mike\'s discovery questions waited 26.6 business hours.','Shane email, Wed Nov 18 17:38','Recap, written okay and new go-live date to Mike today.'),
-  ('r','Xplor / FieldEdge','Shane · William','CPL $77.94 (Nov 6 to 12) vs $55 ceiling. Jon cooling. Meta spend increase unconfirmed since Nov 11.','Shane email, Thu Nov 19 17:57 · no call this week','Written spend confirmation, answer Brittany, CPL plan.'),
-  ('r','Evolve','William · Shane','Ads paused since Nov 4 at Dave\'s request. No leads since. Sentiment negative.','Email, Wed Nov 18 14:29','Jake and Dave call today 15:30 Madrid: restart plan or clean wind-down.'),
-  ('r','Dan Greenberg (RGA)','Shane','Lead magnet range and logo swap promised "first thing" Nov 3. 17 days, no update.','Shane email, Fri Nov 6 12:49','Ship both and email Dan today.'),
-  ('y','Clockspring','William','About $130 CPL at $100/day. Leads 6, 5, then 3 per week. Broad funnel has stalled.','Call, Tue Nov 17','Ship the problem-focused funnel and freebie for next week\'s test, plus new DirectVSL and Freebie creatives.'),
-  ('y','Workzone','William · Shane','Day 30 closed Nov 19: 42 leads through Nov 12, CPL $57.92. Likely miss on CPL. Recent run is 12 to 13 leads a week at $46.','Call, Wed Nov 18 · Yona email, Fri Nov 20 02:22','Route leads to Steve Atwood, SMS and Slack lead alerts, fix sender name, rotate sub-1% CTR ads.'),
-  ('y','HRG','William','Funnel 1: 0 booked from 4 MQLs. Mellissa waited 9.0 business hours. Meta ad-account error not confirmed fixed.','Call, Wed Nov 18 · William email, Thu Nov 19 00:51','Confirm ads are running, new Funnel 1 creatives, separate Funnel 1 and 2 pipelines.'),
-  ('y','FamCare','William · Shane','Mark\'s Outlook blocks hide every booking slot. New VSL page brings fewer leads than the old one. GHL: 4 leads, 2 MQLs, 1 booked.','Call, Thu Nov 19 · William email, Thu Nov 19 23:33','Today\'s four items, then decide old vs new page in the next few days.'),
-  ('y','Imorgon','William','Instagram login (2FA to a dead number) blocks ads on the main account. 2 booked calls no-showed.','Call, Wed Nov 18 · William email, Thu Nov 19 17:23','Fix the Instagram login. Compare Letter vs Roadmaps ($100/day each) after 7 days.'),
-  ('y','All Tips Matter','William','Opt-in 4.11% vs 10% target. Volume thin. No call this week.','William email, Wed Nov 18 20:05','Send a test lead to confirm forms reach GHL. Book this week\'s call.'),
-  ('y','Aviro360','William · Yona','GHL: 2 leads this week (1 the week before), 0 MQLs, 0 calls logged.','Call, Fri Nov 13 · William email, Thu Nov 19 21:57','Brian logs every call in GHL. Read the gate campaign (live Nov 16) after 1 to 2 weeks.'),
-  ('y','VBO Tickets','William · Shane','Churn risk easing after Jake\'s Nov 13 call. Demos still blocked: leads set DND or take the white paper only.','Call, Wed Nov 18','Shane books a 1:1 with Mike next week. Have Shannon\'s call cadence ready for Dec 1.'),
-  ('y','Heal Clinical','William · Shane','Booked calls down 2 weeks running. "Yes" leads going dark. Opt-in 0.81%.','Call, Mon Nov 16','Confirm the calendar on the VSL page and new Direct VSL creatives shipped Nov 18.'),
-  ('y','Sandler','William · Shane','Hero window missed (7 leads, CPL $194), but Michael is engaged and collaborative.','Call, Thu Nov 19','Embedded calendar and 15-minute intro live. Michael rewrites the follow-up sequence.'),
-  ('g','BlueStar Telehealth','William · Shane · Yona','New creatives (Nov 5) took one week from 2 leads to 8 leads, 7 MQLs, 6 booked. Rob lost his mother; Yona sent condolences.','Call, Wed Nov 18 · Yona note, Thu Nov 19','Keep pausing weak ads. Fix duplicate company fields in the CRM. Go gentle with Rob.'),
-  ('g','Lockton','Shane · William · Yona','Kickoff Nov 16 and tech call Nov 18 done. Assets in build. Aaron positive.','Tech call, Wed Nov 18','Asset review Tue Nov 24, 18:00 Madrid. Shane sends the inbound calling playbook before launch.'),
+  ('r','DBSync','Jake','Joel is still waiting on next steps after asking 3 times. Yona told him Sat that Jake will coordinate this week. Ended Nov 21.','Yona email, Sat Nov 21 20:31 · Joel thanked her','Jake decides on the two proposals today. Route anything from DBSync to Jake.'),
+  ('r','Rigol','Shane · William','Launch 5 business days late with no new date. No email to Mike since Wed Nov 18.','Shane email, Wed Nov 18 17:38','Recap, written okay and new go-live date to Mike today.'),
+  ('r','Xplor / FieldEdge','Shane · William','CPL $143.27 (Nov 13 to 19) vs $55 ceiling. 16 leads, 4 MQLs, 0 booked. Spend is up to $2,292 a week. Brittany wants self-serve reporting.','Shane email, Sat Nov 21 10:58','New creative batch, opt-in audit, walk Brittany through the Ops system.'),
+  ('r','Evolve','Jake · Yona','Ads paused since Nov 4. Dave cancelled Friday\'s call with Jake (client conflict). The 16-week flight ends Nov 30.','Jake email, Sun Nov 22 14:26 (4 times offered)','Dave picks a time. Call agrees restart with fresh angles or a book-led relaunch.'),
+  ('r','Dan Greenberg (RGA)','Shane','Lead magnet range and logo swap promised "first thing" Nov 3. 20 days, no update.','Shane email, Fri Nov 6 12:49','Ship both and email Dan today.'),
+  ('y','Lockton','Shane · William · Yona','Aaron got confusing automated messages and asked what stops his leads getting them. Answer was one line.','Shane email, Fri Nov 20 15:22','Written answer, then asset review Tue Nov 24, 18:00 Madrid. Inbound calling playbook before launch.'),
+  ('y','Clockspring','William','About $130 CPL at $100/day. Leads 6, 5, then 3 per week. Broad funnel has stalled.','Weekly report, Fri Nov 20','Ship the problem-focused funnel and freebie, plus new DirectVSL and Freebie creatives.'),
+  ('y','HRG','William · Jake','Funnel 2 strong. Scott replied Mon 04:58 to Jake\'s "Funnel 2 is working, next step?" offering Wed 8am CT or Fri 9am to 2pm CT. Funnel 1 still 0 booked.','Scott email, Mon Nov 23 04:58','Jake picks a time, Yona sends the invite. New Funnel 1 creatives.'),
+  ('y','FamCare','William · Shane','Video 1 approved, video 2 recorded. Booking slots blocked by Mark\'s Outlook. GHL: 4 leads, 2 MQLs, 1 booked (Nov 13 to 19).','William email, Fri Nov 20 20:59','Video 2 review, Mohamed\'s SMS alerts, open Mark\'s calendar.'),
+  ('y','Imorgon','William','Instagram login (2FA to a dead number) blocks ads on the main account. 2 booked calls no-showed.','Weekly report, Fri Nov 20','Fix the Instagram login. Compare Letter vs Roadmaps after 7 days.'),
+  ('y','All Tips Matter','William','Opt-in 4.11% vs 10% target. Volume thin.','Weekly report, Fri Nov 20','Send a test lead to confirm forms reach GHL. Book this week\'s call.'),
+  ('y','Aviro360','William · Yona','Brian could not make the moved weekly call and said "let\'s catch up next week". 2 leads, 0 MQLs the week before.','William email, Fri Nov 20 17:07','Book this week\'s call. Brian logs every call in GHL.'),
+  ('y','VBO Tickets','William · Shane','Churn risk easing after Jake\'s Nov 13 call. Demos still blocked: leads set DND or take the white paper only.','Weekly report, Fri Nov 20','Shane books a 1:1 with Mike this week. Shannon\'s call cadence ready for Dec 1.'),
+  ('y','Heal Clinical','William · Shane','Booked calls down 2 weeks running. "Yes" leads going dark. Opt-in 0.81%.','Call, Mon Nov 16','Confirm the calendar on the VSL page and the new Direct VSL creatives.'),
+  ('y','Sandler','William · Shane','Hero window missed (7 leads, CPL $194), but Michael is engaged. Sync with Jake Wed Nov 25.','Weekly report, Fri Nov 20','Embedded calendar and 15-minute intro live. Michael rewrites the follow-up sequence.'),
+  ('g','Workzone','William · Shane · Yona','First month closed with 58 leads (goal 50). Last week CPL $46.84 and booked calls up from 1 to 3. Steve confirmed Tuesday\'s sales training.','William email, Fri Nov 20 20:59','Training Tue Nov 24, 19:45 Madrid. Add Steve to weekly reports.'),
+  ('g','BlueStar Telehealth','William · Shane · Yona','New creatives (Nov 5) took one week from 2 leads to 8 leads, 7 MQLs, 6 booked. Rob lost his mother.','Weekly report, Fri Nov 20','Keep pausing weak ads. Go gentle with Rob.'),
 ]
 
 HERO = [
-  ('Xplor / FieldEdge','In window','Day 18 of 30 · window ends Wed Dec 2','19','as of Nov 13 (GHL, no live key yet)','$77.94','Nov 6 to 12','12','On pace for about 52 leads, but CPL is over the $55 ceiling','y'),
-  ('Workzone','Closed Thu Nov 19','Day 30 reached','42','through Nov 12 (William\'s reports; final count not verified in GHL)','$57.92','through Nov 12 · about $46 since','0','Likely miss on CPL. Leads probably close to 50','r'),
+  ('Xplor / FieldEdge','In window','Day 21 of 30 · window ends Wed Dec 2','27','Nov 6 to 19 (William\'s weekly reports; Nov 3 to 5 not in reports)','$116.65','Nov 6 to 19 · last week $143.27','9','Likely CPL miss. Leads near pace for about 50','r'),
+  ('Workzone','Closed Thu Nov 19','Day 30 reached','58','Oct 21 to Nov 19 (William\'s weekly reports, not checked in GHL)','$54.86','final · ad spend $3,181.88','0','Leads goal hit. CPL over the $40 goal, just inside the $55 ceiling','y'),
   ('Sandler','Closed Fri Nov 6','Day 30 reached','7','final','$194','final, Meta via Windsor','0','Missed','r'),
 ]
-NOT_STARTED = 'Not started yet: Rigol (no new launch date) and Lockton (ads launch after the Tue Nov 24 asset review). Hero metrics start on launch day.'
+NOT_STARTED = 'Not started yet: Rigol (no new launch date), Lockton (ads launch after the Tue Nov 24 asset review) and Tiger Capital (kickoff date not set). Hero metrics start on launch day.'
 
 TEAM = [
-  ('Shane', (6,0.62,26.63,1), (10,0.32,14.98,1), 6, 1, 12, 'Red flag: Rigol, Mike\'s discovery questions, 26.6h.',
-   ['Dan: lead magnet and logo (due Nov 3)','HRG: LinkedIn ads test (due Nov 6)','Xplor: regenerate the creative with garbled AI text (due Nov 5)','Xplor: confirm the higher Meta spend to Jon (since Nov 11)','Rigol: recap and Mike\'s written okay (due Nov 12)','Rigol: go-live (due Nov 16)'],
-   ['FamCare: Mohamed\'s GHL login (today 18:00)']),
-  ('William', (13,0.0,9.0,1), (9,1.25,5.05,0), 0, 2, 10, 'Red flag: HRG, Mellissa\'s Outlook and GHL questions, 9.0h.',
-   [], ['FamCare: video 1 feedback to George (today 15:00)','FamCare: Mohamed\'s SMS lead alerts (today 18:00)','Workzone: Steve\'s SMS alert and webhook (waiting on Ash\'s phone and URL)']),
-  ('Yona', (9,1.12,5.88,0), (7,0.52,2.08,0), 0, 1, 0, 'No red flags. Slowest reply 5.88h, close to the 6h line.',
-   [], ['Workzone: training invite on Jake\'s calendar (today 12:00)']),
+  ('Shane', (3,0.0,0.05,0), (6,0.62,26.63,1), 7, 1, 0, 'No red flags so far this week. Fast replies to Lockton and Xplor.',
+   ['Rigol: recap and Mike\'s written okay (due Nov 12)','Rigol: go-live (due Nov 16)','Dan: lead magnet and logo (due Nov 3)','Xplor: regenerate the creative with garbled AI text (due Nov 5)','HRG: LinkedIn ads test (due Nov 6)','Xplor: Alyssa follow-up on the chatbot phone number (no date)','Anchor Point: reach out to Kyle about the mid-December kickoff (no date)'],
+   ['Lockton: written answer to Aaron on automated messages (before Tue 18:00)']),
+  ('William', (4,0.0,0.02,0), (13,0.0,9.0,1), 1, 1, 0, 'No red flags so far this week. George got video 1 feedback before he left.',
+   ['FamCare: Mohamed\'s SMS lead alerts (due Fri Nov 20, not confirmed)'], ['FamCare: video 2 review for George','Aviro360: book this week\'s call with Brian','Workzone: add Steve to Friday\'s weekly report']),
+  ('Yona', (3,1.92,2.48,0), (9,1.12,5.88,0), 0, 1, 0, 'No red flags. Slowest reply 2.48h (Dave\'s reschedule, answered Saturday).',
+   [], ['Evolve: lock Dave\'s time with Jake and send the invite']),
 ]
+TEAM_NOTE = 'Emails: cs-log and Jake\'s Gmail, Fri Nov 20 to Mon Nov 23 09:40 (weekend replies count 0 business hours). Previous week = Fri Nov 13 to Thu Nov 19. Client calls = recorded Fathom client calls so far this week.'
 
-MISSED = [
-  ('Rigol','Shane','Mike sent his discovery questions Fri Nov 13 at 23:21. Shane answered Wed Nov 18 at 17:38. 26.6 business hours.'),
-  ('HRG','William','Mellissa emailed Mon Nov 16 at 22:39 about a missing Outlook appointment and 4 GHL questions. William replied Tue Nov 17 at 20:41. 9.0 business hours.'),
-]
-MISSED_NOTE = 'Both only showed up as quoted text inside later replies. Reply on the thread itself so it is counted on time.'
+MISSED = []
+MISSED_NOTE = 'No client email waited more than 6 business hours this week so far, and nothing team-owned is unanswered. Keep replying from the thread itself so it is counted.'
 WAITING = [
-  ('DBSync','Jake','Joel asked for the two proposals 3 times. Last ask Thu Nov 19 18:29: "Can I expect something this week?"'),
-  ('Xplor','Shane','Jon: confirmation of the higher Meta spend, open since Nov 11. Brittany: raw-data access and the 40% recommend rating.'),
-  ('FamCare','William','George is waiting on video 1 feedback before he records videos 2 to 4.'),
-  ('Dan Greenberg','Shane','Lead magnet range and logo swap, no update since Nov 6.'),
-  ('Workzone','Yona','Steve was told the training invite was set. It is not on Jake\'s calendar yet.'),
+  ('DBSync','Jake','Joel is waiting on next steps. Yona told him Jake will coordinate this week.'),
+  ('HRG','Jake · Yona','Scott offered Wed 8am CT or Fri 9am to 2pm CT for a call with Jake. Jake picks, Yona sends the invite.'),
+  ('Lockton','Shane','Aaron\'s question on what stops his leads getting confusing automated messages.'),
+  ('FamCare','William','George\'s video 2: tell him if anything needs a re-record.'),
+  ('Aviro360','William','Brian asked to catch up this week. No time booked yet.'),
 ]
 
 CHURN = [
-  ('DBSync','Joel upset and escalating. Jake owns it.'),
-  ('Evolve','Ads paused 16 days, sentiment negative. Today\'s call decides restart or wind-down.'),
-  ('Xplor','Jon cooling, CPL over ceiling, promises open.'),
+  ('DBSync','Ended Nov 21. Joel still waiting on next steps. Jake owns it.'),
+  ('Evolve','Ads paused since Nov 4, call with Jake cancelled Friday, flight ends Nov 30.'),
+  ('Xplor','CPL $143 last week, 0 booked, Jon cooling.'),
   ('Rigol','Mike patient but still waiting on a date.'),
-  ('Dan Greenberg','17 days without the promised change.'),
+  ('Dan Greenberg','20 days without the promised change.'),
 ]
 ASCEND = [
-  ('BlueStar Telehealth','Leads, MQLs and bookings jumped after the Nov 5 creatives. Steve has 4 of their own prospects at proposal stage, 2 targeted by Dec 1. Strong case study.'),
-  ('HRG Funnel 2','Calendar on the VSL page took booking rate from 5 to 6% up to 16%. Holding 7 to 11 leads a week.'),
-  ('Workzone','12 to 13 leads a week at $46 CPL, A2P done, calendar booking. Ash smoothed over after the day-30 email.'),
-  ('Sandler','Michael is booking a consult with Jake himself.'),
+  ('HRG Funnel 2','Scott said yes to a call with Jake on building out Funnel 2 (4 strong weeks, 7 to 11 leads a week).'),
+  ('Workzone','First month hit 58 leads, CPL down 21% last week, bookings tripled. Steve is joining the sales training.'),
+  ('BlueStar Telehealth','Leads, MQLs and bookings jumped after the Nov 5 creatives. Strong case study.'),
+  ('Sandler','Michael booked a sync with Jake for Wed Nov 25.'),
   ('Heal Clinical','Tim asked for help on 2 new projects (Nov 13). Worth a conversation once bookings recover.'),
 ]
 WINS = [
-  ('FamCare','George recorded video 1 of 4, the VSL page fix went live Thu, and Mohamed is onboarding as the lead qualifier.'),
-  ('BlueStar','New creatives: 8 leads, 7 MQLs, 6 booked in the week after Nov 5, with a strong show rate.'),
-  ('Imorgon','The Letter page and campaign went live Wed Nov 18. Andy recorded RSNA videos.'),
-  ('Workzone','A2P approved, SMS alerts unlocked, Steve Atwood set as the AE with dashboard access.'),
-  ('Sandler','Michael agreed to an embedded calendar and a 15-minute intro, and will rewrite the follow-up in his own voice.'),
-  ('Lockton','Kickoff and tech setup done in 3 days. Aaron positive.'),
-  ('Team','12 recorded client calls this week. William\'s median reply was 0.0 business hours on 13 emails.'),
+  ('Workzone','First month closed at 58 leads vs the 50 goal. Last week: CPL $46.84, booked calls 1 to 3, booked rate 18.75%.'),
+  ('FamCare','Video 1 approved and video 2 recorded before George left for Thanksgiving. Mohamed got his GHL access the same day he asked.'),
+  ('Team','10 client emails Fri to Sun, team median 0.01 business hours, zero red flags.'),
+  ('Workzone','Sales training locked for Tue Nov 24 with Saloumeh joining.'),
 ]
 
 # Last full Windsor week. License expired; Meta data stops Nov 3.
 SPEND = [('BlueStar Telehealth',1557.12,2.47),('HRG (both funnels)',1400.19,1.79),('All Tips Matter',1335.15,1.32),('Clockspring',1242.18,0.54),('Heal Clinical',1056.69,1.32),('Imorgon',837.60,0.88),('FamCare',833.54,1.29),('VBO Tickets',758.37,1.20),('Aviro360',747.01,1.11),('Workzone',691.98,0.53),('Evolve',680.65,0.79),('Sandler',344.25,0.88)]
-SPEND_NOW = ['Clockspring: $100/day (call Nov 17).','Imorgon: Letter and Roadmaps at $100/day each for one week (call Nov 18).','Workzone: $825.75 for Nov 6 to 12 at $58.98 CPL (William\'s client report).','Evolve: paused since Nov 4.']
+SPEND_NOW = ['Xplor: $2,292.30 for Nov 13 to 19 at $143.27 CPL (William\'s weekly report).','Workzone: $749.40 for Nov 13 to 19 at $46.84 CPL (William\'s weekly report).','Clockspring: $100/day (call Nov 17).','Imorgon: Letter and Roadmaps at $100/day each (call Nov 18).','Evolve: paused since Nov 4.']
 
 COMPLIANCE = {
  'VBO Tickets':'Courtney is calling, but calls are short and the one booking was cancelled.',
@@ -126,7 +122,7 @@ def build():
     a(f'''<header class="hero glass"><div class="brand">aletto<span>.</span></div><div class="eyebrow">CS Pulse Check · Shane, William, Yona</div>
 <h1>{WEEK}</h1><p class="muted">Madrid time (CET). {BUILT}. Older data is marked with its date.</p>
 <div class="tiles"><div class="tile"><b class="c-r">{cnt['r']}</b><span>red</span></div><div class="tile"><b class="c-y">{cnt['y']}</b><span>yellow</span></div><div class="tile"><b class="c-g">{cnt['g']}</b><span>green</span></div>
-<div class="tile"><b>2</b><span>replies over 6h</span></div><div class="tile"><b>6</b><span>late promises</span></div><div class="tile"><b>12</b><span>client calls</span></div></div>
+<div class="tile"><b>{TILES[0]}</b><span>replies over 6h</span></div><div class="tile"><b>{TILES[1]}</b><span>late promises</span></div><div class="tile"><b>{TILES[2]}</b><span>client calls so far</span></div></div>
 <nav><a href="#prio">Priorities</a><a href="#health">Health</a><a href="#hero-m">Hero metrics</a><a href="#team">Team</a><a href="#emails">Emails</a><a href="#risk">Risk and growth</a><a href="#wins">Wins</a><a href="#spend">Ad spend</a><a href="#atd">All-time</a></nav></header>''')
     # priorities
     a('<section id="prio"><h2>This week\'s 5 priorities</h2><p class="muted">Reply on the team thread the moment each one is done.</p>')
@@ -137,7 +133,7 @@ def build():
     a(f'<section id="health"><h2>Client health board</h2><p class="muted">{len(HEALTH)} active clients, red first. One reason each. Status reflects results, client mood and our follow-through this week.</p>')
     for s,c,o,r,lt,nx in HEALTH:
         a(f'<div class="glass card hc b-{s}"><div class="row"><span class="dot d-{s}"></span><span class="client">{E(c)}</span><span class="tag t-{s}">{light(s)}</span></div><p class="big">{E(r)}</p><dl><dt>Owner</dt><dd>{E(o)}</dd><dt>Last touch</dt><dd>{E(lt)}</dd><dt>Next</dt><dd>{E(nx)}</dd></dl></div>')
-    a('<p class="note">Sources: Gmail and cs-log threads, Fathom calls Nov 13 to 19, GHL (Aviro360 and FamCare live keys, pulled Fri Nov 20 08:20), CEO client report built Fri Nov 20.</p></section>')
+    a('<p class="note">Sources: Gmail and cs-log threads Fri Nov 20 to Mon Nov 23, William\'s weekly reports sent Fri Nov 20 (Nov 13 to 19), Fathom calls Nov 13 to 19, GHL (Aviro360 and FamCare live keys, pulled Fri Nov 20 08:20).</p></section>')
     # hero
     a('<section id="hero-m"><h2>First-month hero metrics</h2><p class="muted">First 30 days after launch: 50+ leads, CPL $40 goal, $55 ceiling. Leads from GHL or client reports, never from Meta.</p>')
     for c,st,day,ld,ldn,cpl,cpln,left,verdict,s in HERO:
@@ -155,7 +151,7 @@ def build():
         if latel: a('<div class="sub">Late</div><ul>'+''.join(f'<li>{E(x)}</li>' for x in latel)+'</ul>')
         if todayl: a('<div class="sub">Due today or waiting</div><ul>'+''.join(f'<li>{E(x)}</li>' for x in todayl)+'</ul>')
         a('</div>')
-    a('<p class="note">Emails: cs-log and Jake\'s Gmail, Fri Nov 13 to Thu Nov 19. The Wed and Thu daily runs failed, so Nov 17 to 19 were rebuilt in one pass Fri Nov 20. No day is missing. Client calls = recorded Fathom client calls attended Nov 13 to 19.</p></section>')
+    a(f'<p class="note">{E(TEAM_NOTE)}</p></section>')
     # emails
     a('<section id="emails"><h2>Missed or late emails</h2>')
     for c,o,t in MISSED: a(f'<div class="glass card b-r"><div class="row"><span class="client">{E(c)}</span><span class="pill">{E(o)}</span></div><p class="big">{E(t)}</p></div>')
