@@ -5,7 +5,7 @@ E = html.escape
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, '..', 'index.html')
 WEEK = 'Week of Fri Nov 20 to Thu Nov 26, 2026'
-BUILT = 'Built Tue Nov 24, 2026, 10:00 Madrid (CET). Covers Fri Nov 20 to Tue morning so far'
+BUILT = 'Built Tue Nov 24, 2026, 09:30 Madrid (CET). Covers Fri Nov 20 to Tue morning so far'
 TILES = (1, 7, 1)  # replies over 6h, late promises, client calls recorded so far
 
 PRIORITIES = [
@@ -53,7 +53,7 @@ TEAM = [
   ('Yona', (5,0.62,2.48,0), (9,1.12,5.88,0), 0, 1, 0, 'No red flags. Booked Jake\'s calls with HRG and Evolve on Monday.',
    [], ['Aviro360: book Brian\'s meeting with Jake']),
 ]
-TEAM_NOTE = 'Emails: cs-log and Jake\'s Gmail, Fri Nov 20 to Tue Nov 24 09:40 (weekend replies count 0 business hours). Previous week = Fri Nov 13 to Thu Nov 19. Client calls = recorded Fathom client calls so far this week.'
+TEAM_NOTE = 'Emails: cs-log and Jake\'s Gmail, Fri Nov 20 to Tue Nov 24 09:30 (weekend replies count 0 business hours). Previous week = Fri Nov 13 to Thu Nov 19. Client calls = recorded Fathom client calls so far this week.'
 
 MISSED = [
   ('Rigol','Shane','"Re: Discovery Questions": Mike replied Thu Nov 19 07:38 approving the form questions. Answered Mon Nov 23 18:48, 27.0 business hours. Red flag.'),
@@ -138,7 +138,7 @@ def build():
     a(f'<section id="health"><h2>Client health board</h2><p class="muted">{len(HEALTH)} active clients, red first. One reason each. Status reflects results, client mood and our follow-through this week.</p>')
     for s,c,o,r,lt,nx in HEALTH:
         a(f'<div class="glass card hc b-{s}"><div class="row"><span class="dot d-{s}"></span><span class="client">{E(c)}</span><span class="tag t-{s}">{light(s)}</span></div><p class="big">{E(r)}</p><dl><dt>Owner</dt><dd>{E(o)}</dd><dt>Last touch</dt><dd>{E(lt)}</dd><dt>Next</dt><dd>{E(nx)}</dd></dl></div>')
-    a('<p class="note">Sources: Gmail and cs-log threads Fri Nov 20 to Tue Nov 24 09:40, William\'s weekly reports sent Fri Nov 20 (Nov 13 to 19), Fathom calls to Mon Nov 23, GHL (Aviro360 and FamCare live keys, pulled Fri Nov 20 08:20).</p></section>')
+    a('<p class="note">Sources: Gmail and cs-log threads Fri Nov 20 to Tue Nov 24 09:30, William\'s weekly reports sent Fri Nov 20 (Nov 13 to 19), Fathom calls to Mon Nov 23, GHL (Aviro360 and FamCare live keys, pulled Fri Nov 20 08:20).</p></section>')
     # hero
     a('<section id="hero-m"><h2>First-month hero metrics</h2><p class="muted">First 30 days after launch: 50+ leads, CPL $40 goal, $55 ceiling. Leads from GHL or client reports, never from Meta.</p>')
     for c,st,day,ld,ldn,cpl,cpln,left,verdict,s in HERO:
